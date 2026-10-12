@@ -169,7 +169,9 @@ Both frontends use the local API by default. Configure `VITE_API_BASE_URL` when 
 
 ## Data model
 
-The four core input tables are:
+The codebase defines **22 BigQuery tables**, grouped by purpose below. This is the schema inventory, not a claim that every table is populated in a new deployment.
+
+### Consumer and incident lifecycle
 
 | Table | Purpose |
 | --- | --- |
@@ -180,7 +182,55 @@ The four core input tables are:
 
 Complaint IDs connect incidents, evidence and events. Consumer and unit identifiers associate reports with their owner and registered device. The `evidence` table receives records only when a file is uploaded.
 
-`kb_chunks` holds knowledge-base content, retrieval metadata and embedding vectors. Separate configuration, signal and manufacturing tables support quality analysis. Manufacturing hypotheses are suggestions for investigation, not confirmed root causes.
+### Knowledge and configuration
+
+| Table | Purpose |
+| --- | --- |
+| `taxonomy_symptoms` | Versioned symptom vocabulary, issue mappings, default severity and safety metadata |
+| `kb_chunks` | Product knowledge passages, source metadata, retrieval tags and embedding vectors |
+| `signal_config` | Analysis windows, volume thresholds, growth thresholds and safety/batch settings |
+| `hypothesis_rules` | Rule-based hypothesis text, recommended actions and KB references for the SQL signal workflow |
+
+### Batches, manufacturing and field evidence
+
+| Table | Purpose |
+| --- | --- |
+| `batches` | Batch identifiers, production month, shipping start and shipment totals |
+| `shipments_weekly` | Units shipped by batch, region and week; potential denominators for shipment-normalized rates |
+| `production_batches` | Factory, production lines, production dates and units produced |
+| `batch_lots` | Component/supplier lot traceability by batch, including tooling revisions and change notes |
+| `change_records` | Manufacturing or engineering changes associated with batches |
+| `end_of_line_tests` | Unit-level factory measurements and pass/fail results for acoustic, vibration, mechanical, thermal and battery checks |
+| `service_repairs` | Field-service diagnoses, replaced parts and links to complaints, serial numbers and batches |
+| `product_returns` | Returned products, reason codes, dispositions and complaint/batch links |
+
+These tables provide context for manufacturing analysis. Their presence does not mean the current count-based dashboard reports shipment-normalized defect rates.
+
+### Quality outputs and saved analysis
+
+| Table | Purpose |
+| --- | --- |
+| `signals` | Computed quality-signal snapshots by product and issue type, including the structured signal payload |
+| `investigations` | Investigation identifiers, status, actions and notes; schema support for an investigation workflow |
+| `signal_analysis_scopes` | Requested analysis scopes, processing state and last-check information |
+| `signal_analyses` | Versioned Gemini manufacturing interpretations with evidence snapshots, fingerprints, model and prompt metadata |
+| `signal_sme_reviews` | SME verdicts and comments linked to an analysis version and hypothesis |
+| `signal_analysis_monitor` | Source-change fingerprints and monitoring timestamps used by background checks |
+
+The current manufacturing review uses `signal_analyses` and `signal_sme_reviews`; the `investigations` schema is not a claim of a complete investigation-management interface. Manufacturing hypotheses are suggestions for investigation, not confirmed root causes.
+
+### Relationships and schema locations
+
+- `consumer_id` and `unit_id` associate device registrations and complaints.
+- `complaint_id` links complaints, uploaded evidence and lifecycle events; repair/return records can also reference it.
+- `complaints.batch_reference` connects to manufacturing `batch_id` values, while serial numbers provide unit-level traceability.
+- `scope_key` connects requested analysis scopes to saved analysis versions.
+- `analysis_id` and `hypothesis_index` connect SME reviews to the exact saved hypothesis being reviewed.
+- `chunk_id` identifies knowledge passages cited by retrieved guidance.
+
+The 18 base table definitions are in [`bigquery/tables.sql`](bigquery/tables.sql). The four analysis-persistence table definitions are in [`backend/app/services/analysis_store.py`](backend/app/services/analysis_store.py). Apply the reviewed migrations in [`bigquery/migrations/`](bigquery/migrations/) when upgrading existing lifecycle schemas. The KB loader also defines additional retrieval/provenance fields in [`backend/app/services/load_kb_embeddings.py`](backend/app/services/load_kb_embeddings.py).
+
+`bigquery/views/` is reserved for SQL views and currently has no view definitions. Factory test limits in `data/factory/spec_limits.json` are a configuration file, not a BigQuery table. Local SQLite `records` and `outbox` tables support operational persistence separately from this BigQuery inventory.
 
 ## Tests and builds
 
