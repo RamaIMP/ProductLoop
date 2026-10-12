@@ -1,0 +1,35 @@
+# Allowlist: no .env, credentials, Git history, frontend dependencies, user
+# uploads, SQLite databases, test output or documentation enters the context.
+**
+!Dockerfile
+!.dockerignore
+!backend/
+!backend/requirements.lock.txt
+!backend/app/
+!backend/app/**
+!shared/
+!shared/*.json
+!data/
+!data/taxonomy_v2.json
+!data/x500_rag_knowledge_base_v2.json
+!data/factory/
+!data/factory/spec_limits.json
+!bigquery/
+!bigquery/tables.sql
+!bigquery/migrations/
+!bigquery/migrations/*.sql
+
+# Exclude these even if created inside an allowed source directory.
+**/__pycache__/**
+**/*.pyc
+**/.env
+**/.env.*
+**/*credentials*.json
+**/service-account*.json
+**/*-key.json
+**/*.pem
+**/*.key
+**/*.p12
+**/*.sqlite*
+**/*.db*
+**/*.log

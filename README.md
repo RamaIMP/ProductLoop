@@ -306,13 +306,22 @@ Cloud Run's writable container filesystem is ephemeral, and the server must bind
 
 ### 4. Package and deploy the API to private staging
 
-After completing the blockers, add a reviewed Dockerfile at the repository root. Preserve the repository layout: backend code also references resources outside `backend/`. Install backend dependencies during the build and run the following command from the container's backend working directory:
+The repository includes a backend [`Dockerfile`](Dockerfile) and allowlist-based [`.dockerignore`](.dockerignore). It preserves the repository layout, installs the pinned backend dependencies and runs as a non-root user. Build from the repository root:
+
+```bash
+docker build -t productloop-api .
+docker run --rm --name productloop-api -p 127.0.0.1:8080:8080 productloop-api
+```
+
+Check `http://localhost:8080/health`. This starts a health-checkable API, not a fully cloud-connected application. Supply your configuration with runtime environment variables and a secure credential mechanism for cloud calls. The image does not contain `.env` or credentials. On Cloud Run, use its runtime service account instead of baking credentials into the image.
+
+Cloud persistence and in-process analysis are disabled by default in the image. Local SQLite uses `/tmp/productloop/lifecycle.sqlite3`; its contents remain ephemeral without external storage. Complete the deployment blockers above before public use. The container runs the equivalent of:
 
 ```bash
 python -m uvicorn app.main:app --host 0.0.0.0 --port "$PORT"
 ```
 
-Provide a `.dockerignore` and `.gcloudignore` before uploading a build context. Exclude local state, secrets, Git metadata, media, test artifacts and frontend dependencies. Include the runtime data/shared resources the backend actually needs. A `.gitignore` alone is not a complete container-packaging review.
+The Docker build context excludes local state, secrets, Git metadata, media, test artifacts and frontend dependencies. A `.gcloudignore` still needs to be reviewed before source deployment: Docker exclusions do not independently control every cloud upload mechanism.
 
 From the repository root, this command is an example **after that packaging exists**:
 
@@ -403,4 +412,4 @@ Once manual staging deployment passes, add workflows that run tests, build and d
 
 For Google Cloud authentication from GitHub Actions, prefer repository/branch-restricted Workload Identity Federation rather than a long-lived JSON key. See [Google's deployment-pipeline federation guide](https://docs.cloud.google.com/iam/docs/workload-identity-federation-with-deployment-pipelines).
 
-The intended delivery path is: **push → tests → approved build → deployment → smoke checks**. Docker, Firebase and CI configuration described here still need to be added and verified; this README does not create them.
+The intended delivery path is: **push → tests → approved build → deployment → smoke checks**. Docker packaging is included; Firebase and CI configuration still need to be added. Verify a real container build and deployment before release.
