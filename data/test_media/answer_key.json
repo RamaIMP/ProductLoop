@@ -1,0 +1,293 @@
+{
+ "purpose": "Answer key for the six generated test inputs, one per category family. Compare Gemini output to must_have / may_have / must_not_have.",
+ "covers": [
+  "cleaning_and_maintenance",
+  "heat_and_safety",
+  "noise_and_vibration",
+  "power_and_charging",
+  "shaving_head_and_fitment",
+  "shaving_performance"
+ ],
+ "cases": [
+  {
+   "file": "audio1_rattling_grinding.m4a",
+   "kind": "audio",
+   "message_to_send": "This is the sound my X500 makes now.",
+   "description": "Synthesised rattle with grinding texture, 8 s.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "rattling_sound"
+    ],
+    "may_have_symptoms": [
+     "grinding_sound",
+     "buzzing_sound"
+    ],
+    "must_not_have_symptoms": [
+     "increased_noise",
+     "excessive_heat",
+     "burning_smell",
+     "head_detached"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_tried",
+     "during_charging": false
+    },
+    "derived": {
+     "issue_type": "noise_and_vibration",
+     "severity": "medium",
+     "safety_flag": false
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_trb_noise_steps",
+    "x500_man_fit_steps"
+   ],
+   "notes": "Only symptoms the sound supports. No vibration or heat claims. A specific sound is named, so increased_noise must be absent."
+  },
+  {
+   "file": "audio2_spoken_burnt_smell.m4a",
+   "kind": "audio",
+   "message_to_send": "(no typed message; voice only)",
+   "description": "Spoken (Indian English): burnt smell while charging last night, unplugged straight away, not used since. Transcript is in the recording script.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "burning_smell"
+    ],
+    "may_have_symptoms": [],
+    "must_not_have_symptoms": [
+     "sparking",
+     "excessive_heat",
+     "electrical_crackling"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_applicable",
+     "during_charging": true
+    },
+    "derived": {
+     "issue_type": "heat_and_safety",
+     "severity": "high",
+     "safety_flag": true
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_saf_stop_heat",
+    "x500_trb_heat_escalate"
+   ],
+   "notes": "Must trigger the stop-use response: stop using, do not charge, contact service. No troubleshooting steps offered. Expected onset: this_week."
+  },
+  {
+   "file": "video1_loose_head_wobble.mp4",
+   "kind": "video",
+   "message_to_send": "The shaving head feels loose when I switch it on.",
+   "description": "Portrait phone-style clip made from a real product photo (brand removed): the head wobbles from 1.5 s with a rattling sound. Motion is synthetic.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "head_wobble"
+    ],
+    "may_have_symptoms": [
+     "head_loose",
+     "rattling_sound",
+     "increased_vibration"
+    ],
+    "must_not_have_symptoms": [
+     "head_detached",
+     "lock_ring_damaged",
+     "head_joint_damage",
+     "visible_damage"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_tried",
+     "during_charging": false
+    },
+    "derived": {
+     "issue_type": "shaving_head_and_fitment",
+     "severity": "medium",
+     "safety_flag": false
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_trb_fit_steps",
+    "x500_man_fit_steps"
+   ],
+   "notes": "The head stays attached, so head_detached must not appear. Should ask one follow-up: did you clean and refit the head?"
+  },
+  {
+   "file": "video2_charging_led_off.mp4",
+   "kind": "video",
+   "message_to_send": "I plugged it in for an hour and the light never came on. It does not charge.",
+   "description": "Portrait phone-style clip made from a real product photo (brand removed): a cable is plugged into the base and the status lights stay off. Motion is synthetic.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "led_not_working",
+     "not_charging"
+    ],
+    "may_have_symptoms": [],
+    "must_not_have_symptoms": [
+     "burning_smell",
+     "excessive_heat",
+     "water_ingress",
+     "not_powering_on"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_applicable",
+     "during_charging": true
+    },
+    "derived": {
+     "issue_type": "power_and_charging",
+     "severity": "medium",
+     "safety_flag": false
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_trb_power_steps",
+    "x500_man_led"
+   ],
+   "notes": "Nothing in the clip suggests heat, smell or liquid, so none of those may appear."
+  },
+  {
+   "file": "image1_hair_buildup_under_head.jpg",
+   "kind": "image",
+   "message_to_send": "Hair keeps getting stuck in the head and it is hard to clean.",
+   "description": "Real product photo (brand removed) with stray hair edited onto the cutting foils.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "hair_buildup",
+     "difficult_to_clean"
+    ],
+    "may_have_symptoms": [],
+    "must_not_have_symptoms": [
+     "visible_damage",
+     "head_joint_damage"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_tried",
+     "during_charging": false
+    },
+    "derived": {
+     "issue_type": "cleaning_and_maintenance",
+     "severity": "low",
+     "safety_flag": false
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_man_cleaning",
+    "x500_man_clean_freq"
+   ],
+   "notes": "user_intent is report_problem. Low severity. No safety language."
+  },
+  {
+   "file": "image2_worn_blade_surface.jpg",
+   "kind": "image",
+   "message_to_send": "It pulls my beard and the blades look worn.",
+   "description": "Real product photo (brand removed) with the foils edited to look dull, scratched and pitted.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "pulling_hair"
+    ],
+    "may_have_symptoms": [
+     "reduced_cutting_quality",
+     "blade_drag"
+    ],
+    "must_not_have_symptoms": [
+     "visible_damage",
+     "head_joint_damage",
+     "exposed_component"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_tried",
+     "during_charging": false
+    },
+    "derived": {
+     "issue_type": "shaving_performance",
+     "severity": "medium",
+     "safety_flag": false
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_trb_cutting_steps",
+    "x500_man_blades"
+   ],
+   "notes": "Normal blade wear is not a safety issue, so visible_damage must not appear (the stop-use damage rule is for cracked casing, joint or exposed parts)."
+  },
+  {
+   "file": "video3_head_detaches.mp4",
+   "kind": "video",
+   "message_to_send": "The shaving head came off while it was running.",
+   "description": "Portrait phone-style clip made from a real product photo (brand removed): the head wobbles more and more after switch-on, then comes off and is thrown to the right, leaving the shaft sleeve exposed. A clack is heard at the moment it comes off. Motion is synthetic.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "head_detached"
+    ],
+    "may_have_symptoms": [
+     "head_wobble",
+     "head_loose",
+     "head_not_fitting",
+     "rattling_sound",
+     "increased_vibration",
+     "increased_noise"
+    ],
+    "must_not_have_symptoms": [
+     "burning_smell",
+     "sparking",
+     "water_ingress",
+     "excessive_heat"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_tried",
+     "during_charging": false
+    },
+    "derived": {
+     "issue_type": "shaving_head_and_fitment",
+     "severity": "high",
+     "safety_flag": true
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_saf_stop_damage",
+    "x500_trb_fit_escalate"
+   ],
+   "notes": "A head that comes off is a stop-use condition: high severity and safety flag true, and the app must show the stop-use screen, with no troubleshooting steps."
+  },
+  {
+   "file": "image3_cracked_casing.jpg",
+   "kind": "image",
+   "message_to_send": "The casing has cracked near the power button.",
+   "description": "Real product photo (brand removed) with a branching crack drawn across the casing above the power button.",
+   "user_intent": "report_problem",
+   "expected": {
+    "must_have_symptoms": [
+     "visible_damage"
+    ],
+    "may_have_symptoms": [
+     "head_joint_damage"
+    ],
+    "must_not_have_symptoms": [
+     "burning_smell",
+     "sparking",
+     "water_ingress",
+     "excessive_heat"
+    ],
+    "context": {
+     "persists_after_cleaning": "not_applicable",
+     "during_charging": false
+    },
+    "derived": {
+     "issue_type": "heat_and_safety",
+     "severity": "high",
+     "safety_flag": true
+    }
+   },
+   "expected_chunks_retrieved": [
+    "x500_saf_stop_damage"
+   ],
+   "notes": "A cracked casing is a stop-use condition (high severity, safety flag true). Nothing in the image suggests heat, smell or liquid, so none of those may appear."
+  }
+ ]
+}

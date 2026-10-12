@@ -1,0 +1,211 @@
+[
+ {
+  "rule_id": "H-NOISE-BATCH",
+  "issue_type": "noise_and_vibration",
+  "min_batch_multiple": 3.0,
+  "min_persists_share": 0.5,
+  "specificity": 30,
+  "hypothesis": "{issue} complaints are rising and concentrate in batch {batch}: {top_batch_events} of {current_count} events ({batch_share}) come from {batch_unit_share} of units shipped, about {batch_multiple}x the expected share. Of reporters who tried cleaning or refitting, {persists_share} say the problem continues, which points away from user error. This is a hypothesis, not a confirmed cause. Possible factors: a head-fit or lock-ring variation, blade-unit imbalance, or a motor or bearing component lot.",
+  "actions": [
+   "Review production and quality-control records for batch {batch}",
+   "Check lock-ring supplier lots and head-fit torque records for this batch",
+   "Compare end-of-line acoustic test results for this batch with other batches",
+   "Cross-reference component sourcing changes, for example motor and bearing lots",
+   "Correlate with returns and authorised-service diagnoses for this batch"
+  ],
+  "source_chunk_ids": [
+   "x500_trb_noise_steps",
+   "x500_trb_vibration_steps",
+   "x500_svc_noise",
+   "x500_man_fit_warning"
+  ]
+ },
+ {
+  "rule_id": "H-NOISE-GENERIC",
+  "issue_type": "noise_and_vibration",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 10,
+  "hypothesis": "{issue} complaints are rising ({current_count} events vs {prior_count} before) without a clear single-batch pattern. This is a hypothesis, not a confirmed cause. Possible factors: worn or dirty blades, a loosely fitted head, or low battery. Check whether cleaning and refitting guidance is reaching users.",
+  "actions": [
+   "Review how many reporters resolved the issue by cleaning or refitting",
+   "Check blade age among reporters",
+   "Monitor for a batch pattern as more events arrive"
+  ],
+  "source_chunk_ids": [
+   "x500_trb_noise_steps",
+   "x500_spec_sound"
+  ]
+ },
+ {
+  "rule_id": "H-FIT-BATCH",
+  "issue_type": "shaving_head_and_fitment",
+  "min_batch_multiple": 3.0,
+  "min_persists_share": null,
+  "specificity": 30,
+  "hypothesis": "{issue} complaints are rising and concentrate in batch {batch}: {top_batch_events} of {current_count} events ({batch_share}) come from {batch_unit_share} of units shipped, about {batch_multiple}x the expected share. A head that detaches or cannot be secured is a safety concern. This is a hypothesis, not a confirmed cause. Possible factors: lock-ring dimensions or material, motor-shaft tolerance, or head-socket moulding.",
+  "actions": [
+   "Review any head-detached reports first as a safety matter",
+   "Inspect lock-ring dimensions and torque records for batch {batch}",
+   "Check for tooling or supplier changes on the lock ring",
+   "Review service records for lock-ring replacements in this batch"
+  ],
+  "source_chunk_ids": [
+   "x500_trb_fit_steps",
+   "x500_trb_fit_escalate",
+   "x500_svc_fit",
+   "x500_saf_stop_damage"
+  ]
+ },
+ {
+  "rule_id": "H-FIT-GENERIC",
+  "issue_type": "shaving_head_and_fitment",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 10,
+  "hypothesis": "{issue} complaints are rising ({current_count} events vs {prior_count} before) without a clear single-batch pattern. This is a hypothesis, not a confirmed cause. Possible factors: debris in the head socket, misalignment when fitting, or a worn lock ring.",
+  "actions": [
+   "Check whether fitting instructions are clear",
+   "Review lock-ring replacements in service records",
+   "Monitor for a batch pattern"
+  ],
+  "source_chunk_ids": [
+   "x500_trb_fit_steps",
+   "x500_man_fit_steps"
+  ]
+ },
+ {
+  "rule_id": "H-SAFETY-BATCH",
+  "issue_type": "heat_and_safety",
+  "min_batch_multiple": 3.0,
+  "min_persists_share": null,
+  "specificity": 30,
+  "hypothesis": "{issue} complaints are rising and concentrate in batch {batch}: {top_batch_events} of {current_count} events ({batch_share}) come from {batch_unit_share} of units shipped, about {batch_multiple}x the expected share. Treat as a potential safety issue until ruled out. This is a hypothesis, not a confirmed cause. Possible factors: a charging-circuit or battery lot, charger compatibility, or an assembly defect.",
+  "actions": [
+   "Escalate to product safety now",
+   "Review charging-circuit and battery supplier lots for batch {batch}",
+   "Check whether affected users used the approved charger",
+   "Review burn-in and end-of-line test records for this batch",
+   "Prepare consumer communication if a defect is confirmed"
+  ],
+  "source_chunk_ids": [
+   "x500_saf_stop_heat",
+   "x500_trb_heat_escalate",
+   "x500_svc_power",
+   "x500_svc_battery"
+  ]
+ },
+ {
+  "rule_id": "H-SAFETY-GENERIC",
+  "issue_type": "heat_and_safety",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 10,
+  "hypothesis": "{issue} reports are rising ({current_count} events vs {prior_count} before) without a clear single-batch pattern. Treat as a potential safety issue. This is a hypothesis, not a confirmed cause. Possible factors: usage conditions such as charging in heat, or accessories.",
+  "actions": [
+   "Escalate to product safety for review",
+   "Check charging conditions and accessories used by reporters",
+   "Monitor for a batch pattern"
+  ],
+  "source_chunk_ids": [
+   "x500_saf_stop_heat",
+   "x500_saf_use_limits"
+  ]
+ },
+ {
+  "rule_id": "H-POWER-BATCH",
+  "issue_type": "power_and_charging",
+  "min_batch_multiple": 3.0,
+  "min_persists_share": null,
+  "specificity": 30,
+  "hypothesis": "{issue} complaints are rising and concentrate in batch {batch}: {top_batch_events} of {current_count} events ({batch_share}) come from {batch_unit_share} of units shipped, about {batch_multiple}x the expected share. This is a hypothesis, not a confirmed cause. Possible factors: a battery pack lot, charging circuit, or charger and cable.",
+  "actions": [
+   "Check battery-pack supplier lots for batch {batch}",
+   "Review charging-circuit test records",
+   "Confirm reporters used the supplied charger and cable"
+  ],
+  "source_chunk_ids": [
+   "x500_trb_battery_steps",
+   "x500_svc_battery",
+   "x500_spec_battery"
+  ]
+ },
+ {
+  "rule_id": "H-PERF",
+  "issue_type": "shaving_performance",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 10,
+  "hypothesis": "{issue} complaints: {current_count} events vs {prior_count} before. This pattern is consistent with normal blade wear (12 to 18 months of daily use) and cleaning habits. This is a hypothesis, not a confirmed cause. No investigation is recommended unless the count keeps rising.",
+  "actions": [
+   "Keep monitoring weekly",
+   "Make blade-replacement and cleaning guidance easy to find"
+  ],
+  "source_chunk_ids": [
+   "x500_spec_blades",
+   "x500_trb_cutting_steps",
+   "x500_man_blades"
+  ]
+ },
+ {
+  "rule_id": "H-CLEAN",
+  "issue_type": "cleaning_and_maintenance",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 10,
+  "hypothesis": "{issue} reports: {current_count} events vs {prior_count} before. Usually usage related. This is a hypothesis, not a confirmed cause. Consider whether cleaning guidance or the hair chamber design needs attention if the count keeps rising.",
+  "actions": [
+   "Keep monitoring",
+   "Review the cleaning instructions for clarity"
+  ],
+  "source_chunk_ids": [
+   "x500_man_cleaning",
+   "x500_man_clean_freq"
+  ]
+ },
+ {
+  "rule_id": "H-OTHER",
+  "issue_type": "other_or_unclear",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 10,
+  "hypothesis": "{current_count} reports could not be assigned to a category (vs {prior_count} before). This is a hypothesis, not a confirmed cause. If this keeps growing it may signal a failure mode that the category list does not cover.",
+  "actions": [
+   "Read the unclear reports and decide whether a new category is needed",
+   "Ask reporters a follow-up question"
+  ],
+  "source_chunk_ids": [
+   "x500_svc_bring"
+  ]
+ },
+ {
+  "rule_id": "H-DEFAULT",
+  "issue_type": "*",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 1,
+  "hypothesis": "{issue}: {current_count} events vs {prior_count} before. This is a hypothesis, not a confirmed cause. Monitor and review the evidence.",
+  "actions": [
+   "Monitor",
+   "Review the evidence"
+  ],
+  "source_chunk_ids": []
+ },
+ {
+  "rule_id": "H-POWER-GENERIC",
+  "issue_type": "power_and_charging",
+  "min_batch_multiple": null,
+  "min_persists_share": null,
+  "specificity": 10,
+  "hypothesis": "{issue} complaints: {current_count} events vs {prior_count} before, without a clear single-batch pattern. This is a hypothesis, not a confirmed cause. Possible factors: battery ageing, charger or cable, or usage conditions.",
+  "actions": [
+   "Check whether reporters used the supplied charger and cable",
+   "Review battery age among reporters",
+   "Monitor for a batch pattern"
+  ],
+  "source_chunk_ids": [
+   "x500_trb_battery_steps",
+   "x500_man_charging"
+  ]
+ }
+]

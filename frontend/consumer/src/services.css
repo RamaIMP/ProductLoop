@@ -1,0 +1,24 @@
+.service-results h3 { margin-top: 16px; }
+.service-demo-notice { padding: 12px; background: #fff6d8; border-radius: 12px; line-height: 1.5; }
+.service-centre-list { display: grid; gap: 14px; }
+.service-centre-card { background: white; border: 1px solid #dce2ec; border-radius: 16px; padding: 16px; min-width: 0; }
+.service-centre-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
+.service-centre-heading h4 { margin: 0; flex: 1 1 160px; font-size: 14px; }
+.service-centre-heading span { color: #2455bc; font-size: 12px; white-space: nowrap; }
+.service-centre-card dl { font-size: 13px; }
+.service-centre-card dl div { margin-top: 10px; }
+.service-centre-card dt { color: #687386; }
+.service-centre-card dd { margin: 3px 0 0; overflow-wrap: anywhere; }
+.service-location-label { display: block; margin: 16px 0 6px; }
+.service-location-input { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid #ccd3df; border-radius: 10px; margin-bottom: 12px; font: inherit; }
+.services form { margin-bottom: 16px; }
+.service-booking h3 { margin-top: 16px; }
+.services .booking-confirm { background: #1a73e8; color: white; border-color: #1a73e8; text-align: center; font-weight: 600; }
+.services button:disabled { opacity: .55; cursor: default; }
+.service-booking fieldset { border: 1px solid #dce2ec; border-radius: 12px; padding: 10px; font-size: 13px; }
+.appointment-slot { display: flex; align-items: center; gap: 8px; padding: 12px 0; }
+.booking-success { padding: 14px; background: #dcfce7; color: #166534; border-radius: 12px; font-weight: 600; margin-bottom: 16px; }
+.booking-details { font-size: 13px; }
+.booking-details div { border-bottom: 1px solid #e5e7eb; padding: 10px 0; }
+.booking-details dt { color: #687386; }
+.booking-details dd { margin: 4px 0 0; overflow-wrap: anywhere; }

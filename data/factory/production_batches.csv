@@ -1,0 +1,8 @@
+batch_id,plant,lines,production_start,production_end,units_produced
+B-2026-03-A,Plant A (fictional),L1|L2,2026-03-03,2026-03-20,13780
+B-2026-04-A,Plant A (fictional),L1|L2,2026-04-06,2026-04-24,15370
+B-2026-05-B,Plant A (fictional),L1|L2,2026-05-04,2026-05-22,6890
+B-2026-06-C,Plant A (fictional),L1|L2,2026-06-01,2026-06-19,9010
+B-2026-06-D,Plant A (fictional),L1|L2,2026-06-22,2026-07-03,7950
+B-2026-07-A,Plant A (fictional),L1|L2,2026-07-06,2026-07-24,5618
+B-2026-08-A,Plant A (fictional),L1|L2,2026-08-03,2026-08-21,4982

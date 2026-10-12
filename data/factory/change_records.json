@@ -1,0 +1,42 @@
+[
+ {
+  "change_id": "CHG-0412",
+  "date": "2026-06-24",
+  "batch_id": "B-2026-07-A",
+  "type": "supplier_change",
+  "description": "Motor bearing supplier changed from BR-1 to BR-2",
+  "approved_by": "Procurement"
+ },
+ {
+  "change_id": "CHG-0418",
+  "date": "2026-05-28",
+  "batch_id": "B-2026-06-C",
+  "type": "tooling_change",
+  "description": "Lock ring mould tool replaced: T1 to T2",
+  "approved_by": "Manufacturing engineering"
+ },
+ {
+  "change_id": "CHG-0391",
+  "date": "2026-04-27",
+  "batch_id": "B-2026-05-B",
+  "type": "supplier_change",
+  "description": "Charging-circuit supplier changed from CC-1 to CC-3",
+  "approved_by": "Procurement"
+ },
+ {
+  "change_id": "CHG-0420",
+  "date": "2026-05-30",
+  "batch_id": "B-2026-06-C",
+  "type": "supplier_change",
+  "description": "Blade supplier changed from BL-1 to BL-2",
+  "approved_by": "Procurement"
+ },
+ {
+  "change_id": "CHG-0425",
+  "date": "2026-07-07",
+  "batch_id": "B-2026-07-A",
+  "type": "test_limit_change",
+  "description": "End-of-line acoustic limit raised from 62 dB to 64 dB on line L2 to reduce rejects",
+  "approved_by": "Line quality lead"
+ }
+]

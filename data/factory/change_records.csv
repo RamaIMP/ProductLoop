@@ -1,0 +1,6 @@
+change_id,date,batch_id,type,description,approved_by
+CHG-0412,2026-06-24,B-2026-07-A,supplier_change,Motor bearing supplier changed from BR-1 to BR-2,Procurement
+CHG-0418,2026-05-28,B-2026-06-C,tooling_change,Lock ring mould tool replaced: T1 to T2,Manufacturing engineering
+CHG-0391,2026-04-27,B-2026-05-B,supplier_change,Charging-circuit supplier changed from CC-1 to CC-3,Procurement
+CHG-0420,2026-05-30,B-2026-06-C,supplier_change,Blade supplier changed from BL-1 to BL-2,Procurement
+CHG-0425,2026-07-07,B-2026-07-A,test_limit_change,End-of-line acoustic limit raised from 62 dB to 64 dB on line L2 to reduce rejects,Line quality lead

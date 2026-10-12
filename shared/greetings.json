@@ -1,0 +1,13 @@
+{
+  "phrases": ["hi", "hii", "hiii", "hello", "hey", "heyy", "hiya", "howdy", "greetings", "good morning", "morning", "good afternoon", "good evening", "good night", "good day", "how are you", "how are you doing", "how you doing", "how is it going", "hows it going", "whats up", "what is up", "nice to meet you", "namaste", "namaskar", "vanakkam", "hola", "bonjour", "salaam", "assalamu alaikum"],
+  "addressees": ["there", "team", "everyone", "productloop", "bot", "assistant"],
+  "replies": [
+    {"contains": ["how are you", "how you doing", "how is it going", "hows it going", "whats up", "what is up"], "message": "Hello! I'm here and ready to help. How can I help you today?"},
+    {"contains": ["good morning", "morning"], "message": "Good morning! How can I help you today?"},
+    {"contains": ["good afternoon"], "message": "Good afternoon! How can I help you today?"},
+    {"contains": ["good evening"], "message": "Good evening! How can I help you today?"},
+    {"contains": ["good night"], "message": "Good night! I'm here whenever you need help."},
+    {"contains": ["namaste", "namaskar"], "message": "Namaste! How can I help you today?"}
+  ],
+  "default_reply": "Hi! How can I help you today?"
+}

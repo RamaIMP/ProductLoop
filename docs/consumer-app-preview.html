@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductLoop – Consumer App Preview</title>
+<style>
+  :root{
+    --brand:#1a73e8; --brand-d:#0b57d0; --ink:#1f2937; --mute:#6b7280; --line:#e5e7eb;
+    --bg:#f3f4f6; --card:#fff; --ok:#16a34a; --warn:#d97706; --chip:#e8f0fe;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0f172a;color:var(--ink);padding:32px 16px 48px}
+  h1{color:#fff;text-align:center;font-size:22px;font-weight:600}
+  .sub{color:#94a3b8;text-align:center;margin:6px 0 28px;font-size:14px}
+  .stage{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+  .col{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .cap{color:#cbd5e1;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .phone{width:340px;height:700px;background:#000;border-radius:44px;padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .screen{width:100%;height:100%;background:var(--bg);border-radius:36px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+  .status{height:34px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:12px;font-weight:600;background:var(--card)}
+  .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#000;border-radius:14px}
+  .appbar{background:var(--card);padding:8px 16px 12px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .logo{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#7c3aed);display:grid;place-items:center;color:#fff;font-size:16px}
+  .appbar b{font-size:15px}.appbar small{display:block;color:var(--mute);font-size:11px}
+  .body{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;display:flex;gap:10px;align-items:center}
+  .prod .img{width:44px;height:44px;border-radius:10px;background:var(--chip);display:grid;place-items:center;font-size:22px}
+  .prod b{font-size:13px}.prod small{color:var(--mute);font-size:11px}
+  .bot,.me{max-width:86%;padding:10px 12px;border-radius:16px;font-size:13px;line-height:1.4}
+  .bot{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+  .me{background:var(--brand);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+  .audio{align-self:flex-end;background:var(--brand-d);color:#fff;border-radius:16px;border-bottom-right-radius:4px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:12px}
+  .wave{display:flex;gap:2px;align-items:center;height:18px}
+  .wave i{width:3px;background:#bfdbfe;border-radius:2px;display:block}
+  .composer{background:var(--card);border-top:1px solid var(--line);padding:10px 12px 16px}
+  .tools{display:flex;gap:8px;margin-bottom:8px}
+  .tool{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:8px 0;text-align:center;font-size:11px;color:var(--ink)}
+  .tool span{display:block;font-size:18px}
+  .input{display:flex;gap:8px;align-items:center}
+  .input div{flex:1;border:1px solid var(--line);border-radius:20px;padding:9px 14px;font-size:13px;color:var(--mute);background:var(--bg)}
+  .send{width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:16px}
+  .center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px;text-align:center}
+  .spin{width:64px;height:64px;border-radius:50%;border:5px solid var(--chip);border-top-color:var(--brand);animation:s 1s linear infinite}
+  @keyframes s{to{transform:rotate(360deg)}}
+  .steps{width:100%;display:flex;flex-direction:column;gap:8px;text-align:left}
+  .step{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:12.5px}
+  .step .d{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;flex:none}
+  .done .d{background:var(--ok);color:#fff}.run .d{background:var(--brand);color:#fff}.wait .d{background:var(--line);color:var(--mute)}
+  .wait{color:var(--mute)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+  .card h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);margin-bottom:8px;display:flex;justify-content:space-between}
+  .kv{display:flex;justify-content:space-between;font-size:12.5px;padding:4px 0;border-bottom:1px dashed var(--line);gap:12px}
+  .kv:last-child{border:0}.kv span:first-child{color:var(--mute)}.kv span:last-child{text-align:right;font-weight:500}
+  .tag{display:inline-block;background:var(--chip);color:var(--brand-d);border-radius:10px;padding:2px 8px;font-size:11px;margin-left:4px}
+  .hi{background:#dcfce7;color:#166534;border-radius:10px;padding:2px 8px;font-size:11px;font-weight:600}
+  .guide{border-color:#bbf7d0;background:#f0fdf4}
+  .guide ol{padding-left:18px;font-size:13px;line-height:1.55}
+  .src{font-size:10.5px;color:var(--mute);margin-top:8px}
+  .warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:10px;font-size:12px;line-height:1.4}
+  .btns{display:flex;gap:8px}
+  .btn{flex:1;text-align:center;padding:10px;border-radius:12px;font-size:12.5px;font-weight:600;border:1px solid var(--line);background:var(--card)}
+  .btn.p{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .note{max-width:760px;margin:28px auto 0;color:#94a3b8;font-size:12.5px;text-align:center;line-height:1.5}
+</style>
+</head>
+<body>
+<h1>ProductLoop – Consumer App</h1>
+<p class="sub">Preview mockup · X500 Electric Shaver · one complaint, grounded guidance</p>
+
+<div class="stage">
+
+  <!-- Screen 1 -->
+  <div class="col">
+    <div class="cap">1 · Report a problem</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+      <div class="appbar"><div class="logo">⟳</div><div><b>ProductLoop</b><small>Product help &amp; support</small></div></div>
+      <div class="body">
+        <div class="prod"><div class="img">🪒</div><div><b>X500 Electric Shaver</b><small>Registered · Purchased Mar 2026</small></div></div>
+        <div class="bot">Hi! Tell me what's wrong with your X500. You can type, record a sound, or add a photo or video.</div>
+        <div class="me">My shaver has become very noisy and vibrates badly.</div>
+        <div class="audio">▶ <div class="wave" id="w1"></div> 0:08</div>
+        <div class="bot">Thanks, I've got your description and the audio clip. Analysing now.</div>
+      </div>
+      <div class="composer">
+        <div class="tools">
+          <div class="tool"><span>🎙️</span>Voice</div>
+          <div class="tool"><span>📷</span>Photo</div>
+          <div class="tool"><span>🎥</span>Video</div>
+          <div class="tool"><span>🔊</span>Sound</div>
+        </div>
+        <div class="input"><div>Describe the problem…</div><div class="send">➤</div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Screen 2 -->
+  <div class="col">
+    <div class="cap">2 · Understanding</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+      <div class="appbar"><div class="logo">⟳</div><div><b>ProductLoop</b><small>Analysing your report</small></div></div>
+      <div class="center">
+        <div class="spin"></div>
+        <div><b style="font-size:16px">Looking into it…</b><div style="color:var(--mute);font-size:12.5px;margin-top:4px">Usually takes a few seconds</div></div>
+        <div class="steps">
+          <div class="step done"><div class="d">✓</div>Reading your description</div>
+          <div class="step done"><div class="d">✓</div>Listening to the audio clip</div>
+          <div class="step run"><div class="d">…</div>Checking the X500 product guide</div>
+          <div class="step wait"><div class="d">·</div>Preparing safe next steps</div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Screen 3 -->
+  <div class="col">
+    <div class="cap">3 · Grounded guidance</div>
+    <div class="phone"><div class="screen">
+      <div class="notch"></div>
+      <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+      <div class="appbar"><div class="logo">⟳</div><div><b>ProductLoop</b><small>Your report #PL-0148</small></div></div>
+      <div class="body">
+        <div class="card">
+          <h4>What we understood <span class="hi">High confidence</span></h4>
+          <div class="kv"><span>Product</span><span>X500 Electric Shaver</span></div>
+          <div class="kv"><span>Symptoms</span><span><span class="tag">Louder noise</span><span class="tag">Vibration</span></span></div>
+          <div class="kv"><span>When</span><span>During normal use</span></div>
+          <div class="kv"><span>Evidence</span><span>Audio clip (8 sec)</span></div>
+        </div>
+        <div class="card guide">
+          <h4 style="color:#166534">Try this first</h4>
+          <ol>
+            <li>Clean and refit the shaving head fully.</li>
+            <li>Check the head is correctly locked.</li>
+            <li>Charge fully before the next use.</li>
+          </ol>
+          <div class="src">From: X500 User Manual §6 · Troubleshooting</div>
+        </div>
+        <div class="warn">⚠️ If the noise persists, or you notice heat or damage, stop using the shaver and contact an authorised service centre.</div>
+        <div class="btns"><div class="btn">Still not fixed</div><div class="btn p">That helped</div></div>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+
+<p class="note">Your report is shared anonymously with the manufacturer's quality team so similar issues can be spotted early. That is the "loop" on the manufacturer side.<br>Mockup built from the ProductLoop deck, not production code.</p>
+
+<script>
+  const w=document.getElementById('w1'),h=[6,12,8,16,10,14,6,12,16,8,12,6,10,14,8,12];
+  h.forEach(v=>{const i=document.createElement('i');i.style.height=v+'px';w.appendChild(i)});
+</script>
+</body>
+</html>

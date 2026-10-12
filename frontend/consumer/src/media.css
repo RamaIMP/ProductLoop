@@ -1,0 +1,7 @@
+.attachment-card{align-self:flex-end;max-width:85%;background:var(--brand-d);color:#fff;border-radius:16px;border-bottom-right-radius:4px;padding:8px;font-size:12px}.attachment-card b,.attachment-card small{display:block}.attachment-card small{opacity:.8;margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.attachment-card img,.attachment-card video{display:block;max-width:210px;max-height:160px;border-radius:9px;margin-top:6px;background:#dbeafe}.attachment-card audio{display:block;width:210px;height:34px;margin-top:7px}
+.service-page-content{flex:1;min-height:0;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.service-page .appbar{padding-top:12px}
+.voice-recorder{padding:12px;margin:10px 0;border:1px solid #cbd5e1;border-radius:12px;background:#f8fafc;font-size:13px}.voice-recorder p{margin:8px 0}.voice-recorder audio{width:100%;height:36px}.voice-actions{display:flex;gap:8px;flex-wrap:wrap}.voice-actions button{padding:9px 12px;border:1px solid #2563eb;border-radius:8px;background:white;color:#1d4ed8;font-weight:600;cursor:pointer}
+.service-home{margin-left:auto;border:0;background:transparent;color:var(--brand);font-weight:700;cursor:pointer}
+.service-page .services{border:0;background:transparent;padding:0}
+button.svc{text-align:left;color:inherit;font:inherit;cursor:pointer;width:100%}

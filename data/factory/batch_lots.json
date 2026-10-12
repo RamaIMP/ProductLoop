@@ -1,0 +1,562 @@
+[
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "motor_assembly",
+  "lot_id": "MOT-M-1-0218",
+  "supplier": "M-1",
+  "received_date": "2026-02-18",
+  "quantity": 13780,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "motor_bearing",
+  "lot_id": "MOT-BR-1-0211",
+  "supplier": "BR-1",
+  "received_date": "2026-02-11",
+  "quantity": 13780,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "lock_ring",
+  "lot_id": "LOC-LR-1-0205",
+  "supplier": "LR-1",
+  "received_date": "2026-02-05",
+  "quantity": 13780,
+  "tooling_revision": "T1",
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "head_assembly",
+  "lot_id": "HEA-H-1-0205",
+  "supplier": "H-1",
+  "received_date": "2026-02-05",
+  "quantity": 13780,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "blade_unit",
+  "lot_id": "BLA-BL-1-0218",
+  "supplier": "BL-1",
+  "received_date": "2026-02-18",
+  "quantity": 13780,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "battery_pack",
+  "lot_id": "BAT-BAT-1-0214",
+  "supplier": "BAT-1",
+  "received_date": "2026-02-14",
+  "quantity": 13780,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "charging_circuit",
+  "lot_id": "CHA-CC-1-0204",
+  "supplier": "CC-1",
+  "received_date": "2026-02-04",
+  "quantity": 13780,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-03-A",
+  "component": "casing",
+  "lot_id": "CAS-C-1-0208",
+  "supplier": "C-1",
+  "received_date": "2026-02-08",
+  "quantity": 13780,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "motor_assembly",
+  "lot_id": "MOT-M-1-0309",
+  "supplier": "M-1",
+  "received_date": "2026-03-09",
+  "quantity": 15370,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "motor_bearing",
+  "lot_id": "MOT-BR-1-0310",
+  "supplier": "BR-1",
+  "received_date": "2026-03-10",
+  "quantity": 15370,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "lock_ring",
+  "lot_id": "LOC-LR-1-0312",
+  "supplier": "LR-1",
+  "received_date": "2026-03-12",
+  "quantity": 15370,
+  "tooling_revision": "T1",
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "head_assembly",
+  "lot_id": "HEA-H-1-0309",
+  "supplier": "H-1",
+  "received_date": "2026-03-09",
+  "quantity": 15370,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "blade_unit",
+  "lot_id": "BLA-BL-1-0313",
+  "supplier": "BL-1",
+  "received_date": "2026-03-13",
+  "quantity": 15370,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "battery_pack",
+  "lot_id": "BAT-BAT-1-0320",
+  "supplier": "BAT-1",
+  "received_date": "2026-03-20",
+  "quantity": 15370,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "charging_circuit",
+  "lot_id": "CHA-CC-1-0327",
+  "supplier": "CC-1",
+  "received_date": "2026-03-27",
+  "quantity": 15370,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "component": "casing",
+  "lot_id": "CAS-C-1-0325",
+  "supplier": "C-1",
+  "received_date": "2026-03-25",
+  "quantity": 15370,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "motor_assembly",
+  "lot_id": "MOT-M-1-0421",
+  "supplier": "M-1",
+  "received_date": "2026-04-21",
+  "quantity": 6890,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "motor_bearing",
+  "lot_id": "MOT-BR-1-0415",
+  "supplier": "BR-1",
+  "received_date": "2026-04-15",
+  "quantity": 6890,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "lock_ring",
+  "lot_id": "LOC-LR-1-0421",
+  "supplier": "LR-1",
+  "received_date": "2026-04-21",
+  "quantity": 6890,
+  "tooling_revision": "T1",
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "head_assembly",
+  "lot_id": "HEA-H-1-0410",
+  "supplier": "H-1",
+  "received_date": "2026-04-10",
+  "quantity": 6890,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "blade_unit",
+  "lot_id": "BLA-BL-1-0424",
+  "supplier": "BL-1",
+  "received_date": "2026-04-24",
+  "quantity": 6890,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "battery_pack",
+  "lot_id": "BAT-BAT-1-0409",
+  "supplier": "BAT-1",
+  "received_date": "2026-04-09",
+  "quantity": 6890,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "charging_circuit",
+  "lot_id": "CHA-CC-3-0414",
+  "supplier": "CC-3",
+  "received_date": "2026-04-14",
+  "quantity": 6890,
+  "tooling_revision": null,
+  "change_note": "First lot from new charging-circuit supplier CC-3"
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "component": "casing",
+  "lot_id": "CAS-C-1-0418",
+  "supplier": "C-1",
+  "received_date": "2026-04-18",
+  "quantity": 6890,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "motor_assembly",
+  "lot_id": "MOT-M-1-0510",
+  "supplier": "M-1",
+  "received_date": "2026-05-10",
+  "quantity": 9010,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "motor_bearing",
+  "lot_id": "MOT-BR-1-0514",
+  "supplier": "BR-1",
+  "received_date": "2026-05-14",
+  "quantity": 9010,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "lock_ring",
+  "lot_id": "LOC-LR-1-0511",
+  "supplier": "LR-1",
+  "received_date": "2026-05-11",
+  "quantity": 9010,
+  "tooling_revision": "T2",
+  "change_note": "Lock ring moulded on new tool T2"
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "head_assembly",
+  "lot_id": "HEA-H-1-0511",
+  "supplier": "H-1",
+  "received_date": "2026-05-11",
+  "quantity": 9010,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "blade_unit",
+  "lot_id": "BLA-BL-2-0510",
+  "supplier": "BL-2",
+  "received_date": "2026-05-10",
+  "quantity": 9010,
+  "tooling_revision": null,
+  "change_note": "New blade supplier BL-2"
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "battery_pack",
+  "lot_id": "BAT-BAT-1-0506",
+  "supplier": "BAT-1",
+  "received_date": "2026-05-06",
+  "quantity": 9010,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "charging_circuit",
+  "lot_id": "CHA-CC-1-0520",
+  "supplier": "CC-1",
+  "received_date": "2026-05-20",
+  "quantity": 9010,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "component": "casing",
+  "lot_id": "CAS-C-1-0512",
+  "supplier": "C-1",
+  "received_date": "2026-05-12",
+  "quantity": 9010,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "motor_assembly",
+  "lot_id": "MOT-M-1-0610",
+  "supplier": "M-1",
+  "received_date": "2026-06-10",
+  "quantity": 7950,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "motor_bearing",
+  "lot_id": "MOT-BR-1-0526",
+  "supplier": "BR-1",
+  "received_date": "2026-05-26",
+  "quantity": 7950,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "lock_ring",
+  "lot_id": "LOC-LR-1-0526",
+  "supplier": "LR-1",
+  "received_date": "2026-05-26",
+  "quantity": 7950,
+  "tooling_revision": "T1",
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "head_assembly",
+  "lot_id": "HEA-H-1-0603",
+  "supplier": "H-1",
+  "received_date": "2026-06-03",
+  "quantity": 7950,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "blade_unit",
+  "lot_id": "BLA-BL-1-0603",
+  "supplier": "BL-1",
+  "received_date": "2026-06-03",
+  "quantity": 7950,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "battery_pack",
+  "lot_id": "BAT-BAT-1-0529",
+  "supplier": "BAT-1",
+  "received_date": "2026-05-29",
+  "quantity": 7950,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "charging_circuit",
+  "lot_id": "CHA-CC-1-0608",
+  "supplier": "CC-1",
+  "received_date": "2026-06-08",
+  "quantity": 7950,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "component": "casing",
+  "lot_id": "CAS-C-1-0525",
+  "supplier": "C-1",
+  "received_date": "2026-05-25",
+  "quantity": 7950,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "motor_assembly",
+  "lot_id": "MOT-M-1-0617",
+  "supplier": "M-1",
+  "received_date": "2026-06-17",
+  "quantity": 5618,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "motor_bearing",
+  "lot_id": "MOT-BR-2-0626",
+  "supplier": "BR-2",
+  "received_date": "2026-06-26",
+  "quantity": 5618,
+  "tooling_revision": null,
+  "change_note": "First lot from new bearing supplier BR-2"
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "lock_ring",
+  "lot_id": "LOC-LR-1-0615",
+  "supplier": "LR-1",
+  "received_date": "2026-06-15",
+  "quantity": 5618,
+  "tooling_revision": "T1",
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "head_assembly",
+  "lot_id": "HEA-H-1-0615",
+  "supplier": "H-1",
+  "received_date": "2026-06-15",
+  "quantity": 5618,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "blade_unit",
+  "lot_id": "BLA-BL-1-0612",
+  "supplier": "BL-1",
+  "received_date": "2026-06-12",
+  "quantity": 5618,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "battery_pack",
+  "lot_id": "BAT-BAT-1-0613",
+  "supplier": "BAT-1",
+  "received_date": "2026-06-13",
+  "quantity": 5618,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "charging_circuit",
+  "lot_id": "CHA-CC-1-0624",
+  "supplier": "CC-1",
+  "received_date": "2026-06-24",
+  "quantity": 5618,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "component": "casing",
+  "lot_id": "CAS-C-1-0614",
+  "supplier": "C-1",
+  "received_date": "2026-06-14",
+  "quantity": 5618,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "motor_assembly",
+  "lot_id": "MOT-M-1-0706",
+  "supplier": "M-1",
+  "received_date": "2026-07-06",
+  "quantity": 4982,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "motor_bearing",
+  "lot_id": "MOT-BR-1-0707",
+  "supplier": "BR-1",
+  "received_date": "2026-07-07",
+  "quantity": 4982,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "lock_ring",
+  "lot_id": "LOC-LR-1-0709",
+  "supplier": "LR-1",
+  "received_date": "2026-07-09",
+  "quantity": 4982,
+  "tooling_revision": "T1",
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "head_assembly",
+  "lot_id": "HEA-H-1-0721",
+  "supplier": "H-1",
+  "received_date": "2026-07-21",
+  "quantity": 4982,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "blade_unit",
+  "lot_id": "BLA-BL-1-0711",
+  "supplier": "BL-1",
+  "received_date": "2026-07-11",
+  "quantity": 4982,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "battery_pack",
+  "lot_id": "BAT-BAT-1-0708",
+  "supplier": "BAT-1",
+  "received_date": "2026-07-08",
+  "quantity": 4982,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "charging_circuit",
+  "lot_id": "CHA-CC-1-0709",
+  "supplier": "CC-1",
+  "received_date": "2026-07-09",
+  "quantity": 4982,
+  "tooling_revision": null,
+  "change_note": null
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "component": "casing",
+  "lot_id": "CAS-C-1-0712",
+  "supplier": "C-1",
+  "received_date": "2026-07-12",
+  "quantity": 4982,
+  "tooling_revision": null,
+  "change_note": null
+ }
+]

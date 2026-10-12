@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductLoop – Consumer Chat Flow Preview</title>
+<style>
+  :root{--brand:#1a73e8;--brand-d:#0b57d0;--ink:#1f2937;--mute:#6b7280;--line:#e5e7eb;--bg:#f3f4f6;--card:#fff;--ok:#16a34a;--bad:#dc2626;--chip:#e8f0fe}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0f172a;color:var(--ink);padding:32px 16px 48px}
+  h1{color:#fff;text-align:center;font-size:22px;font-weight:600}
+  .sub{color:#94a3b8;text-align:center;margin:6px 0 28px;font-size:14px}
+  .stage{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:flex-start}
+  .col{display:flex;flex-direction:column;align-items:center;gap:12px;width:340px}
+  .cap{color:#fff;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .why{color:#94a3b8;font-size:12.5px;line-height:1.5;text-align:center;max-width:320px}
+  .phone{width:340px;height:700px;background:#000;border-radius:44px;padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .screen{width:100%;height:100%;background:var(--bg);border-radius:36px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+  .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:90px;height:22px;background:#000;border-radius:14px;z-index:2}
+  .status{height:34px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:12px;font-weight:600;background:var(--card)}
+  .appbar{background:var(--card);padding:6px 14px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .back{color:var(--brand);font-size:20px;line-height:1}
+  .appbar b{font-size:14.5px;display:block}.appbar small{color:var(--mute);font-size:11px}
+  .pc{margin-left:auto;font-size:11px;background:var(--chip);color:var(--brand-d);border-radius:10px;padding:3px 9px;font-weight:600}
+  .prog{height:3px;background:var(--line)}.prog i{display:block;height:3px;background:var(--brand)}
+  .body{flex:1;overflow:hidden;padding:12px;display:flex;flex-direction:column;gap:8px}
+  .bot,.me{max-width:84%;padding:9px 12px;border-radius:16px;font-size:12.8px;line-height:1.4}
+  .bot{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+  .me{background:var(--brand);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+  .audio{align-self:flex-end;background:var(--brand-d);color:#fff;border-radius:16px;border-bottom-right-radius:4px;padding:7px 12px;display:flex;align-items:center;gap:8px;font-size:12px}
+  .wave{display:flex;gap:2px;align-items:center;height:16px}.wave i{width:3px;background:#bfdbfe;border-radius:2px;display:block}
+  .qr{display:flex;gap:6px;flex-wrap:wrap;margin:-2px 0 2px}
+  .qr span{border:1px solid var(--brand);color:var(--brand);background:var(--card);border-radius:16px;padding:6px 12px;font-size:12.3px;font-weight:500}
+  .qr span.picked{background:var(--brand);color:#fff}
+  .meta{font-size:10.5px;color:var(--mute);align-self:flex-start;margin:-2px 0 0 4px}
+  .composer{background:var(--card);border-top:1px solid var(--line);padding:8px 10px 16px}
+  .att{display:flex;gap:6px;margin-bottom:7px}
+  .att span{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:5px 0;text-align:center;font-size:10.5px;color:var(--ink)}
+  .att svg{display:block;margin:0 auto 1px}
+  .input{display:flex;gap:8px;align-items:center}
+  .input div:first-child{flex:1;border:1px solid var(--line);border-radius:20px;padding:8px 13px;font-size:12.5px;color:var(--mute);background:var(--bg)}
+  .send{width:36px;height:36px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+  .card h4{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:12.3px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .kv:last-child{border:0}.kv span:first-child{color:var(--mute);flex:none}.kv span:last-child{text-align:right;font-weight:500}
+  .tag{display:inline-block;background:var(--chip);color:var(--brand-d);border-radius:10px;padding:1px 8px;font-size:11px;margin:1px 0 1px 3px}
+  .edit{color:var(--brand);font-size:11px;font-weight:600;text-transform:none;letter-spacing:0}
+  .ta{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;color:var(--mute);background:var(--bg);min-height:50px}
+  .chk{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:var(--mute);line-height:1.4}
+  .chk b{flex:none;width:15px;height:15px;border-radius:4px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:10px;margin-top:1px}
+  .btns{display:flex;gap:8px}
+  .btn{flex:1;text-align:center;padding:10px;border-radius:12px;font-size:12.5px;font-weight:600;border:1px solid var(--line);background:var(--card)}
+  .btn.p{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .guide{border-color:#bbf7d0;background:#f0fdf4}
+  .guide ol{padding-left:17px;font-size:12.6px;line-height:1.5}
+  .src{display:inline-block;font-size:10.5px;color:var(--brand-d);background:var(--chip);border-radius:8px;padding:2px 8px;margin-top:6px}
+  .exits{display:flex;gap:8px}
+  .exit{flex:1;text-align:center;padding:8px 4px;border-radius:12px;font-size:11.8px;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+  .stop{background:#fef2f2;border:2px solid var(--bad);border-radius:14px;padding:12px}
+  .stop .t{display:flex;align-items:center;gap:8px;color:#991b1b;font-weight:700;font-size:14px}
+  .stop ul{margin:8px 0 8px 18px;font-size:12.6px;line-height:1.5;color:#7f1d1d}
+  .stop .sm{font-size:11px;color:#991b1b}
+  .btn.d{background:var(--bad);color:#fff;border-color:var(--bad)}
+  .flag{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:8px 10px;font-size:11.8px;line-height:1.4}
+</style>
+</head>
+<body>
+<h1>ProductLoop – Consumer Chat Flow</h1>
+<p class="sub">Hybrid design: guided conversation for the report, structured cards for control and safety</p>
+
+<div class="stage">
+
+<!-- 1 -->
+<div class="col">
+  <div class="cap">1 · Guided intake</div>
+  <div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+    <div class="appbar"><span class="back">‹</span><div><b>Report a problem</b><small>Usually 3 quick questions</small></div><span class="pc">X500</span></div>
+    <div class="prog"><i style="width:55%"></i></div>
+    <div class="body">
+      <div class="bot">Hi Ramachandra. What's going on with your X500? Type, talk, or send a sound or video.</div>
+      <div class="me">It's very noisy and vibrates badly</div>
+      <div class="audio">▶ <div class="wave" id="w1"></div> 0:08</div>
+      <div class="bot">Thanks. I can hear a rattling sound in your clip. Two quick questions.</div>
+      <div class="bot"><b>When did it start?</b></div>
+      <div class="me">This week</div>
+      <div class="bot"><b>Does it still happen after cleaning the head?</b></div>
+      <div class="qr"><span>Yes, still</span><span>No, it stopped</span><span>Haven't tried</span></div>
+    </div>
+    <div class="composer">
+      <div class="att">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Voice</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Photo</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 11 5-3v8l-5-3"/></svg>Video</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round"><path d="M3 10v4M7 7v10M11 4v16M15 8v8M19 10v4"/></svg>Sound</span>
+      </div>
+      <div class="input"><div>Or type your answer…</div><div class="send">➤</div></div>
+    </div>
+  </div></div>
+  <p class="why">The agent only asks for fields still missing from the complaint record. Quick-reply buttons mean most people never type.</p>
+</div>
+
+<!-- 2 -->
+<div class="col">
+  <div class="cap">2 · Confirm and add comment</div>
+  <div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+    <div class="appbar"><span class="back">‹</span><div><b>Check your report</b><small>Nothing is sent until you confirm</small></div><span class="pc">X500</span></div>
+    <div class="prog"><i style="width:80%"></i></div>
+    <div class="body">
+      <div class="bot">Here's what I understood. Please correct anything that's wrong.</div>
+      <div class="card">
+        <h4>Your report <span class="edit">Edit</span></h4>
+        <div class="kv"><span>Product</span><span>X500 Electric Shaver</span></div>
+        <div class="kv"><span>Symptoms</span><span><span class="tag">Louder noise</span><span class="tag">Vibration</span><span class="tag">Rattling</span></span></div>
+        <div class="kv"><span>Started</span><span>This week</span></div>
+        <div class="kv"><span>After cleaning</span><span>Still happening</span></div>
+        <div class="kv"><span>Evidence</span><span>Audio clip, 8 sec</span></div>
+      </div>
+      <div class="card">
+        <h4>Anything else to add?</h4>
+        <div class="ta">e.g. "It got worse after I dropped it" or "my friend's X500 does the same"</div>
+      </div>
+      <div class="chk"><b>✓</b><span>Share this report and my audio clip <u>anonymously</u> with the X500 quality team to help fix the problem. No name or contact details are shared.</span></div>
+      <div class="btns"><div class="btn">Edit</div><div class="btn p">Looks right</div></div>
+    </div>
+  </div></div>
+  <p class="why">The user stays in control, can add their own words, and gives clear consent before anything reaches the manufacturer.</p>
+</div>
+
+<!-- 3 -->
+<div class="col">
+  <div class="cap">3 · Guidance, then keep chatting</div>
+  <div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+    <div class="appbar"><span class="back">‹</span><div><b>Report #PL-0148</b><small>Sent to quality team · anonymous</small></div><span class="pc">X500</span></div>
+    <div class="body">
+      <div class="card guide">
+        <h4 style="color:#166534">Try this first</h4>
+        <ol>
+          <li>Switch off. Clean the shaving head and hair chamber with the brush.</li>
+          <li>Refit the head until it locks securely.</li>
+          <li>Restart and check whether the noise has reduced.</li>
+        </ol>
+        <span class="src">Source: X500 Troubleshooting guide</span>
+      </div>
+      <div class="bot" style="max-width:92%">Since it's still happening after cleaning, an authorised service inspection is the next step if this doesn't help.</div>
+      <div class="me">Can I keep using it until then?</div>
+      <div class="bot">Yes, if it isn't hot and has no burning smell. Stop right away if either happens. Don't open the device yourself.<br><span class="src">Source: Safe-use guide</span></div>
+      <div class="qr"><span>That fixed it</span><span>Still noisy</span><span>Add a comment</span></div>
+    </div>
+    <div class="composer">
+      <div class="exits" style="margin-bottom:8px">
+        <div class="exit">Find service centre</div><div class="exit">Talk to a person</div>
+      </div>
+      <div class="input"><div>Ask another question…</div><div class="send">➤</div></div>
+    </div>
+  </div></div>
+  <p class="why">Follow-ups are answered only from the product knowledge base, with the source shown. New messages update the same report.</p>
+</div>
+
+<!-- 4 -->
+<div class="col">
+  <div class="cap">4 · Safety override</div>
+  <div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="status"><span>9:41</span><span>5G ▮▮▮</span></div>
+    <div class="appbar"><span class="back">‹</span><div><b>Report a problem</b><small>Safety check active</small></div><span class="pc">X500</span></div>
+    <div class="body">
+      <div class="me">It smells burnt when I charge it</div>
+      <div class="stop">
+        <div class="t"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 1.5 21h21L12 2Z" fill="#dc2626"/><path d="M12 9v6M12 17.6v.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Stop using it now</div>
+        <ul>
+          <li>Unplug the charger and the shaver.</li>
+          <li>Do not charge or use it again.</li>
+          <li>Do not open or repair it.</li>
+        </ul>
+        <div class="sm">Burning smell is a stop-use condition in the X500 safety guide.</div>
+      </div>
+      <div class="btns"><div class="btn d">Find service centre</div><div class="btn">Call support</div></div>
+      <div class="flag">Your report is marked <b>high priority</b> for the quality team. We'd still like a few details, but only if you're safe and ready.</div>
+      <div class="qr"><span>Add details</span><span>Not now</span></div>
+    </div>
+    <div class="composer">
+      <div class="input"><div>Type a message…</div><div class="send">➤</div></div>
+    </div>
+  </div></div>
+  <p class="why">Safety triggers are fixed rules that run before any AI answer. No troubleshooting steps are offered when a stop-use condition is reported.</p>
+</div>
+
+</div>
+<script>
+  const w=document.getElementById('w1');
+  [6,12,8,16,10,14,6,12,16,8,12,6].forEach(v=>{const i=document.createElement('i');i.style.height=v+'px';w.appendChild(i)});
+</script>
+</body>
+</html>

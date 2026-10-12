@@ -1,0 +1,425 @@
+{
+ "version": "2.0",
+ "product_model": "X500",
+ "notes": "All data is fictional. Symptoms are a global list: any symptom may appear with any issue_type.",
+ "user_intents": {
+  "report_problem": "Describes something wrong with their own X500. Counts in trends.",
+  "ask_question": "Asks how to do something. Does not count in complaint trends."
+ },
+ "issue_types": {
+  "noise_and_vibration": {
+   "description": "Unusual sound or shaking during operation",
+   "symptoms": [
+    "increased_noise",
+    "buzzing_sound",
+    "rattling_sound",
+    "grinding_sound",
+    "grinding_with_resistance",
+    "squealing_sound",
+    "increased_vibration",
+    "irregular_vibration"
+   ]
+  },
+  "shaving_performance": {
+   "description": "Not cutting comfortably or effectively",
+   "symptoms": [
+    "reduced_cutting_quality",
+    "missed_hairs",
+    "requires_multiple_passes",
+    "uneven_shave",
+    "pulling_hair",
+    "blade_drag"
+   ]
+  },
+  "power_and_charging": {
+   "description": "Will not start, charge or hold charge",
+   "symptoms": [
+    "not_powering_on",
+    "not_charging",
+    "slow_charging",
+    "battery_drains_fast",
+    "led_not_working"
+   ]
+  },
+  "shaving_head_and_fitment": {
+   "description": "Head, lock ring, blade unit or joint does not fit or stay secure",
+   "symptoms": [
+    "head_loose",
+    "head_not_fitting",
+    "head_wobble",
+    "blade_unit_not_seated",
+    "head_detached",
+    "lock_ring_damaged",
+    "head_joint_damage"
+   ]
+  },
+  "heat_and_safety": {
+   "description": "Heat, damage, electrical or liquid concerns that mean stop use",
+   "symptoms": [
+    "excessive_heat",
+    "burning_smell",
+    "sparking",
+    "electrical_crackling",
+    "visible_damage",
+    "water_ingress",
+    "exposed_component"
+   ]
+  },
+  "cleaning_and_maintenance": {
+   "description": "Cleaning, debris or maintenance topics",
+   "symptoms": [
+    "hair_buildup",
+    "difficult_to_clean",
+    "cleaning_question",
+    "blade_replacement_due",
+    "storage_question",
+    "water_exposure_question"
+   ]
+  },
+  "other_or_unclear": {
+   "description": "Cannot be safely assigned to another category",
+   "symptoms": [
+    "unclear_description",
+    "multiple_unresolved_symptoms"
+   ]
+  }
+ },
+ "symptoms": {
+  "increased_noise": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Louder than before; no specific sound named"
+  },
+  "buzzing_sound": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Mechanical buzzing. Electrical buzzing, crackling or popping is electrical_crackling"
+  },
+  "rattling_sound": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Rattle, often from a loose head"
+  },
+  "grinding_sound": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Grinding without resistance or struggling"
+  },
+  "grinding_with_resistance": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Grinding while the motor struggles or seems jammed (stop-use)"
+  },
+  "squealing_sound": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "High-pitched squeal"
+  },
+  "increased_vibration": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Stronger vibration than before"
+  },
+  "irregular_vibration": {
+   "issue_type": "noise_and_vibration",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Sharp or uneven shaking"
+  },
+  "reduced_cutting_quality": {
+   "issue_type": "shaving_performance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Poor or less close shave"
+  },
+  "missed_hairs": {
+   "issue_type": "shaving_performance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Hairs left behind"
+  },
+  "requires_multiple_passes": {
+   "issue_type": "shaving_performance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Needs repeated passes"
+  },
+  "uneven_shave": {
+   "issue_type": "shaving_performance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Uneven result in some areas"
+  },
+  "pulling_hair": {
+   "issue_type": "shaving_performance",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Pulls or tugs hair"
+  },
+  "blade_drag": {
+   "issue_type": "shaving_performance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Blades drag or feel rough on skin"
+  },
+  "not_powering_on": {
+   "issue_type": "power_and_charging",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Will not start"
+  },
+  "not_charging": {
+   "issue_type": "power_and_charging",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Does not charge"
+  },
+  "slow_charging": {
+   "issue_type": "power_and_charging",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Takes longer than normal to charge"
+  },
+  "battery_drains_fast": {
+   "issue_type": "power_and_charging",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Battery runs out quickly"
+  },
+  "led_not_working": {
+   "issue_type": "power_and_charging",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Indicator LED does not light or behaves oddly"
+  },
+  "head_loose": {
+   "issue_type": "shaving_head_and_fitment",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Head feels loose"
+  },
+  "head_not_fitting": {
+   "issue_type": "shaving_head_and_fitment",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Head will not click or lock into place"
+  },
+  "head_wobble": {
+   "issue_type": "shaving_head_and_fitment",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Head wobbles in use"
+  },
+  "blade_unit_not_seated": {
+   "issue_type": "shaving_head_and_fitment",
+   "default_severity": "medium",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Blade unit does not sit flush"
+  },
+  "head_detached": {
+   "issue_type": "shaving_head_and_fitment",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Head came off during use"
+  },
+  "lock_ring_damaged": {
+   "issue_type": "shaving_head_and_fitment",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Lock ring cracked or stripped"
+  },
+  "head_joint_damage": {
+   "issue_type": "shaving_head_and_fitment",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Head joint cracked, bent or broken"
+  },
+  "excessive_heat": {
+   "issue_type": "heat_and_safety",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Hot to the touch, beyond warm"
+  },
+  "burning_smell": {
+   "issue_type": "heat_and_safety",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Burning or electrical smell"
+  },
+  "sparking": {
+   "issue_type": "heat_and_safety",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Visible spark or flash"
+  },
+  "electrical_crackling": {
+   "issue_type": "heat_and_safety",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Crackling or popping that is not mechanical"
+  },
+  "visible_damage": {
+   "issue_type": "heat_and_safety",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Cracked casing or other visible damage"
+  },
+  "water_ingress": {
+   "issue_type": "heat_and_safety",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Water or liquid inside the body or charging port"
+  },
+  "exposed_component": {
+   "issue_type": "heat_and_safety",
+   "default_severity": "high",
+   "safety": true,
+   "counts_as_complaint": true,
+   "description": "Internal parts visible"
+  },
+  "hair_buildup": {
+   "issue_type": "cleaning_and_maintenance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Hair or residue trapped under the head"
+  },
+  "difficult_to_clean": {
+   "issue_type": "cleaning_and_maintenance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Hard to clean properly"
+  },
+  "cleaning_question": {
+   "issue_type": "cleaning_and_maintenance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": false,
+   "description": "How to clean (question, not a complaint)"
+  },
+  "blade_replacement_due": {
+   "issue_type": "cleaning_and_maintenance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": false,
+   "description": "Asks when to replace blades (question)"
+  },
+  "storage_question": {
+   "issue_type": "cleaning_and_maintenance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": false,
+   "description": "How to store (question)"
+  },
+  "water_exposure_question": {
+   "issue_type": "cleaning_and_maintenance",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": false,
+   "description": "Asks about water or shower use (question)"
+  },
+  "unclear_description": {
+   "issue_type": "other_or_unclear",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Cannot tell what is wrong"
+  },
+  "multiple_unresolved_symptoms": {
+   "issue_type": "other_or_unclear",
+   "default_severity": "low",
+   "safety": false,
+   "counts_as_complaint": true,
+   "description": "Several vague symptoms that cannot be assigned"
+  }
+ },
+ "context": {
+  "onset": [
+   "today",
+   "this_week",
+   "longer",
+   "unknown"
+  ],
+  "persists_after_cleaning": [
+   "yes",
+   "no",
+   "not_tried",
+   "not_applicable"
+  ],
+  "during_charging": [
+   true,
+   false,
+   null
+  ]
+ },
+ "derivation_rules": {
+  "who_decides": "Gemini returns symptoms, context and user_intent. Code derives issue_type, severity and safety_flag so they are always consistent.",
+  "issue_type_priority": [
+   "heat_and_safety",
+   "shaving_head_and_fitment",
+   "noise_and_vibration",
+   "power_and_charging",
+   "shaving_performance",
+   "cleaning_and_maintenance",
+   "other_or_unclear"
+  ],
+  "issue_type": "Take the symptoms present. Choose the issue_type of the highest-severity symptom; break ties with issue_type_priority.",
+  "severity": [
+   "severity = highest default_severity among symptoms",
+   "if persists_after_cleaning is yes and severity is low and issue_type is not cleaning_and_maintenance or other_or_unclear: severity = medium",
+   "if issue_type is shaving_head_and_fitment, symptoms include head_loose, head_wobble, head_not_fitting or blade_unit_not_seated, and persists_after_cleaning is yes: severity = high (head cannot be secured; safety guide says do not use)",
+   "if user_intent is ask_question: severity = low unless a safety symptom is present"
+  ],
+  "safety_flag": "true when severity is high (stop-use conditions from 03_safety_escalation.md)",
+  "heat_wording": "Set excessive_heat only when the user says hot, too hot or burning. 'Warm' alone is normal per 04_operating_specs.md; ask one follow-up instead."
+ },
+ "confidence_rules": {
+  "ask_follow_up_below": 0.6,
+  "use_other_or_unclear_below": 0.4
+ },
+ "retrieval": {
+  "filters": "product_model plus issue_type of the derived primary issue, plus any chunk that lists one of the symptoms",
+  "when_severity_high": "always also retrieve every chunk with document_type safety_escalation",
+  "when_other_or_unclear": "retrieve the general service chunks and ask one clarifying question"
+ }
+}

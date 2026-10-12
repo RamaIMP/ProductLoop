@@ -1,0 +1,1 @@
+{"as_of_date":"2026-10-10","window_days":7,"baseline_days":7,"min_events":5,"min_events_safety":1,"safety_share_min":0.0,"growth_pct":50.0,"watch_min_events":3,"watch_growth_pct":25.0,"batch_rate_alerts_enabled":false,"batch_multiple_flag":3.0,"min_batch_events":5}

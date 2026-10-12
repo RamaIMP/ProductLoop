@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductLoop – User Journey</title>
+<style>
+  :root{--brand:#1a73e8;--brand-d:#0b57d0;--ink:#1f2937;--mute:#6b7280;--line:#e5e7eb;--bg:#f8fafc;--card:#fff;--ok:#16a34a;--warn:#d97706;--bad:#dc2626;--chip:#e8f0fe;--mfr:#7c3aed;--mfr-bg:#f3e8ff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);padding:32px 20px 48px}
+  h1{text-align:center;font-size:24px;font-weight:650}
+  .sub{text-align:center;color:var(--mute);font-size:14px;margin:6px 0 6px}
+  .persona{max-width:760px;margin:16px auto 28px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:flex;gap:14px;align-items:center;font-size:13px}
+  .persona .av{width:44px;height:44px;border-radius:50%;background:var(--chip);display:grid;place-items:center;font-size:22px;flex:none}
+  .persona b{font-size:14px}
+  .wrap{overflow-x:auto;padding-bottom:8px}
+  .grid{display:grid;grid-template-columns:130px repeat(6,minmax(170px,1fr));gap:8px;min-width:1230px}
+  .lane{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);display:flex;align-items:center;padding:0 4px}
+  .stage{background:var(--brand);color:#fff;border-radius:12px;padding:10px 12px;font-weight:650;font-size:13px;position:relative}
+  .stage small{display:block;font-weight:400;opacity:.85;font-size:11px;margin-top:2px}
+  .stage .n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.25);font-size:11px;margin-right:6px}
+  .cell{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45}
+  .cell.m{background:var(--mfr-bg);border-color:#e9d5ff}
+  .cell ul{padding-left:16px}
+  .cell em{font-style:normal;color:var(--mute);font-size:11.5px;display:block;margin-top:4px}
+  .pill{display:inline-block;font-size:10.5px;font-weight:600;border-radius:9px;padding:2px 8px;margin:2px 3px 0 0;background:var(--chip);color:var(--brand-d)}
+  .pill.m{background:#ede9fe;color:#5b21b6}
+  .emo{grid-column:2/8;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 0 0}
+  .emo svg{width:100%;height:150px;display:block}
+  .branch{max-width:1100px;margin:28px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .bx{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13px;line-height:1.5}
+  .bx h3{font-size:13px;margin-bottom:6px}
+  .bx.a{border-left:5px solid var(--ok)}.bx.b{border-left:5px solid var(--warn)}
+  .loop{max-width:1100px;margin:18px auto 0;background:linear-gradient(90deg,var(--brand-d),var(--mfr));color:#fff;border-radius:14px;padding:16px 20px;text-align:center;font-size:14px;font-weight:600}
+  .loop small{display:block;font-weight:400;opacity:.9;margin-top:4px;font-size:12.5px}
+  .key{display:flex;gap:16px;justify-content:center;margin-top:16px;font-size:12px;color:var(--mute)}
+  .key i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:5px}
+</style>
+</head>
+<body>
+<h1>ProductLoop – User Journey</h1>
+<p class="sub">From a noisy shaver to a quality signal: one complaint, two outcomes</p>
+
+<div class="persona">
+  <div class="av">🧔</div>
+  <div><b>Ramachandra, X500 owner (India)</b><br>
+  Bought the shaver in March 2026. It has recently become very noisy and vibrates. They want it fixed quickly, without calling a helpline or reading the whole manual.</div>
+</div>
+
+<div class="wrap"><div class="grid">
+
+  <div></div>
+  <div class="stage"><span class="n">1</span>Notice<small>Something is wrong</small></div>
+  <div class="stage"><span class="n">2</span>Open the app<small>Find help fast</small></div>
+  <div class="stage"><span class="n">3</span>Report<small>Describe and show it</small></div>
+  <div class="stage"><span class="n">4</span>Understand<small>AI analyses the evidence</small></div>
+  <div class="stage"><span class="n">5</span>Fix it<small>Grounded guidance</small></div>
+  <div class="stage"><span class="n">6</span>Follow up<small>Outcome and status</small></div>
+
+  <div class="lane">Consumer does</div>
+  <div class="cell">Shaver is louder than before and vibrates in the hand. They think about calling support.</div>
+  <div class="cell">Opens ProductLoop. Sees their registered X500 and taps <b>Report a problem</b>.</div>
+  <div class="cell">Types "very noisy and vibrates badly". Records an 8-second audio clip of the sound.</div>
+  <div class="cell">Waits a few seconds while the app works.</div>
+  <div class="cell">Reads three simple steps. Cleans and refits the head, then charges fully.</div>
+  <div class="cell">Taps <b>That helped</b>, or <b>Still not fixed</b> if the noise remains.</div>
+
+  <div class="lane">App screen</div>
+  <div class="cell"><span class="pill">Push / habit</span><em>Possibly a tip tile or notification about the product</em></div>
+  <div class="cell"><span class="pill">Homepage</span> product card, report button, input modes, past reports</div>
+  <div class="cell"><span class="pill">Chat intake</span> text, voice, photo, video, sound buttons</div>
+  <div class="cell"><span class="pill">Progress</span> four-step "looking into it" screen</div>
+  <div class="cell"><span class="pill">Result</span> what we understood, steps, source, safety warning</div>
+  <div class="cell"><span class="pill">Your reports</span> status badge, service centre shortcut</div>
+
+  <div class="lane">Behind the scenes<br>(AI agent)</div>
+  <div class="cell"><em>Nothing yet</em></div>
+  <div class="cell">Product and purchase details loaded from the user's registration.</div>
+  <div class="cell">Text and audio uploaded to Cloud Storage.</div>
+  <div class="cell">Gemini reads text and audio. Builds a <b>structured complaint record</b>: product, symptoms, context, evidence, confidence.</div>
+  <div class="cell">RAG looks up the X500 manual and service data. Produces a <b>safe, sourced</b> answer, not generic LLM text.</div>
+  <div class="cell">Outcome is stored with the record. If unresolved or unsafe, steers to an authorised service centre.</div>
+
+  <div class="lane">Manufacturer sees</div>
+  <div class="cell m"><em>Nothing yet. Today the quality team finds out only when returns spike.</em></div>
+  <div class="cell m"><em>Nothing yet</em></div>
+  <div class="cell m"><em>Nothing yet</em></div>
+  <div class="cell m">Record written to BigQuery with an embedding. Evidence stored, anonymised.</div>
+  <div class="cell m">Record joins a cluster of <b>similar events</b> (for example noise + vibration).</div>
+  <div class="cell m"><span class="pill m">Signal</span> Cluster grows to 18 events, with +214% noise vs baseline. Dashboard shows an <b>investigation hypothesis</b> (review batches, component sourcing, returns).</div>
+
+  <div class="lane">Feeling</div>
+  <div class="emo">
+    <svg viewBox="0 0 1000 150" preserveAspectRatio="none">
+      <line x1="0" y1="75" x2="1000" y2="75" stroke="#e5e7eb" stroke-dasharray="4 4"/>
+      <text x="8" y="16" font-size="11" fill="#16a34a">Positive</text>
+      <text x="8" y="142" font-size="11" fill="#dc2626">Frustrated</text>
+      <path d="M83,118 C150,118 200,95 250,90 C320,85 370,92 420,98 C480,104 520,100 585,80 C650,55 720,40 750,35 C830,28 900,32 917,28"
+            fill="none" stroke="#1a73e8" stroke-width="3"/>
+      <g fill="#1a73e8">
+        <circle cx="83" cy="118" r="6"/><circle cx="250" cy="90" r="6"/><circle cx="420" cy="98" r="6"/>
+        <circle cx="585" cy="80" r="6"/><circle cx="750" cy="35" r="6"/><circle cx="917" cy="28" r="6"/>
+      </g>
+      <g font-size="11" fill="#374151" text-anchor="middle">
+        <text x="83" y="138">Annoyed</text><text x="250" y="110">Hopeful</text><text x="420" y="118">Effortful</text>
+        <text x="585" y="98">Waiting</text><text x="750" y="22">Relieved</text><text x="917" y="16">Reassured</text>
+      </g>
+    </svg>
+  </div>
+
+</div></div>
+
+<div class="branch">
+  <div class="bx a"><h3>Path A: guidance works</h3>
+  The consumer taps <b>That helped</b>. The report is marked resolved. It still counts as a field signal, because the complaint happened even though the fix was easy.</div>
+  <div class="bx b"><h3>Path B: not fixed, or unsafe</h3>
+  The consumer taps <b>Still not fixed</b>, or reports heat or damage. The app tells them to stop use and shows nearby authorised service centres. The record is flagged higher priority for the manufacturer.</div>
+</div>
+
+<div class="loop">The loop closes: Consumer complaint → Quality signal → Manufacturer investigation → Better products
+<small>Consumers who report get an answer now. Later buyers get a better product.</small></div>
+
+<div class="key"><span><i style="background:#fff;border:1px solid #cbd5e1"></i>Consumer / app</span><span><i style="background:var(--mfr-bg);border:1px solid #e9d5ff"></i>Manufacturer side</span></div>
+</body>
+</html>

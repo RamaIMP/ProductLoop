@@ -1,0 +1,71 @@
+ProductLoop four-table lifecycle (development implementation)
+
+Destination: project-7eea7443-fac1-4364-9e6.productloop, us-central1.
+Tables: registered_units, complaints, evidence, complaint_events.
+
+Flow
+ - Registration is explicit and keyed by serial_number. unit_id is generated
+   once. Unknown batch, purchase date and location remain NULL.
+ - First substantive UI turn or attachment starts a draft with a stable client
+   complaint_id. Greetings do not create records. Product registration is optional.
+ - Uploaded files have stable evidence IDs. Each file has independent storage
+   and extraction statuses. URI is populated only after successful GCS upload.
+ - Successful analysis stores per-file findings and updates aggregate incident
+   findings. The server preserves earlier evidence, not just the client symptoms.
+ - Confirmation reuses the draft ID, records submitted_at, and propagates sharing
+   permission to existing evidence. Drafts are excluded from complaint counts.
+ - Unresolved, ticket raised, callback requested and resolved mutate the same
+   incident and append events. Callback is still a DEMO request, not a real booking.
+ - Home discard marks the draft abandoned. It does not delete already retained
+   media. A retention/deletion policy is still required before real customer use.
+
+Persistence and failure handling
+ - Structured metadata and an ordered outbox are committed together in SQLite at
+   productloop/.runtime/lifecycle.sqlite3 (ignored by Git). No media bytes are
+   stored there. Override with PRODUCTLOOP_STATE_DB on persistent storage.
+ - Set PRODUCTLOOP_BIGQUERY_ENABLED=1 to enable background sync. Default is off.
+ - A single worker checks every five seconds, batches up to 200 queued updates,
+   coalesces snapshots by stable keys, and uses parameterized MERGE statements in
+   a BigQuery transaction. Events are insert-only by event_id.
+ - Failed writes remain queued and retry after 30 seconds. A successful BigQuery
+   commit precedes local acknowledgement, so crash retries reuse the same keys.
+ - The app reads operational state from SQLite rather than issuing a BigQuery
+   query on every chat turn. Chat does not wait for BigQuery.
+ - Profile is a read-only exception: /api/profile/registered-units reads the
+   current user's X500 registration directly from BigQuery when sync is enabled.
+   Missing records stay empty; database errors are shown separately. In local
+   development with BigQuery disabled, Profile reads the local registration store.
+ - /api/persistence/status reports pending_writes, last_synced_at and last_error.
+   The UI developer state includes this snapshot. Queued is not cloud-confirmed.
+ - Graceful shutdown finishes media uploads. On restart, interrupted media work
+   is marked failed, not left pending. Original media must be reattached to retry.
+
+Setup (explicit; does not run schema mutations on every server start)
+ cd backend
+ .venv/bin/python -m app.services.setup_bigquery
+ This creates only the four tables and applies missing additive columns.
+ It does not load synthetic seeds, replace records, or delete existing data.
+
+Verification
+ Unit suite: .venv/bin/python -m pytest tests/unit
+ Live opt-in: PYTHONPATH=. .venv/bin/python scripts/lifecycle_smoke.py
+ The live test incurs cloud/model charges and leaves clearly named
+ synthetic-lifecycle-test-* records, with consent_share=false, for inspection.
+ For quality reporting, filter consent_share=true, submitted_at IS NOT NULL,
+ counts_as_complaint=true. Do not include unsubmitted drafts or synthetic tests.
+
+Development limitations
+ - Single backend process with persistent disk only. SQLite is a development
+   operational store/outbox, NOT a multi-replica cloud deployment architecture.
+   A managed operational DB + durable worker/queue is needed before Cloud Run.
+ - Current identity is a supplied demo user_id, not authenticated identity.
+   Owner checks prevent accidental mixing but are not production authorization.
+ - Existing seed/viewer data is not imported. Previously retained files without
+   incident links are not retroactively assigned to complaints.
+ - New registrations are reused from local durable state. Do not independently
+   modify registrations in BigQuery: it is the analytics mirror, not the live
+   registration system. External registrations need an explicit import adapter.
+ - BigQuery does not enforce key uniqueness. This design requires one writer;
+   do not run multiple server processes or independent writers against these IDs.
+ - File size remains limited to 15 MiB. Storage/extraction model version is only
+   populated when actually known; no resolved model version is invented.

@@ -1,0 +1,17 @@
+.incident-card{width:100%;font:inherit;color:var(--ink);text-align:left;cursor:pointer;display:grid;grid-template-columns:32px minmax(0,1fr);align-items:start;gap:8px}
+.incident-card .report-icon{padding:6px;text-align:center}
+.incident-copy{min-width:0;overflow-wrap:anywhere}
+.incident-copy p{font-size:11px;line-height:1.45;margin:7px 0 0;color:var(--mute)}
+.incident-card .status-pill{grid-column:2;margin:0;justify-self:start}
+.incident-card:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.reports-top{padding:38px 16px 12px;background:white;border-bottom:1px solid var(--line)}
+.reports-top h2{font-size:19px;margin:8px 0}
+.reports-top small{color:var(--mute)}
+.reports-top button{border:0;background:transparent;color:var(--brand);cursor:pointer;padding:5px 12px 5px 0}
+.reports-scroll{flex:1;min-height:0;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.reports-scroll .report-card{overflow-wrap:anywhere;font-size:12px}
+.reports-scroll h3{margin:0 0 8px;font-size:15px}
+.reports-scroll small{display:block;color:var(--mute)}
+.reports-scroll li{margin-bottom:12px}
+nav button{flex:1;text-align:center;font-size:18px;color:var(--mute);border:0;background:transparent;cursor:pointer;padding:0;font-family:inherit}
+

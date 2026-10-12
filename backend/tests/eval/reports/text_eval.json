@@ -1,0 +1,232 @@
+{
+ "summary": {
+  "model": "gemini-2.5-flash",
+  "complaints": 6,
+  "seconds": 273,
+  "A_code_decides": {
+   "answered": 6,
+   "errors": 0,
+   "issue_type_accuracy": 1.0,
+   "severity_accuracy": 1.0,
+   "safety_flag_accuracy": 1.0,
+   "safety_recall": 0.0,
+   "safety_false_alarms": 0,
+   "symptom_precision": 1.0,
+   "symptom_recall": 1.0,
+   "symptom_f1": 1.0
+  },
+  "B_model_decides": {
+   "answered": 6,
+   "errors": 0,
+   "issue_type_accuracy": 1.0,
+   "severity_accuracy": 1.0,
+   "safety_flag_accuracy": 1.0,
+   "safety_recall": 0.0,
+   "safety_false_alarms": 0,
+   "symptom_precision": 1.0,
+   "symptom_recall": 1.0,
+   "symptom_f1": 1.0,
+   "self_inconsistent_answers": 0
+  }
+ },
+ "details": [
+  {
+   "id": "C016",
+   "text": "The shave is uneven around my jaw. It got better after I cleaned it.",
+   "label": {
+    "symptoms": [
+     "uneven_shave"
+    ],
+    "issue_type": "shaving_performance",
+    "severity": "low",
+    "safety_flag": false
+   },
+   "A": {
+    "symptoms": [
+     "uneven_shave"
+    ],
+    "issue_type": "shaving_performance",
+    "severity": "low",
+    "safety_flag": false,
+    "persists": "no",
+    "onset": "unknown",
+    "confidence": 1.0
+   },
+   "B": {
+    "symptoms": [
+     "uneven_shave"
+    ],
+    "issue_type": "shaving_performance",
+    "severity": "low",
+    "safety_flag": false,
+    "self_consistent": true
+   }
+  },
+  {
+   "id": "C017",
+   "text": "It is hard to clean properly and hair keeps getting trapped under the head. It started this week.",
+   "label": {
+    "symptoms": [
+     "difficult_to_clean",
+     "hair_buildup"
+    ],
+    "issue_type": "cleaning_and_maintenance",
+    "severity": "low",
+    "safety_flag": false
+   },
+   "A": {
+    "symptoms": [
+     "difficult_to_clean",
+     "hair_buildup"
+    ],
+    "issue_type": "cleaning_and_maintenance",
+    "severity": "low",
+    "safety_flag": false,
+    "persists": "not_applicable",
+    "onset": "this_week",
+    "confidence": 1.0
+   },
+   "B": {
+    "symptoms": [
+     "difficult_to_clean",
+     "hair_buildup"
+    ],
+    "issue_type": "cleaning_and_maintenance",
+    "severity": "low",
+    "safety_flag": false,
+    "self_consistent": true
+   }
+  },
+  {
+   "id": "C018",
+   "text": "It vibrates much more than before.",
+   "label": {
+    "symptoms": [
+     "increased_vibration"
+    ],
+    "issue_type": "noise_and_vibration",
+    "severity": "medium",
+    "safety_flag": false
+   },
+   "A": {
+    "symptoms": [
+     "increased_vibration"
+    ],
+    "issue_type": "noise_and_vibration",
+    "severity": "medium",
+    "safety_flag": false,
+    "persists": "not_applicable",
+    "onset": "unknown",
+    "confidence": 1.0
+   },
+   "B": {
+    "symptoms": [
+     "increased_vibration"
+    ],
+    "issue_type": "noise_and_vibration",
+    "severity": "medium",
+    "safety_flag": false,
+    "self_consistent": true
+   }
+  },
+  {
+   "id": "C019",
+   "text": "The battery is empty very quickly. It started this week.",
+   "label": {
+    "symptoms": [
+     "battery_drains_fast"
+    ],
+    "issue_type": "power_and_charging",
+    "severity": "medium",
+    "safety_flag": false
+   },
+   "A": {
+    "symptoms": [
+     "battery_drains_fast"
+    ],
+    "issue_type": "power_and_charging",
+    "severity": "medium",
+    "safety_flag": false,
+    "persists": "not_tried",
+    "onset": "unknown",
+    "confidence": 1.0
+   },
+   "B": {
+    "symptoms": [
+     "battery_drains_fast"
+    ],
+    "issue_type": "power_and_charging",
+    "severity": "medium",
+    "safety_flag": false,
+    "self_consistent": true
+   }
+  },
+  {
+   "id": "C020",
+   "text": "It is not working right. It started this week.",
+   "label": {
+    "symptoms": [
+     "unclear_description"
+    ],
+    "issue_type": "other_or_unclear",
+    "severity": "low",
+    "safety_flag": false
+   },
+   "A": {
+    "symptoms": [
+     "unclear_description"
+    ],
+    "issue_type": "other_or_unclear",
+    "severity": "low",
+    "safety_flag": false,
+    "persists": "not_applicable",
+    "onset": "this_week",
+    "confidence": 1.0
+   },
+   "B": {
+    "symptoms": [
+     "unclear_description"
+    ],
+    "issue_type": "other_or_unclear",
+    "severity": "low",
+    "safety_flag": false,
+    "self_consistent": true
+   }
+  },
+  {
+   "id": "C021",
+   "text": "The head wobbles while it runs and the head will not lock back. It started this week. It got better after I cleaned it.",
+   "label": {
+    "symptoms": [
+     "head_wobble",
+     "head_not_fitting"
+    ],
+    "issue_type": "shaving_head_and_fitment",
+    "severity": "medium",
+    "safety_flag": false
+   },
+   "A": {
+    "symptoms": [
+     "head_wobble",
+     "head_not_fitting"
+    ],
+    "issue_type": "shaving_head_and_fitment",
+    "severity": "medium",
+    "safety_flag": false,
+    "persists": "no",
+    "onset": "this_week",
+    "confidence": 1.0
+   },
+   "B": {
+    "symptoms": [
+     "head_wobble",
+     "head_not_fitting"
+    ],
+    "issue_type": "shaving_head_and_fitment",
+    "severity": "medium",
+    "safety_flag": false,
+    "self_consistent": true
+   }
+  }
+ ]
+}

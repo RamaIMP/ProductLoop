@@ -1,0 +1,19 @@
+[project]
+name = "productloop-backend"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "google-adk>=2,<3",
+  "google-genai",
+  "google-cloud-bigquery",
+  "google-cloud-storage",
+  "google-cloud-firestore",
+  "pydantic",
+  "python-dotenv",
+  "python-multipart",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx"]

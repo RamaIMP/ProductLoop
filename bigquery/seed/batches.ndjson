@@ -1,0 +1,7 @@
+{"batch_id": "B-2026-03-A", "production_month": "2026-03", "ship_start": "2026-04-01", "units_shipped_india": 11000, "units_shipped_uk": 2000, "units_shipped_total": 13000}
+{"batch_id": "B-2026-04-A", "production_month": "2026-04", "ship_start": "2026-05-01", "units_shipped_india": 12000, "units_shipped_uk": 2500, "units_shipped_total": 14500}
+{"batch_id": "B-2026-05-B", "production_month": "2026-05", "ship_start": "2026-06-01", "units_shipped_india": 5500, "units_shipped_uk": 1000, "units_shipped_total": 6500}
+{"batch_id": "B-2026-06-C", "production_month": "2026-06", "ship_start": "2026-07-01", "units_shipped_india": 7000, "units_shipped_uk": 1500, "units_shipped_total": 8500}
+{"batch_id": "B-2026-06-D", "production_month": "2026-06", "ship_start": "2026-07-15", "units_shipped_india": 6000, "units_shipped_uk": 1500, "units_shipped_total": 7500}
+{"batch_id": "B-2026-07-A", "production_month": "2026-07", "ship_start": "2026-08-10", "units_shipped_india": 4500, "units_shipped_uk": 800, "units_shipped_total": 5300}
+{"batch_id": "B-2026-08-A", "production_month": "2026-08", "ship_start": "2026-09-05", "units_shipped_india": 4000, "units_shipped_uk": 700, "units_shipped_total": 4700}

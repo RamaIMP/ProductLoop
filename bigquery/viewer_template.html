@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ProductLoop database viewer</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-size:13px;color:#1f2937;background:#f6f7f9;height:100vh;display:grid;grid-template-columns:270px 1fr}
+aside{background:#fff;border-right:1px solid #e5e7eb;overflow:auto;padding:12px 8px}
+aside h1{font-size:14px;padding:4px 8px 2px}aside .sub{color:#6b7280;font-size:11.5px;padding:0 8px 10px}
+.grp{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6b7280;padding:12px 8px 4px}
+.t{display:flex;justify-content:space-between;gap:6px;padding:6px 8px;border-radius:6px;cursor:pointer;color:#374151}
+.t:hover{background:#eef3fd}.t.on{background:#e0eafc;color:#0b57d0;font-weight:600}.t span:last-child{color:#9ca3af;font-variant-numeric:tabular-nums}
+.t.ov{font-weight:600;margin-bottom:2px}
+main{overflow:auto;padding:16px 20px 30px;min-width:0}
+h2{font-size:17px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.badge{font-size:11px;background:#e8f0fe;color:#0b57d0;border-radius:10px;padding:2px 9px;font-weight:600}
+.badge.pv{background:#fef3c7;color:#92400e}
+.note{color:#4b5563;margin:5px 0 12px;max-width:900px;line-height:1.45}
+.tabs{display:flex;gap:2px;border-bottom:1px solid #d1d5db;margin-bottom:10px}
+.tab{padding:7px 14px;cursor:pointer;color:#4b5563;border-bottom:2px solid transparent}.tab.on{color:#0b57d0;border-color:#0b57d0;font-weight:600}
+.bar{display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+input[type=search]{padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;width:260px;font:inherit}
+button{font:inherit;border:1px solid #d1d5db;background:#fff;border-radius:6px;padding:5px 10px;cursor:pointer}button:disabled{opacity:.4;cursor:default}
+.grid{overflow:auto;border:1px solid #e5e7eb;background:#fff;border-radius:8px;max-height:calc(100vh - 230px)}
+table{border-collapse:collapse;width:100%}
+th{position:sticky;top:0;background:#f3f6fb;text-align:left;padding:6px 10px;border-bottom:1px solid #d1d5db;white-space:nowrap;cursor:pointer;font-weight:600;font-size:12px}
+th small{display:block;font-weight:400;color:#6b7280;font-size:10.5px}
+td{padding:5px 10px;border-bottom:1px solid #eef0f3;max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+tr:hover td{background:#f8faff}td.n{text-align:right;font-variant-numeric:tabular-nums}.null{color:#b0b6c0;font-style:italic}.arr{color:#6d28d9}
+table.sch td{max-width:none;white-space:normal}code{background:#f1f3f6;padding:1px 5px;border-radius:4px;font-size:12px}
+#drawer{position:fixed;right:0;top:0;bottom:0;width:430px;background:#fff;border-left:1px solid #d1d5db;box-shadow:-6px 0 18px rgba(0,0,0,.08);padding:14px;overflow:auto;transform:translateX(100%);transition:.15s}
+#drawer.on{transform:none}#drawer pre{white-space:pre-wrap;font-size:12px;line-height:1.5;margin-top:8px;word-break:break-word}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;margin-bottom:14px;max-width:1000px}
+.card h3{font-size:14.5px;margin-bottom:2px}.pill{display:inline-block;font-size:11px;font-weight:700;border-radius:9px;padding:1px 8px;margin-left:6px;background:#fee2e2;color:#991b1b}
+.hyp{background:#eff5ff;border-left:3px solid #1a73e8;padding:8px 10px;margin:8px 0;line-height:1.45;border-radius:0 6px 6px 0}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}.cols h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#6b7280;margin:8px 0 4px}
+.m{display:grid;grid-template-columns:1fr 70px 70px;gap:2px 8px;font-size:12.5px}.m b{text-align:right}.m .hd{color:#6b7280;font-size:11px;text-align:right}
+.hot{color:#b91c1c;font-weight:700}ul{margin:2px 0 0 16px}li{margin:2px 0}
+.rel li{margin:3px 0}.kpi{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 14px}.kpi div{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 14px}.kpi b{display:block;font-size:20px}
+</style></head><body>
+<aside id="side"></aside><main id="main"></main><div id="drawer"></div>
+<script>
+/*DATA*/
+const $=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+const side=document.getElementById('side'),main=document.getElementById('main'),drawer=document.getElementById('drawer');
+let cur='__overview',tab='preview',q='',page=0,sortK=null,sortD=1;const PS=25;
+const fmtPct=v=>Math.round(v*100)+'%';
+function show(){side.replaceChildren();side.append($('h1',null,'ProductLoop'),$('div','sub','BigQuery dataset: '+DB.dataset+' (preview of how the data will look)'));
+ const ov=$('div','t ov'+(cur==='__overview'?' on':''));ov.append($('span',null,'Overview and signals'),$('span',null,''));ov.onclick=()=>{cur='__overview';show()};side.append(ov);
+ let last='';DB.tables.forEach(t=>{if(t.group!==last){side.append($('div','grp',t.group));last=t.group}
+  const d=$('div','t'+(cur===t.name?' on':''));d.append($('span',null,t.name),$('span',null,t.rows.length));d.onclick=()=>{cur=t.name;tab='preview';q='';page=0;sortK=null;show()};side.append(d)});
+ drawer.classList.remove('on');main.replaceChildren();cur==='__overview'?overview():table(DB.tables.find(t=>t.name===cur))}
+function cell(v){const td=$('td');if(v===null||v===undefined){td.className='null';td.textContent='NULL';return td}
+ if(typeof v==='number'){td.className='n';td.textContent=Number.isInteger(v)?v.toLocaleString():String(v);return td}
+ if(typeof v==='boolean'){td.textContent=String(v);return td}
+ if(typeof v==='object'){td.className='arr';const s=JSON.stringify(v);td.textContent=s;td.title=s;return td}
+ td.textContent=v;td.title=v;return td}
+function table(t){const h=$('h2',null,t.name);h.append($('span','badge',t.rows.length+' rows'),$('span','badge',t.schema.length+' columns'));if(t.name==='signals')h.append($('span','badge pv','preview'));
+ main.append(h,$('div','note',t.note));const tabs=$('div','tabs');[['preview','Preview'],['schema','Schema']].forEach(([k,l])=>{const e=$('div','tab'+(tab===k?' on':''),l);e.onclick=()=>{tab=k;show()};tabs.append(e)});main.append(tabs);
+ if(tab==='schema'){const tb=$('table','sch');const hd=$('tr');['Column','Type','Mode'].forEach(x=>hd.append($('th',null,x)));tb.append(hd);
+  t.schema.forEach(c=>{const r=$('tr');const a=$('td');a.append($('code',null,c.name));r.append(a,$('td',null,c.type),$('td',null,c.required?'REQUIRED':'NULLABLE'));tb.append(r)});const g=$('div','grid');g.append(tb);main.append(g);return}
+ if(!t.rows.length){main.append($('div','note','No rows yet.'));return}
+ let rows=t.rows.filter(r=>!q||JSON.stringify(r).toLowerCase().includes(q.toLowerCase()));
+ if(sortK)rows=[...rows].sort((a,b)=>{const x=a[sortK],y=b[sortK];return (x==null)-(y==null)||(x>y?1:x<y?-1:0)*sortD});
+ const pages=Math.max(1,Math.ceil(rows.length/PS));page=Math.min(page,pages-1);
+ const bar=$('div','bar');const s=$('input');s.type='search';s.placeholder='Filter rows';s.value=q;s.oninput=()=>{q=s.value;page=0;const p=s.selectionStart;show();const n=main.querySelector('input');n.focus();n.setSelectionRange(p,p)};
+ const pv=$('button',null,'Previous'),nx=$('button',null,'Next');pv.disabled=page===0;nx.disabled=page>=pages-1;pv.onclick=()=>{page--;show()};nx.onclick=()=>{page++;show()};
+ bar.append(s,pv,nx,$('span',null,`Rows ${rows.length?page*PS+1:0} to ${Math.min(rows.length,(page+1)*PS)} of ${rows.length}`),$('span','null','Click a row to see it in full.'));main.append(bar);
+ const keys=t.schema.map(c=>c.name);const tb=$('table');const hr=$('tr');
+ t.schema.forEach(c=>{const th=$('th',null,c.name);th.append($('small',null,c.type.length>26?c.type.slice(0,24)+'…':c.type));th.onclick=()=>{sortD=sortK===c.name?-sortD:1;sortK=c.name;show()};hr.append(th)});tb.append(hr);
+ rows.slice(page*PS,(page+1)*PS).forEach(r=>{const tr=$('tr');keys.forEach(k=>tr.append(cell(r[k])));tr.onclick=()=>{drawer.replaceChildren($('b',null,t.name+' row'),$('pre',null,JSON.stringify(r,null,2)));drawer.classList.add('on')};tb.append(tr)});
+ const g=$('div','grid');g.append(tb);main.append(g);g.onclick=e=>{if(e.target.tagName==='TH')return}}
+function overview(){main.append($('h2',null,'How the data looks in the database'));
+ main.append($('div','note','Fictional X500 data. Pick a table on the left to see its schema and rows. Below, each emerging signal is followed across the tables: from the complaint count, to the batch, to the factory evidence that could confirm or reject the hypothesis.'));
+ const tot=DB.tables.reduce((a,t)=>a+t.rows.length,0);const k=$('div','kpi');[[DB.tables.length,'tables'],[tot.toLocaleString(),'rows'],[DB.follow.length,'emerging signals']].forEach(([a,b])=>{const d=$('div');d.append($('b',null,a),$('span',null,b));k.append(d)});main.append(k);
+ const rel=$('div','card');rel.append($('h3',null,'How the tables connect'));const ul=$('ul','rel');
+ ['complaints.batch_reference = batches.batch_id (and every factory table has batch_id)','complaints.serial_number = registered_units.serial_number, which gives the batch and purchase date',
+  'evidence.complaint_id, complaint_events.complaint_id, service_repairs.complaint_id and product_returns.complaint_id = complaints.complaint_id',
+  'complaint_events.evidence_id = evidence.evidence_id for events about a specific upload',
+  'consumer_id identifies the owner; complaint_id links one incident to its evidence and history. No session_id is required for this prototype.',
+  'region is the country/market used with shipments_weekly. incident_country, incident_region and incident_city describe the incident location; location_source records provenance.',
+  'signals is a static preview of the planned 15-minute job from submitted complaints, shipments_weekly, signal_config and hypothesis_rules; signals.rule_id = hypothesis_rules.rule_id',
+  'taxonomy_symptoms lists every issue type and symptom, so the job and the dashboard never hard-code a category'].forEach(x=>ul.append($('li',null,x)));rel.append(ul);main.append(rel);
+ DB.follow.forEach(f=>{const c=$('div','card');const h=$('h3',null,f.issue_type.replace(/_/g,' '));h.append($('span','pill','emerging'));c.append(h,$('div','note',f.reason));
+  c.append($('div','hyp',f.hypothesis));const cols=$('div','cols'),a=$('div'),b=$('div');
+  a.append($('h4',null,'End-of-line tests: batch '+f.batch+' vs the other batches'));const m=$('div','m');m.append($('span'),$('span','hd','this batch'),$('span','hd','others'));
+  f.metrics.forEach(x=>{const fm=v=>x.fmt==='pct'?fmtPct(v):v.toFixed(1);const off=x.fmt==='pct'?x.this>x.others+.1:x.this>x.others+1.5;m.append($('span',null,x.label),$('b',off?'hot':null,fm(x.this)),$('b',null,fm(x.others)))});a.append(m);
+  a.append($('h4',null,'Service and returns'),$('div',null,`${f.repairs} repairs, ${f.returns} returns. Top diagnoses: `+f.diagnoses.map(d=>d[0].replace(/_/g,' ')+' ('+d[1]+')').join(', ')));
+  b.append($('h4',null,'Changes recorded for this batch'));const u1=$('ul');(f.changes.length?f.changes:[{id:'',text:'None',date:''}]).forEach(x=>u1.append($('li',null,(x.id?x.id+' ('+x.date+'): ':'')+x.text)));b.append(u1);
+  b.append($('h4',null,'Supplier lots with a change note'));const u2=$('ul');(f.lots.length?f.lots:[{component:'',lot:'',note:'None'}]).forEach(x=>u2.append($('li',null,x.component?x.component.replace(/_/g,' ')+' '+x.lot+': '+x.note:x.note)));b.append(u2);
+  b.append($('h4',null,'Suggested checks'));const u3=$('ul');f.actions.forEach(x=>u3.append($('li',null,x)));b.append(u3);cols.append(a,b);c.append(cols);main.append(c)})}
+show();
+</script></body></html>

@@ -1,0 +1,322 @@
+[
+ {
+  "return_id": "RT0001",
+  "return_date": "2026-08-08",
+  "batch_id": "B-2026-06-C",
+  "region": "India",
+  "serial_number": "X5-W54095",
+  "complaint_id": null,
+  "reason_code": "head_loose",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0002",
+  "return_date": "2026-08-11",
+  "batch_id": "B-2026-05-B",
+  "region": "India",
+  "serial_number": "X5-W42508",
+  "complaint_id": null,
+  "reason_code": "overheating",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0003",
+  "return_date": "2026-08-15",
+  "batch_id": "B-2026-06-D",
+  "region": "India",
+  "serial_number": "X5-W27884",
+  "complaint_id": null,
+  "reason_code": "poor_shave",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0004",
+  "return_date": "2026-08-17",
+  "batch_id": "B-2026-03-A",
+  "region": "India",
+  "serial_number": "X5-202603A-00005",
+  "complaint_id": "C020",
+  "reason_code": "other",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0005",
+  "return_date": "2026-08-19",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-W29514",
+  "complaint_id": null,
+  "reason_code": "noise_vibration",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0006",
+  "return_date": "2026-08-20",
+  "batch_id": "B-2026-04-A",
+  "region": "India",
+  "serial_number": "X5-202604A-00001",
+  "complaint_id": "C016",
+  "reason_code": "poor_shave",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0007",
+  "return_date": "2026-08-24",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-W89260",
+  "complaint_id": null,
+  "reason_code": "noise_vibration",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0008",
+  "return_date": "2026-08-26",
+  "batch_id": "B-2026-05-B",
+  "region": "India",
+  "serial_number": "X5-202605B-00006",
+  "complaint_id": "C021",
+  "reason_code": "head_loose",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0009",
+  "return_date": "2026-08-31",
+  "batch_id": "B-2026-04-A",
+  "region": "India",
+  "serial_number": "X5-W71054",
+  "complaint_id": null,
+  "reason_code": "other",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0010",
+  "return_date": "2026-09-01",
+  "batch_id": "B-2026-05-B",
+  "region": "India",
+  "serial_number": "X5-202605B-00013",
+  "complaint_id": "C027",
+  "reason_code": "overheating",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0011",
+  "return_date": "2026-09-04",
+  "batch_id": "B-2026-03-A",
+  "region": "India",
+  "serial_number": "X5-W98398",
+  "complaint_id": null,
+  "reason_code": "charging_fault",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0012",
+  "return_date": "2026-09-06",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-W92999",
+  "complaint_id": null,
+  "reason_code": "noise_vibration",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0013",
+  "return_date": "2026-09-12",
+  "batch_id": "B-2026-03-A",
+  "region": "India",
+  "serial_number": "X5-202603A-00024",
+  "complaint_id": "C040",
+  "reason_code": "other",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0014",
+  "return_date": "2026-09-17",
+  "batch_id": "B-2026-04-A",
+  "region": "India",
+  "serial_number": "X5-W41433",
+  "complaint_id": null,
+  "reason_code": "charging_fault",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0015",
+  "return_date": "2026-09-20",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-W96540",
+  "complaint_id": null,
+  "reason_code": "noise_vibration",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0016",
+  "return_date": "2026-09-22",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-W63580",
+  "complaint_id": null,
+  "reason_code": "noise_vibration",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0017",
+  "return_date": "2026-09-23",
+  "batch_id": "B-2026-05-B",
+  "region": "India",
+  "serial_number": "X5-W92759",
+  "complaint_id": null,
+  "reason_code": "overheating",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0018",
+  "return_date": "2026-09-25",
+  "batch_id": "B-2026-04-A",
+  "region": "India",
+  "serial_number": "X5-202604A-00042",
+  "complaint_id": "C052",
+  "reason_code": "noise_vibration",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0019",
+  "return_date": "2026-09-26",
+  "batch_id": "B-2026-06-C",
+  "region": "India",
+  "serial_number": "X5-202606C-00039",
+  "complaint_id": "C050",
+  "reason_code": "head_loose",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0020",
+  "return_date": "2026-09-28",
+  "batch_id": "B-2026-05-B",
+  "region": "India",
+  "serial_number": "X5-202605B-00075",
+  "complaint_id": "C078",
+  "reason_code": "overheating",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0021",
+  "return_date": "2026-09-29",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-202607A-00053",
+  "complaint_id": "C004",
+  "reason_code": "noise_vibration",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0022",
+  "return_date": "2026-09-30",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-202607A-00063",
+  "complaint_id": "C068",
+  "reason_code": "charging_fault",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0023",
+  "return_date": "2026-10-01",
+  "batch_id": "B-2026-06-C",
+  "region": "India",
+  "serial_number": "X5-W24584",
+  "complaint_id": null,
+  "reason_code": "head_loose",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0024",
+  "return_date": "2026-10-02",
+  "batch_id": "B-2026-05-B",
+  "region": "India",
+  "serial_number": "X5-202605B-00068",
+  "complaint_id": "C071",
+  "reason_code": "head_loose",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0025",
+  "return_date": "2026-10-02",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-W14601",
+  "complaint_id": null,
+  "reason_code": "noise_vibration",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0026",
+  "return_date": "2026-10-04",
+  "batch_id": "B-2026-03-A",
+  "region": "India",
+  "serial_number": "X5-W77123",
+  "complaint_id": null,
+  "reason_code": "poor_shave",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0027",
+  "return_date": "2026-10-06",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-202607A-00077",
+  "complaint_id": "C079",
+  "reason_code": "noise_vibration",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0028",
+  "return_date": "2026-10-09",
+  "batch_id": "B-2026-06-C",
+  "region": "India",
+  "serial_number": "X5-202606C-00064",
+  "complaint_id": "C070",
+  "reason_code": "noise_vibration",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0029",
+  "return_date": "2026-10-09",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-202607A-00098",
+  "complaint_id": "C097",
+  "reason_code": "noise_vibration",
+  "resolution": "replacement"
+ },
+ {
+  "return_id": "RT0030",
+  "return_date": "2026-10-11",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-202607A-00080",
+  "complaint_id": "C082",
+  "reason_code": "noise_vibration",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0031",
+  "return_date": "2026-10-18",
+  "batch_id": "B-2026-07-A",
+  "region": "India",
+  "serial_number": "X5-202607A-00082",
+  "complaint_id": "C083",
+  "reason_code": "noise_vibration",
+  "resolution": "refund"
+ },
+ {
+  "return_id": "RT0032",
+  "return_date": "2026-10-21",
+  "batch_id": "B-2026-06-C",
+  "region": "India",
+  "serial_number": "X5-202606C-00111",
+  "complaint_id": "C111",
+  "reason_code": "head_loose",
+  "resolution": "replacement"
+ }
+]

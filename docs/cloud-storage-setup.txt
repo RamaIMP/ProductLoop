@@ -1,0 +1,44 @@
+ProductLoop development media storage
+
+Project: project-7eea7443-fac1-4364-9e6
+Bucket: gs://productloop-media-project-7eea7443-fac1-4364-9e6
+Location: us-central1 (same as current Vertex AI configuration)
+
+The local ignored .env sets GCS_MEDIA_BUCKET. Copy this value to the backend's
+deployment environment when deploying; a local .env is not automatically deployed.
+Credentials come from Application Default Credentials, never from the frontend.
+
+Flow: browser uploads to FastAPI, then two independent parallel branches:
+  1. File bytes -> Gemini -> extraction -> conversation (does not await storage).
+  2. Copy -> private GCS archive; up to three attempts with retry delays.
+The media API returns evidence_id and separate analysis/storage statuses. The UI
+polls /api/media/{evidence_id}/status with user_id until upload finishes.
+Files are limited to 15 MiB for this direct inline-media development path.
+Later conversation turns receive extracted findings, not the original media.
+No public URLs, object ACLs or bucket CORS are needed for this server upload flow.
+Object names use a UUID plus extension, not the original customer filename.
+
+Verified bucket settings: uniform bucket-level access, public-access prevention.
+Initial IAM includes the project's existing owner/editor/viewer groups; it is not
+public, but this is not a per-customer isolation boundary. For production, use a
+dedicated backend service account and scoped object permissions; do not grant
+allUsers/allAuthenticatedUsers access. Gemini no longer needs the archival URI
+for this direct-media route.
+
+Cloud failures mark storage failed without discarding the analysis or falling
+back to local media storage. If no bucket
+is configured, explicit local-development mode still uses the OS temporary folder.
+Framework request buffering may use temporary files while accepting an upload;
+GCS is the retained media destination, not a guarantee of zero temporary disk I/O.
+
+No automatic lifecycle deletion was enabled. Bucket soft-delete retention is seven
+days. Agree a media retention/deletion policy before storing real customer evidence.
+Cloud storage and model usage incur normal project charges.
+
+Complaint, evidence, event and registration metadata now use the durable
+development store and background BigQuery sync described in bigquery-lifecycle.txt.
+Evidence links to complaint_id and consumer_id; earlier unlinked files are not
+retroactively assigned. Status survives restart. Interrupted uploads/analysis are
+marked failed on startup and require re-upload; media bytes are not in the queue.
+Graceful shutdown waits for active uploads. The development user_id is not real
+authentication. A managed operational store is still needed for cloud deployment.

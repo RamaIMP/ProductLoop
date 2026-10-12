@@ -1,0 +1,3427 @@
+{
+ "dataset_name": "ProductLoop X500 Synthetic Complaints v2",
+ "taxonomy_version": "2.0",
+ "disclaimer": "Fictional. issue_type, severity and safety_flag are derived from symptoms and context using taxonomy_v2.json. Labels are the ground truth for testing Gemini extraction.",
+ "windows": {
+  "prior": [
+   "2026-08-08",
+   "2026-09-06"
+  ],
+  "current": [
+   "2026-09-07",
+   "2026-10-06"
+  ]
+ },
+ "complaints": [
+  {
+   "complaint_id": "C016",
+   "timestamp": "2026-08-09T06:43:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The shave is uneven around my jaw. It got better after I cleaned it.",
+   "symptoms": [
+    "uneven_shave"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.92,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C017",
+   "timestamp": "2026-08-09T14:32:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C017.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "It is hard to clean properly and hair keeps getting trapped under the head. It started this week.",
+   "symptoms": [
+    "difficult_to_clean",
+    "hair_buildup"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C018",
+   "timestamp": "2026-08-10T21:01:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C018.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "It vibrates much more than before.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.82,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C019",
+   "timestamp": "2026-08-10T21:52:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The battery is empty very quickly. It started this week.",
+   "symptoms": [
+    "battery_drains_fast"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.81,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C020",
+   "timestamp": "2026-08-11T19:13:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C020.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "It is not working right. It started this week.",
+   "symptoms": [
+    "unclear_description"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "other_or_unclear",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.53,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C021",
+   "timestamp": "2026-08-14T20:07:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C021.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The head wobbles while it runs and the head will not lock back. It started this week. It got better after I cleaned it.",
+   "symptoms": [
+    "head_wobble",
+    "head_not_fitting"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C022",
+   "timestamp": "2026-08-15T07:55:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It is not cutting well anymore. It has been like this for a few weeks. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "reduced_cutting_quality"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.86,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C024",
+   "timestamp": "2026-08-16T16:51:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "ask_question",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "How do I clean the blades properly?",
+   "symptoms": [
+    "cleaning_question"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.95,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C023",
+   "timestamp": "2026-08-16T17:27:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C023.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "It vibrates much more than before. It started today. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.87,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C025",
+   "timestamp": "2026-08-18T09:03:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It leaves many hairs behind and it takes many passes now. It has been like this for a few weeks. It got better after I cleaned it.",
+   "symptoms": [
+    "missed_hairs",
+    "requires_multiple_passes"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.91,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C028",
+   "timestamp": "2026-08-19T11:03:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: battery jaldi khatam ho jaati hai.",
+   "symptoms": [
+    "battery_drains_fast"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.96,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C026",
+   "timestamp": "2026-08-19T20:18:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It rattles when I switch it on. It started today. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.87,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C027",
+   "timestamp": "2026-08-19T21:09:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C027.m4a"
+   ],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: jalne ki smell aa rahi hai.",
+   "symptoms": [
+    "burning_smell"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.83,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C029",
+   "timestamp": "2026-08-21T13:37:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "ask_question",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "How often should I replace the blades?",
+   "symptoms": [
+    "blade_replacement_due"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.9,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C031",
+   "timestamp": "2026-08-22T08:34:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C031.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The shave is not as close as before. It got better after I cleaned it.",
+   "symptoms": [
+    "reduced_cutting_quality"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C030",
+   "timestamp": "2026-08-22T13:16:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C030.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The head does not click into place. It started this week.",
+   "symptoms": [
+    "head_not_fitting"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.87,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C032",
+   "timestamp": "2026-08-22T15:39:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It is hard to clean properly. It started this week. It got better after I cleaned it.",
+   "symptoms": [
+    "difficult_to_clean"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.97,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C033",
+   "timestamp": "2026-08-23T14:07:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C033.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "It stopped charging though the cable looks fine. It started today.",
+   "symptoms": [
+    "not_charging"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.95,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C034",
+   "timestamp": "2026-08-24T14:02:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C034.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "The noise is more than before and the vibration in my hand is strong now. It started today.",
+   "symptoms": [
+    "increased_noise",
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.8,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C035",
+   "timestamp": "2026-08-25T17:37:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C035.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "The vibration in my hand is strong now and the vibration is uneven and jerky and it squeals when I turn it on.",
+   "symptoms": [
+    "increased_vibration",
+    "irregular_vibration",
+    "squealing_sound"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C037",
+   "timestamp": "2026-08-26T16:50:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "Several things feel off but I cannot say what. It started this week.",
+   "symptoms": [
+    "multiple_unresolved_symptoms"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "other_or_unclear",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.53,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C036",
+   "timestamp": "2026-08-26T19:39:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It takes many passes now. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "requires_multiple_passes"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C038",
+   "timestamp": "2026-08-27T15:52:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C038.m4a"
+   ],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: bahut vibrate kar raha hai, clean kiya phir bhi same hai.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.94,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C040",
+   "timestamp": "2026-08-29T16:27:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It is hard to clean properly and hair keeps getting trapped under the head. It started this week. It got better after I cleaned it.",
+   "symptoms": [
+    "difficult_to_clean",
+    "hair_buildup"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.9,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C039",
+   "timestamp": "2026-08-29T18:43:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The battery is empty very quickly.",
+   "symptoms": [
+    "battery_drains_fast"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.97,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C041",
+   "timestamp": "2026-08-30T12:23:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The shave is not as close as before and the shave is uneven around my jaw. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "reduced_cutting_quality",
+    "uneven_shave"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.87,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C042",
+   "timestamp": "2026-08-30T15:32:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "ask_question",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C042.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "How do I clean the blades properly?",
+   "symptoms": [
+    "cleaning_question"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.85,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C043",
+   "timestamp": "2026-08-31T11:39:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C043.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The head will not lock back. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "head_not_fitting"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.9,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C045",
+   "timestamp": "2026-09-01T08:52:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "Hair keeps getting trapped under the head. It has been like this for a few weeks. It got better after I cleaned it.",
+   "symptoms": [
+    "hair_buildup"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.96,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C044",
+   "timestamp": "2026-09-01T16:29:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It is too hot to hold. It started this week.",
+   "symptoms": [
+    "excessive_heat"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.88,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C001",
+   "timestamp": "2026-09-02T09:15:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "My X500 is slightly louder than before but it still shaves normally.",
+   "symptoms": [
+    "increased_noise"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C007",
+   "timestamp": "2026-09-03T14:00:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It leaves many hairs behind even after two passes.",
+   "symptoms": [
+    "missed_hairs",
+    "requires_multiple_passes"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.88,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C046",
+   "timestamp": "2026-09-04T08:29:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C046.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The head wobbles while it runs. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "head_wobble"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.87,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C002",
+   "timestamp": "2026-09-04T13:20:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C002.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The shaver has started vibrating much more and makes a rattling sound when I use it.",
+   "symptoms": [
+    "increased_vibration",
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.94,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C010",
+   "timestamp": "2026-09-05T12:40:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The charging light turns on but the battery is empty very quickly.",
+   "symptoms": [
+    "battery_drains_fast"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.9,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C047",
+   "timestamp": "2026-09-05T20:03:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "A strange buzzing while shaving and a rattling sound comes from the head. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "buzzing_sound",
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C048",
+   "timestamp": "2026-09-05T20:39:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It stopped charging though the cable looks fine. It started this week.",
+   "symptoms": [
+    "not_charging"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.94,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C049",
+   "timestamp": "2026-09-06T14:49:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C049.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "It leaves many hairs behind and the shave is uneven around my jaw. It has been like this for a few weeks. It got better after I cleaned it.",
+   "symptoms": [
+    "missed_hairs",
+    "uneven_shave"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C050",
+   "timestamp": "2026-09-07T08:08:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The top part keeps coming loose. It started this week. It got better after I cleaned it.",
+   "symptoms": [
+    "head_loose"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.83,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C051",
+   "timestamp": "2026-09-08T06:54:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C051.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The noise is more than before and it vibrates much more than before. It has been like this for a few weeks. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_noise",
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.95,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C003",
+   "timestamp": "2026-09-08T11:45:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C003.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "There is a loud buzzing sound now and the head feels shaky.",
+   "symptoms": [
+    "buzzing_sound",
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.91,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C052",
+   "timestamp": "2026-09-09T14:27:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C052.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "The vibration in my hand is strong now. It has been like this for a few weeks. It got better after I cleaned it.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.88,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C008",
+   "timestamp": "2026-09-09T18:25:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C008.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "It is pulling my beard and shaving quality is poor.",
+   "symptoms": [
+    "pulling_hair",
+    "reduced_cutting_quality"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "shaving_performance",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.9,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C012",
+   "timestamp": "2026-09-10T09:55:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C012.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The shaving head has become loose and does not click into place properly.",
+   "symptoms": [
+    "head_loose",
+    "head_not_fitting"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.95,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C053",
+   "timestamp": "2026-09-10T18:37:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The shave is uneven around my jaw.",
+   "symptoms": [
+    "uneven_shave"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.9,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C056",
+   "timestamp": "2026-09-11T06:39:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "ask_question",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "How often should I replace the blades?",
+   "symptoms": [
+    "blade_replacement_due"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.83,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C054",
+   "timestamp": "2026-09-11T16:21:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It stopped charging though the cable looks fine. It started this week.",
+   "symptoms": [
+    "not_charging"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C055",
+   "timestamp": "2026-09-11T17:14:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C055.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "It is hard to clean properly and hair keeps getting trapped under the head. It started this week. It got better after I cleaned it.",
+   "symptoms": [
+    "difficult_to_clean",
+    "hair_buildup"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.91,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C058",
+   "timestamp": "2026-09-12T13:06:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "Something feels wrong with it. It started this week.",
+   "symptoms": [
+    "unclear_description"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "other_or_unclear",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.47,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C057",
+   "timestamp": "2026-09-12T15:06:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C057.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "Something rattles while it runs. It started today. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.9,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C014",
+   "timestamp": "2026-09-12T21:05:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C014.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "I noticed a burnt smell while charging, so I unplugged it.",
+   "symptoms": [
+    "burning_smell"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.96,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C059",
+   "timestamp": "2026-09-14T07:22:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "ask_question",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C059.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "How do I clean the blades properly?",
+   "symptoms": [
+    "cleaning_question"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C004",
+   "timestamp": "2026-09-14T16:05:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C004.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "The sound is harsh and I can feel strong vibration in my hand even after cleaning it.",
+   "symptoms": [
+    "grinding_sound",
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C060",
+   "timestamp": "2026-09-15T11:46:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It rattles when I switch it on. It started this week.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C061",
+   "timestamp": "2026-09-15T16:54:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C061.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The head will not lock back and the head wobbles while it runs. It has been like this for a few weeks. It got better after I cleaned it.",
+   "symptoms": [
+    "head_not_fitting",
+    "head_wobble"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C062",
+   "timestamp": "2026-09-15T21:54:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It takes very long to charge. It has been like this for a few weeks.",
+   "symptoms": [
+    "slow_charging"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "power_and_charging",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.86,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C009",
+   "timestamp": "2026-09-16T07:50:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The shaver is not cutting evenly around my jaw.",
+   "symptoms": [
+    "uneven_shave",
+    "missed_hairs"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C063",
+   "timestamp": "2026-09-16T13:44:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The vibration in my hand is strong now. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.88,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C064",
+   "timestamp": "2026-09-16T21:35:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It misses patches on my cheeks and the shave is uneven around my jaw. It started this week.",
+   "symptoms": [
+    "missed_hairs",
+    "uneven_shave"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C065",
+   "timestamp": "2026-09-17T09:47:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It is hard to clean properly and hair keeps getting trapped under the head. It started today. It got better after I cleaned it.",
+   "symptoms": [
+    "difficult_to_clean",
+    "hair_buildup"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C066",
+   "timestamp": "2026-09-17T15:06:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "ask_question",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "Can I use it in the shower?",
+   "symptoms": [
+    "water_exposure_question"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.94,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C067",
+   "timestamp": "2026-09-18T10:17:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C067.m4a"
+   ],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: jalne ki smell aa rahi hai.",
+   "symptoms": [
+    "burning_smell"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.81,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C068",
+   "timestamp": "2026-09-18T15:30:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It will not start even after charging. It started today.",
+   "symptoms": [
+    "not_powering_on"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.88,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C070",
+   "timestamp": "2026-09-19T09:48:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C070.m4a"
+   ],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: khad khad awaaz aa rahi hai.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C072",
+   "timestamp": "2026-09-19T12:27:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C072.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "It is not working right. It started this week.",
+   "symptoms": [
+    "unclear_description"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "other_or_unclear",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.33,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C069",
+   "timestamp": "2026-09-19T15:05:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C069.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "There is a loud buzzing sound now and it makes a grinding sound and the vibration in my hand is strong now. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "buzzing_sound",
+    "grinding_sound",
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.97,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C011",
+   "timestamp": "2026-09-19T19:10:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C011.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "It does not charge anymore even though the cable looks fine.",
+   "symptoms": [
+    "not_charging"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.87,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C071",
+   "timestamp": "2026-09-19T21:18:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C071.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The shaving head has become loose. It started today. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "head_loose"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.81,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C073",
+   "timestamp": "2026-09-20T15:28:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It leaves many hairs behind and it is not cutting well anymore. It has been like this for a few weeks. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "missed_hairs",
+    "reduced_cutting_quality"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.82,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C074",
+   "timestamp": "2026-09-21T06:48:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "There is a loud buzzing sound now and it squeals when I turn it on. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "buzzing_sound",
+    "squealing_sound"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.91,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C005",
+   "timestamp": "2026-09-21T08:30:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C005.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The device rattles for a few seconds after I switch it on. I cleaned the head but it is still happening.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.96,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C076",
+   "timestamp": "2026-09-22T07:29:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C076.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "It will not start even after charging.",
+   "symptoms": [
+    "not_powering_on"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.81,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C075",
+   "timestamp": "2026-09-22T17:26:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It has become much louder. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_noise"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.86,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C077",
+   "timestamp": "2026-09-22T20:26:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "ask_question",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C077.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "How do I clean the blades properly?",
+   "symptoms": [
+    "cleaning_question"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.81,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C078",
+   "timestamp": "2026-09-23T20:48:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C078.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "It is too hot to hold and it is making a loud sound now. It started this week.",
+   "symptoms": [
+    "excessive_heat",
+    "increased_noise"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.81,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C013",
+   "timestamp": "2026-09-24T15:35:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C013.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The head came off while it was running. There is no visible crack but it will not lock back now.",
+   "symptoms": [
+    "head_detached",
+    "head_not_fitting"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.98,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C079",
+   "timestamp": "2026-09-24T19:05:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "A strange buzzing while shaving and it shakes a lot while running. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "buzzing_sound",
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C080",
+   "timestamp": "2026-09-25T10:24:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-03-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C080.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "A rattling sound comes from the head. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.83,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C081",
+   "timestamp": "2026-09-25T16:59:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C081.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The head wobbles while it runs. It has been like this for a few weeks. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "head_wobble"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C082",
+   "timestamp": "2026-09-26T18:29:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C082.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The noise is more than before. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_noise"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.96,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C006",
+   "timestamp": "2026-09-27T10:10:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C006.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "My X500 is noisy, vibrating heavily and gets hot after a minute. I stopped using it.",
+   "symptoms": [
+    "increased_noise",
+    "increased_vibration",
+    "excessive_heat"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.97,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C083",
+   "timestamp": "2026-09-27T10:31:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C083.mp4"
+   ],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: bahut vibrate kar raha hai.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.96,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C084",
+   "timestamp": "2026-09-27T20:06:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "ask_question",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C084.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "How do I clean the blades properly?",
+   "symptoms": [
+    "cleaning_question"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C086",
+   "timestamp": "2026-09-28T09:28:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C086.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "It rattles when I switch it on. It has been like this for a few weeks.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.83,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C088",
+   "timestamp": "2026-09-28T14:29:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It is hard to clean properly and hair keeps getting trapped under the head. It started today.",
+   "symptoms": [
+    "difficult_to_clean",
+    "hair_buildup"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C085",
+   "timestamp": "2026-09-28T18:20:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C085.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "The vibration in my hand is strong now. It has been like this for a few weeks. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.91,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C087",
+   "timestamp": "2026-09-28T19:36:00Z",
+   "region": "United Kingdom",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: battery jaldi khatam ho jaati hai.",
+   "symptoms": [
+    "battery_drains_fast"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.92,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C090",
+   "timestamp": "2026-09-29T15:01:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It leaves many hairs behind and it is not cutting well anymore. It started this week. It got better after I cleaned it.",
+   "symptoms": [
+    "missed_hairs",
+    "reduced_cutting_quality"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.97,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C015",
+   "timestamp": "2026-09-29T17:20:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The shaver is hard to clean and hair keeps getting trapped under the head.",
+   "symptoms": [
+    "hair_buildup",
+    "difficult_to_clean"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.86,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": true
+  },
+  {
+   "complaint_id": "C089",
+   "timestamp": "2026-09-29T19:44:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C089.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "One blade unit does not sit flat and the head will not lock back. It started this week. It got better after I cleaned it.",
+   "symptoms": [
+    "blade_unit_not_seated",
+    "head_not_fitting"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C092",
+   "timestamp": "2026-09-30T08:58:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C092.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "It vibrates much more than before. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.85,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C093",
+   "timestamp": "2026-09-30T14:53:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C093.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The top part keeps coming loose. It got better after I cleaned it.",
+   "symptoms": [
+    "head_loose"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.83,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C094",
+   "timestamp": "2026-09-30T15:47:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C094.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "I saw a spark near the charging port. This happens while charging.",
+   "symptoms": [
+    "sparking"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.95,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C091",
+   "timestamp": "2026-09-30T17:14:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C091.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "There is a loud buzzing sound now. It started this week.",
+   "symptoms": [
+    "buzzing_sound"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.91,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C096",
+   "timestamp": "2026-10-01T13:30:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It pulls my beard and the shave is uneven around my jaw.",
+   "symptoms": [
+    "pulling_hair",
+    "uneven_shave"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "shaving_performance",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.8,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C095",
+   "timestamp": "2026-10-01T18:00:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: bahut vibrate kar raha hai.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C099",
+   "timestamp": "2026-10-02T14:02:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It is hard to clean properly. It has been like this for a few weeks.",
+   "symptoms": [
+    "difficult_to_clean"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.92,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C097",
+   "timestamp": "2026-10-02T15:31:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C097.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "Harsh grinding noise while shaving and something rattles while it runs. It started today. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "grinding_sound",
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "today",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.82,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C100",
+   "timestamp": "2026-10-02T17:03:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-04-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "video"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C100.mp4"
+   ],
+   "language": "en",
+   "raw_complaint": "It is not working right. It started this week.",
+   "symptoms": [
+    "unclear_description"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": null
+   },
+   "issue_type": "other_or_unclear",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.4,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C098",
+   "timestamp": "2026-10-02T17:42:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C098.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "There is a burnt smell. This happens while charging. It started this week.",
+   "symptoms": [
+    "burning_smell"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": true
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.96,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C104",
+   "timestamp": "2026-10-03T09:28:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "It does not turn on at all. It has been like this for a few weeks.",
+   "symptoms": [
+    "not_powering_on"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "power_and_charging",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.89,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C102",
+   "timestamp": "2026-10-03T10:34:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: bahut vibrate kar raha hai aur khad khad awaaz aa rahi hai, clean kiya phir bhi same hai.",
+   "symptoms": [
+    "increased_vibration",
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C101",
+   "timestamp": "2026-10-03T10:50:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: bahut awaaz kar raha hai aur bahut vibrate kar raha hai, clean kiya phir bhi same hai.",
+   "symptoms": [
+    "increased_noise",
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.9,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C103",
+   "timestamp": "2026-10-03T16:01:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The head wobbles while it runs. It has been like this for a few weeks. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "head_wobble"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.83,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C105",
+   "timestamp": "2026-10-04T21:45:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C105.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "It is making a loud sound now and the vibration is uneven and jerky. It started this week. I cleaned and refitted the head but it is still the same.",
+   "symptoms": [
+    "increased_noise",
+    "irregular_vibration"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "yes",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.95,
+   "counts_as_complaint": true,
+   "guidance_outcome": "not_helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C109",
+   "timestamp": "2026-10-05T08:27:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-05-B",
+   "user_intent": "ask_question",
+   "input_type": [
+    "text",
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C109.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "How do I clean the blades properly?",
+   "symptoms": [
+    "cleaning_question"
+   ],
+   "context": {
+    "onset": "unknown",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": null
+   },
+   "issue_type": "cleaning_and_maintenance",
+   "severity": "low",
+   "safety_flag": false,
+   "confidence": 0.82,
+   "counts_as_complaint": false,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C108",
+   "timestamp": "2026-10-05T16:42:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "voice"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C108.m4a"
+   ],
+   "language": "en",
+   "raw_complaint": "Water got into the charging port. It started this week.",
+   "symptoms": [
+    "water_ingress"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_applicable",
+    "during_charging": false
+   },
+   "issue_type": "heat_and_safety",
+   "severity": "high",
+   "safety_flag": true,
+   "confidence": 0.84,
+   "counts_as_complaint": true,
+   "guidance_outcome": "service_advised",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C106",
+   "timestamp": "2026-10-05T19:06:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-07-A",
+   "user_intent": "report_problem",
+   "input_type": [
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C106.m4a"
+   ],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: khad khad awaaz aa rahi hai.",
+   "symptoms": [
+    "rattling_sound"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C107",
+   "timestamp": "2026-10-05T19:21:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "photo"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C107.jpg"
+   ],
+   "language": "en",
+   "raw_complaint": "The head wobbles while it runs and the head wobbles while it runs. It started this week.",
+   "symptoms": [
+    "head_wobble",
+    "head_wobble"
+   ],
+   "context": {
+    "onset": "this_week",
+    "persists_after_cleaning": "not_tried",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.94,
+   "counts_as_complaint": true,
+   "guidance_outcome": "none",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C110",
+   "timestamp": "2026-10-06T15:38:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-D",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text",
+    "audio"
+   ],
+   "media_uri": [
+    "gs://productloop-evidence/x500/C110.m4a"
+   ],
+   "language": "hinglish",
+   "raw_complaint": "Mera X500: bahut vibrate kar raha hai.",
+   "symptoms": [
+    "increased_vibration"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "noise_and_vibration",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.85,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  },
+  {
+   "complaint_id": "C111",
+   "timestamp": "2026-10-06T17:07:00Z",
+   "region": "India",
+   "product_model": "X500",
+   "batch_reference": "B-2026-06-C",
+   "user_intent": "report_problem",
+   "input_type": [
+    "text"
+   ],
+   "media_uri": [],
+   "language": "en",
+   "raw_complaint": "The head does not click into place. It has been like this for a few weeks. It got better after I cleaned it.",
+   "symptoms": [
+    "head_not_fitting"
+   ],
+   "context": {
+    "onset": "longer",
+    "persists_after_cleaning": "no",
+    "during_charging": false
+   },
+   "issue_type": "shaving_head_and_fitment",
+   "severity": "medium",
+   "safety_flag": false,
+   "confidence": 0.93,
+   "counts_as_complaint": true,
+   "guidance_outcome": "helped",
+   "from_original_dataset": false
+  }
+ ]
+}

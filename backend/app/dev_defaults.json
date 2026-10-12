@@ -1,0 +1,13 @@
+{
+  "GOOGLE_CLOUD_PROJECT": "project-7eea7443-fac1-4364-9e6",
+  "GOOGLE_CLOUD_LOCATION": "us-central1",
+  "BQ_DATASET": "productloop",
+  "GCS_MEDIA_BUCKET": "",
+  "SESSION_BACKEND": "memory",
+  "GEMINI_MODEL_EXTRACT": "gemini-2.5-flash",
+  "GEMINI_MODEL_CHAT": "gemini-2.5-flash",
+  "GEMINI_MODEL_REASON": "gemini-2.5-flash-lite",
+  "EMBEDDING_MODEL": "gemini-embedding-001",
+  "PRODUCTLOOP_RAG_MODE": "live",
+  "PRODUCTLOOP_RAG_ALLOW_DRAFT": "1"
+}

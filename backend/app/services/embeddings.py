@@ -1,0 +1,1 @@
+"""Google embedding model calls."""

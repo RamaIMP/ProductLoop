@@ -1,0 +1,79 @@
+[
+ {
+  "batch_id": "B-2026-03-A",
+  "plant": "Plant A (fictional)",
+  "lines": [
+   "L1",
+   "L2"
+  ],
+  "production_start": "2026-03-03",
+  "production_end": "2026-03-20",
+  "units_produced": 13780
+ },
+ {
+  "batch_id": "B-2026-04-A",
+  "plant": "Plant A (fictional)",
+  "lines": [
+   "L1",
+   "L2"
+  ],
+  "production_start": "2026-04-06",
+  "production_end": "2026-04-24",
+  "units_produced": 15370
+ },
+ {
+  "batch_id": "B-2026-05-B",
+  "plant": "Plant A (fictional)",
+  "lines": [
+   "L1",
+   "L2"
+  ],
+  "production_start": "2026-05-04",
+  "production_end": "2026-05-22",
+  "units_produced": 6890
+ },
+ {
+  "batch_id": "B-2026-06-C",
+  "plant": "Plant A (fictional)",
+  "lines": [
+   "L1",
+   "L2"
+  ],
+  "production_start": "2026-06-01",
+  "production_end": "2026-06-19",
+  "units_produced": 9010
+ },
+ {
+  "batch_id": "B-2026-06-D",
+  "plant": "Plant A (fictional)",
+  "lines": [
+   "L1",
+   "L2"
+  ],
+  "production_start": "2026-06-22",
+  "production_end": "2026-07-03",
+  "units_produced": 7950
+ },
+ {
+  "batch_id": "B-2026-07-A",
+  "plant": "Plant A (fictional)",
+  "lines": [
+   "L1",
+   "L2"
+  ],
+  "production_start": "2026-07-06",
+  "production_end": "2026-07-24",
+  "units_produced": 5618
+ },
+ {
+  "batch_id": "B-2026-08-A",
+  "plant": "Plant A (fictional)",
+  "lines": [
+   "L1",
+   "L2"
+  ],
+  "production_start": "2026-08-03",
+  "production_end": "2026-08-21",
+  "units_produced": 4982
+ }
+]

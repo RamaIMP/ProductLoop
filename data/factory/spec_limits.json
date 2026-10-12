@@ -1,0 +1,11 @@
+{
+ "acoustic_db_max": 62.0,
+ "vibration_rms_mm_s_max": 2.0,
+ "lock_torque_nm": [
+  0.9,
+  1.3
+ ],
+ "surface_temp_c_5min_max": 38.0,
+ "battery_runtime_min_min": 45.0,
+ "note": "Fictional limits. Sound and temperature ranges follow Data_synthetic/04_operating_specs.md; torque and vibration limits are invented."
+}

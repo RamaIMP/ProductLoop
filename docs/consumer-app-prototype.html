@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProductLoop – Consumer App Prototype</title>
+<style>
+  :root{--brand:#1a73e8;--brand-d:#0b57d0;--ink:#1f2937;--mute:#6b7280;--line:#e5e7eb;--bg:#f3f4f6;--card:#fff;--ok:#16a34a;--bad:#dc2626;--chip:#e8f0fe}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0f172a;color:var(--ink);padding:28px 16px 40px}
+  h1{color:#fff;text-align:center;font-size:21px;font-weight:600}
+  .sub{color:#94a3b8;text-align:center;margin:6px 0 20px;font-size:13.5px}
+  .wrap{display:flex;gap:36px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+  .phone{width:370px;height:760px;background:#000;border-radius:46px;padding:10px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+  .screen{width:100%;height:100%;background:var(--bg);border-radius:38px;overflow:hidden;position:relative}
+  .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:92px;height:22px;background:#000;border-radius:14px;z-index:5}
+  .page{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--bg);transition:transform .28s ease}
+  #chat{transform:translateX(100%)}
+  .screen.inchat #home{transform:translateX(-30%)}
+  .screen.inchat #chat{transform:translateX(0)}
+  .status{height:34px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 24px;font-size:12px;font-weight:600}
+  .status.w{color:#fff;background:var(--brand-d)}.status.l{background:var(--card)}
+
+  /* home */
+  .hero{background:linear-gradient(160deg,var(--brand-d),var(--brand) 60%,#7c3aed);color:#fff;padding:10px 18px 56px;flex:none}
+  .top{display:flex;justify-content:space-between;align-items:center}
+  .brand{display:flex;gap:8px;align-items:center;font-weight:700;font-size:15px}
+  .logo{width:28px;height:28px;border-radius:9px;background:rgba(255,255,255,.2);display:grid;place-items:center}
+  .avatar{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center;font-size:13px;font-weight:700}
+  .hi{margin-top:16px;font-size:13px;opacity:.85}
+  .hero h2{font-size:21px;line-height:1.25;margin-top:2px;font-weight:650}
+  .scroll{flex:1;overflow:auto;padding:0 14px 12px;margin-top:-38px;display:flex;flex-direction:column;gap:12px}
+  .cta{background:var(--card);border-radius:18px;padding:14px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+  .cta .row{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+  .cta .pi{width:46px;height:46px;border-radius:12px;background:var(--chip);display:grid;place-items:center;font-size:24px}
+  .cta b{font-size:14px}.cta small{display:block;color:var(--mute);font-size:11.5px}
+  .ok{margin-left:auto;font-size:10.5px;background:#dcfce7;color:#166534;border-radius:10px;padding:3px 8px;font-weight:600}
+  .big{width:100%;border:0;background:var(--brand);color:#fff;padding:14px;border-radius:13px;font-weight:600;font-size:15px;cursor:pointer}
+  .big:hover{background:var(--brand-d)}
+  .hint{text-align:center;font-size:11.5px;color:var(--mute);margin-top:8px}
+  .sec{display:flex;justify-content:space-between;align-items:baseline}
+  .sec b{font-size:14px}.sec a{font-size:12px;color:var(--brand)}
+  .rcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 12px;display:flex;gap:10px;align-items:center}
+  .rcard .ic{width:36px;height:36px;border-radius:10px;background:var(--chip);display:grid;place-items:center;font-size:17px;flex:none}
+  .rcard b{font-size:13px}.rcard small{display:block;color:var(--mute);font-size:11px}
+  .st{margin-left:auto;font-size:10.5px;border-radius:10px;padding:3px 8px;font-weight:600;white-space:nowrap}
+  .s1{background:#fef3c7;color:#92400e}.s2{background:#dcfce7;color:#166534}
+  .svc{display:flex;gap:10px;align-items:center;background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:11px 12px;font-size:12.5px}
+  .svc span{font-size:22px}.svc small{display:block;color:#92400e;font-size:11px}
+  .nav{flex:none;display:flex;background:var(--card);border-top:1px solid var(--line);padding:8px 0 18px}
+  .nav div{flex:1;text-align:center;font-size:10.5px;color:var(--mute)}
+  .nav div span{display:block;font-size:19px;margin-bottom:1px}.nav .on{color:var(--brand);font-weight:600}
+
+  /* chat */
+  .appbar{flex:none;background:var(--card);padding:6px 12px 10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px}
+  .back{border:0;background:none;color:var(--brand);font-size:26px;line-height:1;cursor:pointer;padding:0 6px 3px 2px}
+  .appbar b{font-size:14.5px;display:block}.appbar small{color:var(--mute);font-size:11px}
+  .pc{margin-left:auto;font-size:11px;background:var(--chip);color:var(--brand-d);border-radius:10px;padding:3px 9px;font-weight:600}
+  .prog{height:3px;background:var(--line);flex:none}.prog i{display:block;height:3px;background:var(--brand);width:0;transition:width .4s}
+  #msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+  .bot,.me{max-width:85%;padding:9px 12px;border-radius:16px;font-size:13px;line-height:1.4;word-wrap:break-word;animation:pop .18s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .bot{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+  .me{background:var(--brand);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+  .att{align-self:flex-end;background:var(--brand-d);color:#fff;border-radius:16px;border-bottom-right-radius:4px;padding:8px 12px;display:flex;align-items:center;gap:8px;font-size:12px}
+  .wave{display:flex;gap:2px;align-items:center;height:16px}.wave i{width:3px;background:#bfdbfe;border-radius:2px;display:block}
+  .thumb{width:46px;height:34px;border-radius:6px;background:#93c5fd;display:grid;place-items:center;font-size:15px}
+  .qr{display:flex;gap:6px;flex-wrap:wrap;animation:pop .18s ease}
+  .qr button{border:1px solid var(--brand);color:var(--brand);background:var(--card);border-radius:16px;padding:7px 13px;font-size:12.6px;font-weight:500;cursor:pointer}
+  .qr button:hover{background:var(--brand);color:#fff}
+  .typing{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:4px;padding:10px 14px;display:flex;gap:4px}
+  .typing i{width:6px;height:6px;border-radius:50%;background:var(--mute);animation:b 1s infinite}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes b{0%,60%,100%{opacity:.3}30%{opacity:1}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;animation:pop .18s ease}
+  .card h4{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);margin-bottom:6px}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .kv:last-child{border:0}.kv span:first-child{color:var(--mute);flex:none}.kv span:last-child{text-align:right;font-weight:500}
+  .tag{display:inline-block;background:var(--chip);color:var(--brand-d);border-radius:10px;padding:1px 8px;font-size:11px;margin:1px 0 1px 3px}
+  .consent{font-size:11px;color:var(--mute);margin-top:8px;line-height:1.4}
+  .guide{border-color:#bbf7d0;background:#f0fdf4}.guide ol{padding-left:17px;font-size:12.8px;line-height:1.5}
+  .src{display:inline-block;font-size:10.5px;color:var(--brand-d);background:var(--chip);border-radius:8px;padding:2px 8px;margin-top:6px}
+  .stop{background:#fef2f2;border:2px solid var(--bad);border-radius:14px;padding:12px;animation:pop .18s ease}
+  .stop .t{display:flex;align-items:center;gap:8px;color:#991b1b;font-weight:700;font-size:14px}
+  .stop ul{margin:8px 0 6px 18px;font-size:12.8px;line-height:1.5;color:#7f1d1d}.stop .sm{font-size:11px;color:#991b1b}
+  .flag{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:8px 10px;font-size:12px;line-height:1.4;animation:pop .18s ease}
+  .done{text-align:center;font-size:12px;color:var(--ok);font-weight:600;animation:pop .18s ease}
+  .composer{flex:none;background:var(--card);border-top:1px solid var(--line);padding:8px 10px 16px}
+  .atts{display:flex;gap:6px;margin-bottom:7px}
+  .atts button{flex:1;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:5px 0;font-size:10.5px;color:var(--ink);cursor:pointer}
+  .atts button:hover{background:var(--chip)}
+  .atts svg{display:block;margin:0 auto 1px}
+  .input{display:flex;gap:8px;align-items:center}
+  .input input{flex:1;border:1px solid var(--line);border-radius:20px;padding:9px 13px;font-size:13px;background:var(--bg);outline:none;font-family:inherit}
+  .input input:focus{border-color:var(--brand);background:#fff}
+  .send{width:38px;height:38px;border:0;border-radius:50%;background:var(--brand);color:#fff;font-size:15px;cursor:pointer}
+
+  .side{max-width:310px;color:#cbd5e1;font-size:13px;line-height:1.55}
+  .side h3{color:#fff;font-size:15px;margin-bottom:8px}
+  .side ol{margin:0 0 14px 18px}.side li{margin-bottom:7px}.side b{color:#fff}
+  .side button{background:#1e293b;color:#fff;border:1px solid #334155;border-radius:9px;padding:8px 14px;font-size:13px;cursor:pointer}
+  .side button:hover{background:#334155}
+  .side p{font-size:12px;color:#94a3b8;margin-top:12px}
+</style>
+</head>
+<body>
+<h1>ProductLoop – Consumer App Prototype</h1>
+<p class="sub">Click "Report a problem". The next page is a chat. Type your own complaint or use the buttons.</p>
+
+<div class="wrap">
+<div class="phone"><div class="screen" id="screen">
+  <div class="notch"></div>
+
+  <!-- HOME -->
+  <div class="page" id="home">
+    <div class="status w"><span>9:41</span><span>5G ▮▮▮</span></div>
+    <div class="hero">
+      <div class="top"><div class="brand"><div class="logo">⟳</div>ProductLoop</div><div class="avatar">R</div></div>
+      <div class="hi">Good morning, Ramachandra</div>
+      <h2>Having a problem with your product?</h2>
+    </div>
+    <div class="scroll">
+      <div class="cta">
+        <div class="row"><div class="pi">🪒</div><div><b>X500 Electric Shaver</b><small>Purchased Aug 2026 · Warranty active</small></div><div class="ok">Registered</div></div>
+        <button class="big" id="report">Report a problem</button>
+        <div class="hint">Tell us what's wrong. We'll ask a few quick questions.</div>
+      </div>
+      <div class="sec"><b>Your reports</b><a>See all</a></div>
+      <div class="rcard"><div class="ic">🔊</div><div><b>Noise and vibration</b><small>#PL-0148 · Today, 9:32</small></div><div class="st s1">Awaiting feedback</div></div>
+      <div class="rcard"><div class="ic">🔋</div><div><b>Battery drains quickly</b><small>#PL-0097 · 12 Sep</small></div><div class="st s2">Resolved</div></div>
+      <div class="svc"><span>📍</span><div><b>Find an authorised service centre</b><small>3 centres near you</small></div></div>
+    </div>
+    <div class="nav"><div class="on"><span>🏠</span>Home</div><div><span>📦</span>Products</div><div><span>💬</span>Reports</div><div><span>📍</span>Service</div><div><span>👤</span>Profile</div></div>
+  </div>
+
+  <!-- CHAT -->
+  <div class="page" id="chat">
+    <div class="status l"><span>9:41</span><span>5G ▮▮▮</span></div>
+    <div class="appbar"><button class="back" id="back" aria-label="Back to home">‹</button><div><b>Report a problem</b><small id="sub">Usually 3 quick questions</small></div><span class="pc">X500</span></div>
+    <div class="prog"><i id="prog"></i></div>
+    <div id="msgs" aria-live="polite"></div>
+    <div class="composer">
+      <div class="atts">
+        <button data-a="Voice"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>Voice</button>
+        <button data-a="Photo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Photo</button>
+        <button data-a="Video"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 11 5-3v8l-5-3"/></svg>Video</button>
+        <button data-a="Sound"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round"><path d="M3 10v4M7 7v10M11 4v16M15 8v8M19 10v4"/></svg>Sound</button>
+      </div>
+      <form class="input" id="form" autocomplete="off"><input id="txt" placeholder="Describe the problem…" aria-label="Message"><button class="send" aria-label="Send">➤</button></form>
+    </div>
+  </div>
+</div></div>
+
+<div class="side">
+  <h3>Try this</h3>
+  <ol>
+    <li>Tap <b>Report a problem</b>.</li>
+    <li>Type something like <b>"very noisy and vibrates badly"</b> and/or tap Sound to attach a clip.</li>
+    <li>Answer the two quick questions with the buttons.</li>
+    <li>Check the summary, add a comment, then tap <b>Looks right</b>.</li>
+    <li>Read the guidance and say whether it helped.</li>
+  </ol>
+  <p style="margin:0 0 6px;color:#cbd5e1">Safety test: type <b>"it smells burnt when charging"</b>.</p>
+  <button id="restart">Restart</button>
+  <p>Prototype only. Nothing is saved or sent. The guidance text is paraphrased from the synthetic X500 knowledge base.</p>
+</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const screen=$('screen'),msgs=$('msgs'),txt=$('txt'),prog=$('prog');
+let step,data,busy;
+const BARS=[6,12,8,16,10,14,6,12,16,8,12,6];
+
+function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+function scrollEnd(){msgs.scrollTop=msgs.scrollHeight;}
+function put(node){msgs.append(node);scrollEnd();return node;}
+function me(t){put(el('div','me',t));}
+function bot(content,delay=550){
+  busy=true;
+  const ty=put(Object.assign(el('div','typing'),{innerHTML:'<i></i><i></i><i></i>'}));
+  return new Promise(res=>setTimeout(()=>{ty.remove();
+    const n=typeof content==='string'?el('div','bot',content):content;put(n);busy=false;res(n);},delay));
+}
+function replies(opts,fn){
+  const w=el('div','qr');
+  opts.forEach(o=>{const b=el('button',null,o);b.onclick=()=>{w.remove();fn(o);};w.append(b);});
+  put(w);
+}
+function setProg(p,label){prog.style.width=p+'%';if(label)$('sub').textContent=label;}
+
+function reset(){
+  msgs.replaceChildren();step=0;data={text:null,att:[],started:null,after:null,comment:null};busy=false;setProg(8,'Usually 3 quick questions');
+  bot("Hi Ramachandra. What's going on with your X500? Type it in your own words, or send a sound, photo or video.",300);
+}
+
+/* attachments */
+function attach(kind){
+  if(busy&&step!==0)return;
+  data.att.push(kind);
+  let n;
+  if(kind==='Voice'||kind==='Sound'){n=el('div','att');n.append('▶ ');const w=el('div','wave');BARS.forEach(v=>{const i=document.createElement('i');i.style.height=v+'px';w.append(i);});n.append(w,' 0:08');}
+  else{n=el('div','att');const t=el('div','thumb',kind==='Video'?'▶':'');if(kind==='Photo')t.textContent='▣';n.append(t,kind+' attached');}
+  put(n);
+  if(step===0&&data.text==null&&data.att.length===1) bot(`Got your ${kind.toLowerCase()}. In a few words, what's wrong?`);
+}
+
+/* safety */
+const SAFE=/burn|smoke|spark|shock|melt|too hot|very hot|overheat|smell/i;
+async function safety(){
+  step=9;setProg(100,'Safety check active');
+  const n=el('div','stop');
+  n.innerHTML='<div class="t"><svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2 1.5 21h21L12 2Z" fill="#dc2626"/><path d="M12 9v6M12 17.6v.2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>Stop using it now</div><ul><li>Unplug the charger and the shaver.</li><li>Do not charge or use it again.</li><li>Do not open or repair it.</li></ul><div class="sm">Burning smell, smoke, sparks and overheating are stop-use conditions in the X500 safety guide.</div>';
+  await bot(n,500);
+  await bot(el('div','flag','Your report is marked high priority for the quality team. You can add details if you are safe and ready.'),500);
+  replies(['Find service centre','Add details','Back to home'],o=>{me(o);
+    if(o==='Back to home')toHome();
+    else if(o==='Add details'){step=0;data.text=data.text||'';bot('Okay. Tell me what happened.');}
+    else bot('Showing 3 authorised service centres near you (prototype).');});
+}
+
+/* flow */
+async function onUser(t){
+  t=t.trim();if(!t||busy)return;
+  me(t);
+  if(step===0){
+    data.text=(data.text?data.text+' ':'')+t;
+    if(SAFE.test(data.text)) return safety();
+    step=1;setProg(35,'Question 1 of 2');
+    await bot('Thanks, that helps. Two quick questions.');
+    await bot(el('div','bot','When did it start?'),450);
+    replies(['Today','This week','Longer ago'],a=>onUser(a));
+  } else if(step===1){
+    data.started=t;step=2;setProg(55,'Question 2 of 2');
+    await bot(el('div','bot','Does it still happen after cleaning the shaving head?'));
+    replies(['Yes, still','No, it stopped',"Haven't tried"],a=>onUser(a));
+  } else if(step===2){
+    data.after=t;step=3;setProg(80,'Check your report');
+    await bot("Here's what I understood. Please correct anything that's wrong.");
+    await bot(summary(),500);
+    confirmChips();
+  } else if(step===4){
+    data.comment=t;step=3;await bot('Added to your report.',400);
+    await bot(summary(),400);confirmChips(true);
+  }
+}
+function symptoms(){
+  const s=data.text.toLowerCase(),out=[];
+  if(/nois|loud|sound|buzz|squeal|grind/.test(s))out.push('Louder noise');
+  if(/vibrat|shak/.test(s))out.push('Vibration');
+  if(/rattl/.test(s))out.push('Rattling');
+  if(/batter|charg|drain|power/.test(s))out.push('Battery or charging');
+  if(/head|loose|lock|fit|fell|off/.test(s)&&/head|loose|lock/.test(s))out.push('Head loose');
+  if(/pull|miss|hair|shave|cut/.test(s)&&!out.length)out.push('Shaving performance');
+  return out.length?out:['Other issue'];
+}
+function kind(){const s=symptoms();
+  if(s.includes('Battery or charging'))return 'battery';
+  if(s.includes('Head loose'))return 'head';
+  if(s.includes('Shaving performance'))return 'perf';
+  if(s.includes('Other issue'))return 'other';
+  return 'noise';}
+function summary(){
+  const c=el('div','card');c.append(el('h4',null,'Your report'));
+  const row=(k,v)=>{const r=el('div','kv');r.append(el('span',null,k));const sp=el('span');
+    if(Array.isArray(v))v.forEach(x=>sp.append(el('span','tag',x)));else sp.textContent=v;r.append(sp);c.append(r);};
+  row('Product','X500 Electric Shaver');row('Symptoms',symptoms());row('Started',data.started);row('After cleaning',data.after);
+  row('Evidence',data.att.length?data.att.join(', ')+' attached':'None');
+  if(data.comment)row('Your comment',data.comment);
+  c.append(el('div','consent','If you confirm, this report and any clip you attached are shared anonymously with the X500 quality team. No name or contact details are shared.'));
+  return c;
+}
+function confirmChips(hasComment){
+  replies(hasComment?['Looks right','Edit']:['Looks right','Add a comment','Edit'],async o=>{me(o);
+    if(o==='Add a comment'){step=4;await bot('Sure, type your comment below.');}
+    else if(o==='Edit'){step=0;data={text:null,att:[],started:null,after:null,comment:null};setProg(8,'Usually 3 quick questions');await bot('Okay, tell me again what is wrong.');}
+    else guidance();});
+}
+
+const G={
+ noise:{steps:['Switch off. Remove loose hair and residue from the shaving head and hair chamber with the cleaning brush.','Refit the shaving head until it is securely locked.','Restart and check whether the noise has reduced.'],src:'X500 Troubleshooting guide'},
+ head:{steps:['Switch off and remove the head. Check for trapped hair around the connection area.','Refit until it locks securely. Do not force it.','If it still will not lock, stop using it.'],src:'X500 Troubleshooting guide'},
+ battery:{steps:['Check that the charging connector is clean, dry and fully inserted.','Use only the approved X500 charger and try a different wall outlet.','Fully charge, then observe one complete use.'],src:'X500 Charging and battery guide'},
+ perf:{steps:['Clean the shaving head and remove trapped hair.','Make sure the head is fitted correctly.','Use gentle circular movements without pressing hard.'],src:'X500 Troubleshooting guide'},
+ other:{steps:['Switch the device off and check it is clean and the head is fitted correctly.','If the problem continues, contact an authorised service centre.'],src:'X500 Service guidance'}
+};
+async function guidance(){
+  step=5;setProg(100,'Report #PL-0149');
+  await bot(el('div','done','✓ Report #PL-0149 sent anonymously to the quality team'),500);
+  const g=G[kind()];
+  const c=el('div','card guide');c.append(el('h4',null,'Try this first'));
+  const ol=el('ol');g.steps.forEach(s=>ol.append(el('li',null,s)));c.append(ol,el('span','src','Source: '+g.src));
+  await bot(c,700);
+  if(/yes/i.test(data.after)) await bot('Since it still happens after cleaning, an authorised service inspection is the next step if this does not help. Stop using it if it gets hot or smells burnt.',700);
+  else await bot('If the problem comes back, or you notice heat or a burning smell, stop using it and contact an authorised service centre.',700);
+  replies(['That fixed it','Still not fixed'],async o=>{me(o);
+    if(o==='That fixed it'){await bot('Glad it helped. Your report is marked resolved. It still helps the team spot patterns early.');}
+    else{await bot("Sorry about that. I've flagged your report for follow-up. An authorised service centre can inspect it.");}
+    replies(['Find service centre','Back to home'],x=>{me(x);if(x==='Back to home')toHome();else bot('Showing 3 authorised service centres near you (prototype).');});});
+}
+
+function toChat(){screen.classList.add('inchat');reset();setTimeout(()=>txt.focus(),300);}
+function toHome(){screen.classList.remove('inchat');}
+$('report').onclick=toChat;$('back').onclick=toHome;
+$('restart').onclick=()=>{toHome();};
+$('form').addEventListener('submit',e=>{e.preventDefault();const v=txt.value;txt.value='';onUser(v);});
+document.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>attach(b.dataset.a));
+</script>
+</body>
+</html>

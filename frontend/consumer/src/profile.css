@@ -1,0 +1,10 @@
+.profile-content .report-card{overflow-wrap:anywhere}
+.profile-product{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.profile-product>span{background:var(--chip);padding:12px;border-radius:12px;font-size:24px}
+.profile-product h3{margin:0 0 4px}
+.profile-content dl{margin:0}
+.profile-field{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.5}
+.profile-field dt{color:var(--mute)}
+.profile-field dd{margin:0;text-align:right}
+.profile-note{font-size:12px;line-height:1.5;color:var(--mute)}
+
