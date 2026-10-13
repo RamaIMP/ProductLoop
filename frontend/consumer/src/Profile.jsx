@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { AccountActions } from './accountActions'
 import { ReportNav } from './Reports'
 import { profileDevice, profileFields } from './profileDetails'
 import './profile.css'
 
 export default function Profile({ api, userId, goHome, goReports, goServices, goProfile }) {
+  const account = useContext(AccountActions)
   const [units, setUnits] = useState(null)
   const [error, setError] = useState('')
   const [attempt, setAttempt] = useState(0)
@@ -20,7 +22,9 @@ export default function Profile({ api, userId, goHome, goReports, goServices, go
   return <div className="page reports-page">
     <div className="reports-top"><h2>Profile</h2><small>Your account and product details</small></div>
     <div className="reports-scroll profile-content">
-      <section className="report-card"><h3>Your Google account</h3><small>Account ID: {userId}</small></section>
+      <section className="report-card"><h3>Your Google account</h3><small>Account ID: {userId}</small>
+        {account && <><p className="profile-note">Your saved reports will be here when you sign in again with the same Google account.</p><button type="button" className="profile-signout" onClick={account.signOut}>Sign out</button></>}
+      </section>
       {error ? <p role="alert">{error} <button onClick={() => setAttempt(value => value + 1)}>Retry</button></p> :
         units === null ? <p role="status">Loading product details…</p> :
         <section className="report-card">
