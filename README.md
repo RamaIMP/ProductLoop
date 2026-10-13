@@ -453,7 +453,11 @@ Run the following in each frontend directory, substituting the deployed API or g
 
 Both frontends include a tracked `.env.production` containing the public Firebase web configuration for `project-7eea7443-fac1-4364-9e6`. GitHub-based production builds therefore do not depend on a developer's ignored `.env.local`. The initial POC shares one Firebase web app between consumer and staff; backend UID authorization still controls staff access. Override these variables in the build environment when targeting another Firebase project.
 
-The API URL is deliberately not pinned to the current IAM-private staging service: a browser Firebase token cannot invoke it directly. Supply `VITE_API_BASE_URL` for the approved gateway or auth-enabled API before publishing. This configuration change does not deploy either frontend or change Cloud Run access.
+The tracked production API URL points to the separate Firebase-authenticated `productloop-api-web` service, not the IAM-private staging service. That service is publicly reachable but verifies Firebase tokens on protected APIs and enforces the staff UID allowlist. The existing `productloop-api-staging` service remains private.
+
+The configured Hosting targets are the default project site for consumers and `productloop-staff-689720513766` for staff. To publish using an existing authorized Google Cloud login without granting the build account additional roles, build a clean checkout of the desired GitHub commit (`npm ci` and `npm run build` in each frontend), then run `python3 scripts/deploy_hosting.py`. The script uses a short-lived `gcloud auth print-access-token`, uploads only the two `dist` folders, and releases each site. It does not provision IAM, Firebase users, domains, or the backend. Python's HTTPS certificate trust must be configured; the local backend virtual environment includes certifi.
+
+The first website deployment uses Firestore namespace `productloop-web`, separate from staging. BigQuery syncing and analysis workers are disabled, and the staff allowlist starts empty. A successful interactive Google login, explicit staff approval, and end-to-end data/media tests remain release validation steps. Do not interpret publishing the login pages as completing those tests.
 
 ```bash
 npm install

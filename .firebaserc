@@ -1,0 +1,11 @@
+{
+  "projects": {"default": "project-7eea7443-fac1-4364-9e6"},
+  "targets": {
+    "project-7eea7443-fac1-4364-9e6": {
+      "hosting": {
+        "consumer": ["project-7eea7443-fac1-4364-9e6"],
+        "dashboard": ["productloop-staff-689720513766"]
+      }
+    }
+  }
+}
