@@ -20,7 +20,7 @@ export default function Profile({ api, userId, goHome, goReports, goServices, go
   return <div className="page reports-page">
     <div className="reports-top"><h2>Profile</h2><small>Your account and product details</small></div>
     <div className="reports-scroll profile-content">
-      <section className="report-card"><h3>Ramachandra</h3><small>Your account</small></section>
+      <section className="report-card"><h3>Your Google account</h3><small>Account ID: {userId}</small></section>
       {error ? <p role="alert">{error} <button onClick={() => setAttempt(value => value + 1)}>Retry</button></p> :
         units === null ? <p role="status">Loading product details…</p> :
         <section className="report-card">

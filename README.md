@@ -139,7 +139,7 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
 - API health: <http://127.0.0.1:8000/health>
-- Interactive API documentation: <http://127.0.0.1:8000/docs>
+- API documentation endpoints are disabled. Application routes require a Firebase ID token by default.
 
 ### 4. Start the consumer app
 
@@ -257,8 +257,8 @@ This is a hackathon proof of concept. X500 knowledge and seeded manufacturing/se
 
 Before public deployment:
 
-- Replace the fixed development identity with authenticated users and enforce ownership server-side.
-- Add manufacturer/staff authentication and authorization.
+- Configure and live-test the implemented Google/Firebase sign-in and server-side ownership checks with two consumer accounts.
+- Provision and test the explicit staff UID allowlist; a Google login alone must not grant dashboard access.
 - Replace or adapt local SQLite state and in-process workers for the chosen hosting architecture.
 - Configure production CORS, secrets, retention, monitoring and cloud permissions.
 - Review the knowledge base, safety handling and live end-to-end journeys with appropriate domain experts.
@@ -294,15 +294,33 @@ Provision and validate the BigQuery schemas, KB embeddings, private bucket and m
 
 ### 3. Complete the deployment blockers
 
-These are implementation tasks, not environment-variable switches:
+These include both implementation and deployment configuration:
 
-1. **User identity:** add Firebase Authentication to the consumer app. Send the signed-in user's ID token with requests and verify it in FastAPI. Derive ownership from the verified user ID, not the submitted `user_id`. See [Firebase ID-token verification](https://firebase.google.com/docs/auth/admin/verify-id-tokens).
-2. **Staff access:** protect dashboard and manufacturing endpoints with staff authorization. Replace the local-only IP guard with explicit authorization; do not simply remove it.
+1. **User identity:** Google/Firebase sign-in, backend token verification and ownership enforcement are implemented. Configure the provider and web apps, then verify a real browser login as described below. Legacy `user_id` request fields must equal the verified Firebase UID; forged IDs are rejected. See [Firebase ID-token verification](https://firebase.google.com/docs/auth/admin/verify-id-tokens).
+2. **Staff access:** all dashboard/manufacturing routes and persistence status now require an explicitly approved Firebase UID. Configure the server-side allowlist and test both permitted and denied users. Staff review authorship is taken from the verified identity.
 3. **Durable state:** enable and validate the optional Firestore adapter described below. Incidents, evidence metadata, registered units, events and the BigQuery outbox are supported. Existing SQLite data is not automatically migrated. BigQuery remains the analytics store; `SESSION_BACKEND=memory` is unrelated to this setting.
 4. **Durable background work:** move uploads/outbox delivery and analysis checks into retryable workers or jobs. Use Cloud Scheduler to trigger an authenticated analysis job, with deduplication and meaningful-change checks. Do not depend on a web process staying alive between requests.
 5. **Configuration:** replace hard-coded project references and add the actual frontend origins to CORS. Keep credentials out of frontend build variables.
 
 Cloud Run's writable container filesystem is ephemeral, and the server must bind to `0.0.0.0` using the provided `PORT`. Restricting instance count does not make local SQLite durable. See the [Cloud Run runtime contract](https://docs.cloud.google.com/run/docs/container-contract).
+
+#### Google sign-in and staff access
+
+This code is secure-by-default but does not provision Firebase or change Cloud Run IAM. Keep the existing staging service private until the new image and authorization checks have been reviewed and tested.
+
+1. In Firebase Console, select the **existing Google Cloud project** (add Firebase to that project if necessary; do not create a different project accidentally). In Authentication → Sign-in method, enable **Google**, choose a support email and save. Add each intended frontend hostname under Authentication → Settings → Authorized domains. Add `localhost` explicitly for local browser testing if it is absent. See [Google sign-in setup](https://firebase.google.com/docs/auth/web/google-signin).
+2. Register a Firebase web app for each frontend (or use the same web app configuration for this POC). Copy the `apiKey`, `authDomain`, `projectId` and `appId` values into each frontend's `.env.local`, using its `.env.example`. These are public web configuration, **not** service-account credentials. `VITE_API_BASE_URL` must point to the intended API. Rebuild after configuration changes.
+3. Configure backend `PRODUCTLOOP_AUTH_MODE=firebase`, `FIREBASE_PROJECT_ID` matching the web configuration, and `PRODUCTLOOP_CORS_ORIGINS` containing exact frontend origins (comma separated, no wildcard). Firebase Admin validates token signature, issuer, audience, expiry, revocation and disabled-account status. Only verified Google sign-ins are accepted. The runtime service account needs `firebaseauth.users.get` for the revocation/disabled-user lookup; the predefined **Firebase Authentication Viewer** role (`roles/firebaseauth.viewer`) includes it. A narrower custom role may be used. Do not grant Firebase Authentication Admin to the runtime. See [Firebase Authentication IAM](https://docs.cloud.google.com/iam/docs/roles-permissions/firebaseauth).
+4. Sign in once, then obtain the intended staff account's UID from Firebase Authentication → Users. Set `PRODUCTLOOP_STAFF_UIDS` to only the approved UIDs (comma separated) on the backend. Empty means **no staff access**. Do not use emails, email domains, frontend variables or user-submitted roles. The dashboard also displays the signed-in UID when access is denied. Removing a UID requires deploying the updated server configuration and removing traffic from old revisions; disabling the Firebase user or revoking their sessions is checked on subsequent API requests.
+5. Every API request sends a Firebase ID token in `Authorization: Bearer ...`. Both apps use tab-session persistence and clear application state on sign-out/account changes. Staff media is fetched with authorization into a temporary object URL, never via a bearer token in the URL. API responses are `private, no-store`. Ordinary consumers cannot read persistence diagnostics, dashboard data or manufacturing endpoints.
+
+**Cloud Run IAM is a separate layer:** a Firebase ID token does not satisfy Cloud Run's IAM invoker check. For browser deployment, explicitly choose either an authenticated gateway/proxy that invokes the private service, or a Cloud Run endpoint reachable at the network layer with these backend Firebase checks enforcing application access. The latter is Google's documented end-user-auth pattern; it is **not** permission to expose the current old image. No access policy is changed by this code. See [Cloud Run end-user authentication](https://docs.cloud.google.com/run/docs/tutorials/identity-platform). Frontend deployment and this ingress decision remain separate steps.
+
+For isolated local API fixtures only, explicitly set `PRODUCTLOOP_AUTH_MODE=development`, bind to `127.0.0.1`, use SQLite and disable BigQuery/analysis workers. Development mode is forbidden when `K_SERVICE` is set and rejects non-loopback clients. There is no automatic fallback if Firebase verification fails and no frontend demo-login bypass. Secure mode rejects Firebase Auth emulator configuration.
+
+Existing `demo-ramachandra`/synthetic records are **not migrated or claimed by email**. New Firebase UIDs begin with their own records. Any future account-data migration needs an explicit ownership review.
+
+Before publishing, verify in a real browser: Google sign-in/out; consumer A cannot read/update consumer B's reports or media; ordinary accounts get 403 on staff APIs; approved staff can view authorized evidence/export/review; disabled/revoked users are rejected; signing out clears cached data; both configured origins pass CORS. Automated tests mock token verification for route isolation and do not replace this live provider check. Rate limits, abuse protection and production monitoring are separate release-hardening work.
 
 #### Optional Firestore operational persistence
 

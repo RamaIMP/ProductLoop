@@ -1,4 +1,4 @@
-"""Local POC quality API. Add authenticated staff authorization before deployment."""
+"""Quality API; every route is mounted behind server-side staff authorization."""
 import logging
 from fastapi import APIRouter, HTTPException, Query, Request, Response, Depends
 from app.services.quality_complaints import list_complaints, complaint_detail, evidence_media
@@ -8,12 +8,10 @@ from app.services.signals import read_overview
 from typing import Literal
 from datetime import date
 
+from app.auth import staff_access
 router=APIRouter(prefix='/api/dashboard',tags=['quality'])
 
-def local_review_only(request: Request):
-    # POC only: sensitive drill-down must not be exposed until staff auth exists.
-    if request.client is None or request.client.host not in ('127.0.0.1','::1','testclient'):
-        raise HTTPException(403,'Staff authentication is required outside local development')
+local_review_only = staff_access  # Compatibility alias for existing routes.
 
 @router.get('/complaints',dependencies=[Depends(local_review_only)])
 def complaints(issue_type: str, start_date: date, end_date: date, region: str | None=None, page: int=Query(1,ge=1), page_size: int=Query(10,ge=1,le=50)):

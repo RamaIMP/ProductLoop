@@ -1,4 +1,5 @@
 fastapi
+firebase-admin
 uvicorn[standard]
 google-adk>=2,<3
 google-genai

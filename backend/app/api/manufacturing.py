@@ -10,6 +10,7 @@ from app.services import analysis_store
 from app.models.manufacturing import StrictModel
 from pydantic import Field
 from typing import Literal
+from app.auth import staff_access
 
 router=APIRouter(prefix='/api/manufacturing',tags=['manufacturing'],dependencies=[Depends(local_review_only)])
 
@@ -46,7 +47,8 @@ class SMEFeedback(StrictModel):
     reviewer_label: str=Field(default='Local SME (unverified)',min_length=1,max_length=100)
 
 @router.post('/analyses/{analysis_id}/reviews',status_code=201)
-def submit_review(analysis_id: str,feedback: SMEFeedback):
+def submit_review(analysis_id: str,feedback: SMEFeedback,user=Depends(staff_access)):
+    feedback.reviewer_label = user['uid']
     try:return analysis_store.review(analysis_id,**feedback.model_dump())
     except LookupError:raise HTTPException(404,'Analysis not found')
     except ValueError:raise HTTPException(422,'Invalid hypothesis for this analysis version')

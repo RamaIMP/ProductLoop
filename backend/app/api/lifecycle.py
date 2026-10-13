@@ -1,8 +1,9 @@
-"""Explicit lifecycle controls; user_id is a development identity, not authentication."""
+"""Lifecycle controls; the mounted consumer dependency binds user_id to the verified UID."""
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 from uuid import UUID
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from app.auth import staff_access
 from pydantic import BaseModel, Field
 from app.services.lifecycle import get_store, now
 from app.services import bigquery as sync
@@ -68,7 +69,7 @@ def abandon(complaint_id: str, user_id: str):
         record = get_store().save_report({**record,'status':'abandoned'},'draft_abandoned')
     return record
 
-@router.get('/persistence/status')
+@router.get('/persistence/status', dependencies=[Depends(staff_access)])
 def persistence_status():
     return sync.sync_status()
 

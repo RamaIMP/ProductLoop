@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react'
+import { authenticatedFetch as fetch } from './auth.jsx'
 import ReviewWindow from './ReviewWindow.jsx'
 import {downloadCsv} from './export.js'
 import {cachedReview,readReview} from './reviewCache.js'
@@ -12,8 +13,18 @@ function useRead(path){
 }
 function Media({complaintId,evidence}){
   const [show,setShow]=useState(false),[error,setError]=useState('')
-  const url=API+'/api/dashboard/complaints/'+encodeURIComponent(complaintId)+'/evidence/'+encodeURIComponent(evidence.evidence_id)+'/media'
-  return <div className="evidence-item"><b>{label(evidence.kind)} · {evidence.evidence_id}</b><p>{evidence.extracted_summary||'No extracted findings recorded.'}</p><p className="notice">Extraction: {label(evidence.extraction_status)} · Model: {label(evidence.extraction_model)}</p>{!show?<button className="ghost" onClick={()=>setShow(true)}>Open private media</button>:<><button className="ghost" onClick={()=>{setShow(false);setError('')}}>Close media</button>{error?<p role="alert">{error}</p>:evidence.content_type?.startsWith('image/')?<img src={url} alt="Complaint evidence" onError={()=>setError('Preview unavailable. Check storage access or file format.')}/>:evidence.content_type?.startsWith('audio/')?<audio controls src={url} onError={()=>setError('Audio preview unavailable.')}/>:evidence.content_type?.startsWith('video/')?<video controls src={url} onError={()=>setError('Video preview unavailable.')}/>:<p>Preview is unavailable for this file type.</p>}</>}</div>
+  const [url,setUrl]=useState('')
+  useEffect(()=>{
+    if(!show)return
+    const controller=new AbortController();let objectUrl;let active=true
+    setError('');setUrl('')
+    fetch(API+'/api/dashboard/complaints/'+encodeURIComponent(complaintId)+'/evidence/'+encodeURIComponent(evidence.evidence_id)+'/media',{signal:controller.signal})
+      .then(async response=>{if(!response.ok)throw Error('Media access denied or unavailable');return response.blob()})
+      .then(blob=>{if(active){objectUrl=URL.createObjectURL(blob);setUrl(objectUrl)}})
+      .catch(err=>{if(active&&err.name!=='AbortError')setError(err.message)})
+    return()=>{active=false;controller.abort();if(objectUrl)URL.revokeObjectURL(objectUrl)}
+  },[show,complaintId,evidence.evidence_id])
+  return <div className="evidence-item"><b>{label(evidence.kind)} · {evidence.evidence_id}</b><p>{evidence.extracted_summary||'No extracted findings recorded.'}</p><p className="notice">Extraction: {label(evidence.extraction_status)} · Model: {label(evidence.extraction_model)}</p>{!show?<button className="ghost" onClick={()=>setShow(true)}>Open private media</button>:<><button className="ghost" onClick={()=>{setShow(false);setError('')}}>Close media</button>{error?<p role="alert">{error}</p>:!url?<p role="status">Loading private media…</p>:evidence.content_type?.startsWith('image/')?<img src={url} alt="Complaint evidence" onError={()=>setError('Preview unavailable. Check storage access or file format.')}/>:evidence.content_type?.startsWith('audio/')?<audio controls src={url} onError={()=>setError('Audio preview unavailable.')}/>:evidence.content_type?.startsWith('video/')?<video controls src={url} onError={()=>setError('Video preview unavailable.')}/>:<p>Preview is unavailable for this file type.</p>}</>}</div>
 }
 function Detail({id,onClose}){
   const {data,loading,error}=useRead('/api/dashboard/complaints/'+encodeURIComponent(id))

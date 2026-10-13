@@ -23,7 +23,7 @@ for (const unclear of [false, true]) test(unclear ? 'unclear upload waits for us
     ensureIncident: async () => {}, FormData: class { append() {} },
     USER: 'isolated-test', incidentId: { current: 'isolated' }, crypto,
     draft: { message: '' }, text: '', extraction: null, debugEnabled: false, API: '',
-    fetch: async () => {
+    authenticatedFetch: async () => {
       calls++
       assert.equal(label, 'Analysing your media…')
       return { ok: true, status: 200, json: async () => data }

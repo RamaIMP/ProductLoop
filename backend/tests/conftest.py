@@ -12,6 +12,7 @@ DATA = Path(__file__).resolve().parents[2] / "data"
 
 @pytest.fixture(autouse=True)
 def isolated_lifecycle(monkeypatch):
+    monkeypatch.setenv('PRODUCTLOOP_AUTH_MODE', 'development')
     from app.services import lifecycle
     store = lifecycle.LifecycleStore(':memory:')
     monkeypatch.setattr(lifecycle, '_store', store)

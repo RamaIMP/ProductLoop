@@ -12,12 +12,13 @@ import { prepareServiceReport } from './serviceReport.js'
 import Profile from './Profile'
 import { ReportCard, ReportNav, ReportsPage, ReportDetails } from './Reports'
 import { newestReports } from './reportPresentation'
+import { authenticatedFetch } from './auth.jsx'
 
 const API = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
-const USER = 'demo-ramachandra'
 const WELCOME = 'Welcome to ProductLoop X500 support! How can I help you today? Feel free to describe your issue or send a picture or video.'
 
-export default function App() {
+export default function App({ user }) {
+  const USER = user.uid
   const [page, setPage] = useState('home')
   const [serviceReturnPage, setServiceReturnPage] = useState('home')
   const [stage, setStage] = useState('initial')
@@ -48,7 +49,7 @@ export default function App() {
     const timer = setTimeout(async () => {
       for (const upload of Object.values(uploads).filter(item => item.storage_status === 'pending')) {
         try {
-          const response = await fetch(`${API}/api/media/${upload.evidence_id}/status?user_id=${encodeURIComponent(USER)}`)
+          const response = await authenticatedFetch(`${API}/api/media/${upload.evidence_id}/status?user_id=${encodeURIComponent(USER)}`)
           const result = await response.json()
           if (!response.ok) throw new Error(result.detail || 'Storage status unavailable')
           if (stopped) return
@@ -68,7 +69,7 @@ export default function App() {
   }, [messages, stage])
   const add = (...items) => setMessages(previous => [...previous, ...items])
   const api = async (path, options = {}) => {
-    const response = await fetch(`${API}${path}`, { headers: { 'Content-Type': 'application/json' }, ...options })
+    const response = await authenticatedFetch(`${API}${path}`, options)
     const output = await response.json()
     if (!response.ok) throw new Error(output.detail || 'Request failed')
     return output
@@ -185,7 +186,7 @@ export default function App() {
       form.append('evidence_id', `ev_${crypto.randomUUID().replaceAll('-', '')}`)
       form.append('message', [draft.message, text].filter(Boolean).join('\n'))
       form.append('prior_symptoms_json', JSON.stringify(extraction?.symptoms || []))
-      const response = await fetch(`${API}/api/media/extract`, { method: 'POST', body: form })
+      const response = await authenticatedFetch(`${API}/api/media/extract`, { method: 'POST', body: form })
       const data = await response.json()
       if (!response.ok) throw new Error(data.detail || 'Media analysis failed')
       if (data.storage) setUploads(previous => ({ ...previous, [data.evidence_id]: { ...data.storage, filename: file.name } }))
@@ -260,7 +261,7 @@ function Status({ light = false }) {
 }
 function Home({ goProfile, busy, goChat, goServices, goReports, openReport, reports, loading, error, retry }) {
   return <div className="page home-page"><Status />
-    <div className="hero"><div className="top"><div className="brand"><span className="logo">⟳</span>ProductLoop</div></div><p>Welcome, Ramachandra</p><h2>Having a problem with your product?</h2></div>
+    <div className="hero"><div className="top"><div className="brand"><span className="logo">⟳</span>ProductLoop</div></div><p>Welcome, {user.name || 'there'}</p><h2>Having a problem with your product?</h2></div>
     <div className="home-scroll">
       <div className="cta"><div className="product-row"><span className="product-icon">🪒</span><div><b>X500 Electric Shaver</b><small>Product support</small></div></div><button className="big" disabled={busy} onClick={goChat}>Report a problem</button><p>Tell us what's wrong. We'll ask a few quick questions.</p></div>
       <div className="section-title"><b>My reports</b><button type="button" onClick={goReports}>View all ({reports.length})</button></div>

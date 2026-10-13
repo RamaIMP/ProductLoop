@@ -1,7 +1,7 @@
-"""Development API for the consumer report journey.
+"""Consumer journey API; mounted with verified identity/ownership dependencies.
 
-Reports currently use an in-memory store. Gemini handles extraction and
-conversation, while retrieval remains a development adapter.
+Reports use the configured lifecycle store. Gemini handles extraction and
+conversation; retrieval mode is separately configured.
 """
 from datetime import datetime, timezone, timedelta
 from zoneinfo import ZoneInfo
