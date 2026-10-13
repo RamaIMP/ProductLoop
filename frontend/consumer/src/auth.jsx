@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app'
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onIdTokenChanged, setPersistence, browserSessionPersistence } from 'firebase/auth'
 import { createSession } from '../../auth/session.js'
 import { createAuthGate } from '../../auth/Gate.jsx'
+import ConsumerLogin from './ConsumerLogin.jsx'
 
 const env = import.meta.env
 const config = { apiKey: env.VITE_FIREBASE_API_KEY, authDomain: env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -20,4 +21,4 @@ export const AuthGate = createAuthGate(React, { configured, session,
     provider.setCustomParameters({ prompt: 'select_account' })
     return signInWithPopup(firebase, provider)
   },
-  logout: () => signOut(firebase) })
+  logout: () => signOut(firebase) }, ConsumerLogin)

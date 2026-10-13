@@ -1,0 +1,24 @@
+.consumer-login .login-page{overflow-y:auto;scrollbar-width:none}
+.consumer-login .login-page::-webkit-scrollbar{display:none}
+.consumer-login .login-page>.status,.consumer-login .login-hero,.consumer-login .login-footer{flex-shrink:0}
+.consumer-login.stage-wrap{display:grid;grid-template-columns:1fr;justify-items:center}
+.consumer-login .google-login{font-family:inherit;font-size:14px;font-weight:600;line-height:1.4}
+.consumer-login .login-hero{padding-bottom:52px}
+.consumer-login .login-hero h1{font-size:28px;line-height:1.2;margin:6px 0 0;letter-spacing:-.6px}
+.consumer-login .login-content{position:relative;margin-top:-38px;padding:0 14px 14px;flex:1 0 auto}
+.consumer-login .login-card{padding:18px 14px}
+.consumer-login .login-card h2{font-size:19px;margin:14px 0 8px;letter-spacing:-.3px}
+.consumer-login .login-intro{text-align:left;font-size:13px;line-height:1.6;margin:0 0 20px}
+.consumer-login .google-login{display:flex;align-items:center;justify-content:center;gap:12px;min-height:48px;width:100%;border:1px solid #c8d2e1;border-radius:13px;background:#fff;color:#1f2937;font:600 14px/1.4 inherit;cursor:pointer;padding:12px}
+.consumer-login .google-login:disabled{opacity:.65;cursor:wait}
+.consumer-login .google-login:hover:not(:disabled){background:#f1f6ff;border-color:var(--brand)}
+.consumer-login .google-login:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.consumer-login .google-letter{font:bold 22px Arial,sans-serif;color:#4285f4}
+.consumer-login .login-card .login-secure{font-size:11px;margin-top:14px;color:#536174}
+.consumer-login .login-card .login-error{color:#991b1b;background:#fef2f2;border-radius:10px;padding:10px;line-height:1.5;text-align:left;font-size:12px;overflow-wrap:anywhere}
+.consumer-login .login-card .login-notice{text-align:left;background:#eff4fb;color:#334155;border-radius:10px;padding:14px;line-height:1.5;font-size:13px}
+.consumer-login .login-benefits{padding:16px 8px 0}
+.consumer-login .login-benefits h2{font-size:16px;margin:0 0 10px}
+.consumer-login .login-benefits p{font-size:12px;color:#536174;margin:8px 0;line-height:1.5}
+.consumer-login .login-footer{text-align:center;padding:12px;color:#536174;font-size:11px;border-top:1px solid var(--line);background:#fff}
+@media(max-width:400px){.consumer-login>div{width:100%}.consumer-login .prototype-note{display:none}.consumer-login .phone{height:100dvh}}

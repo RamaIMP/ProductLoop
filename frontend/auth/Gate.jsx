@@ -1,5 +1,5 @@
 // React is injected so both independent Vite apps use their own React instance.
-export function createAuthGate(React, auth) {
+export function createAuthGate(React, auth, ConsumerLogin = null) {
   const { useEffect, useState } = React
   return function AuthGate({ children, staff = false, onSessionChange = () => {} }) {
     const [state, setState] = useState({ loading: true })
@@ -36,6 +36,7 @@ export function createAuthGate(React, auth) {
       try { await auth.logout() } catch { setError('Sign-out could not complete. Please retry.'); setRetry(n => n + 1) }
     }
     const profile = state.profile
+    if (!staff && ConsumerLogin && (!auth.configured || state.loading || !profile)) return <ConsumerLogin configured={auth.configured} loading={state.loading} busy={busy} error={error} onLogin={login} />
     const style = { maxWidth: 540, margin: '8vh auto', padding: 28, fontFamily: 'system-ui', border: '1px solid #ccd5df', borderRadius: 16, background: '#fff', color: '#17243b' }
     if (!auth.configured) return <main style={style}><h1>ProductLoop {staff ? 'Staff' : 'Support'}</h1><p>Google sign-in is not configured yet. Add the Firebase web configuration and rebuild this app.</p></main>
     if (state.loading) return <main style={style} role="status">Verifying your session…</main>

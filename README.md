@@ -459,7 +459,13 @@ The tracked production API URL points to the separate Firebase-authenticated `pr
 
 The configured Hosting targets are the default project site for consumers and `productloop-staff-689720513766` for staff. To publish using an existing authorized Google Cloud login without granting the build account additional roles, build a clean checkout of the desired GitHub commit (`npm ci` and `npm run build` in each frontend), then run `python3 scripts/deploy_hosting.py`. The script uses a short-lived `gcloud auth print-access-token`, uploads only the two `dist` folders, and releases each site. It does not provision IAM, Firebase users, domains, or the backend. Python's HTTPS certificate trust must be configured; the local backend virtual environment includes certifi.
 
-The first website deployment uses Firestore namespace `productloop-web`, separate from staging. BigQuery syncing and analysis workers are disabled, and the staff allowlist starts empty. A successful interactive Google login, explicit staff approval, and end-to-end data/media tests remain release validation steps. Do not interpret publishing the login pages as completing those tests.
+The website deployment uses Firestore namespace `productloop-web`, separate from staging. BigQuery syncing is enabled with `PRODUCTLOOP_BIGQUERY_ENABLED=1` into the existing `productloop` dataset; analysis workers remain disabled. The existing outbox sync includes saved drafts, evidence metadata, and lifecycle events as well as submitted complaints. Enabling it drains previously queued records. Keep the API at one instance for the current in-process worker design. Authentication and end-to-end data/media tests remain release validation steps; publishing the login pages alone does not complete those tests.
+
+To reapply this website-only sync configuration (leave private staging unchanged):
+
+```bash
+gcloud run services update productloop-api-web --project project-7eea7443-fac1-4364-9e6 --region us-central1 --update-env-vars PRODUCTLOOP_BIGQUERY_ENABLED=1 --max-instances 1
+```
 
 ```bash
 npm install
