@@ -1,6 +1,8 @@
 .env
 .env.*
 !.env.example
+!frontend/consumer/.env.production
+!frontend/dashboard/.env.production
 service-account*.json
 *-key.json
 application_default_credentials.json

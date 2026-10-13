@@ -451,6 +451,10 @@ Hosting targets keep the two frontend deployments separate. See [Firebase deploy
 
 Run the following in each frontend directory, substituting the deployed API or gateway URL:
 
+Both frontends include a tracked `.env.production` containing the public Firebase web configuration for `project-7eea7443-fac1-4364-9e6`. GitHub-based production builds therefore do not depend on a developer's ignored `.env.local`. The initial POC shares one Firebase web app between consumer and staff; backend UID authorization still controls staff access. Override these variables in the build environment when targeting another Firebase project.
+
+The API URL is deliberately not pinned to the current IAM-private staging service: a browser Firebase token cannot invoke it directly. Supply `VITE_API_BASE_URL` for the approved gateway or auth-enabled API before publishing. This configuration change does not deploy either frontend or change Cloud Run access.
+
 ```bash
 npm install
 VITE_API_BASE_URL=https://YOUR_API_HOST npm run build
