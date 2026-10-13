@@ -69,8 +69,12 @@ async def identity(request: Request):
     if claims.get('firebase', {}).get('sign_in_provider') != 'google.com':
         raise HTTPException(401, 'Sign in using Google')
     staff_uids = {s.strip() for s in os.getenv('PRODUCTLOOP_STAFF_UIDS', '').split(',') if s.strip()}
+    # Explicit demo-only opt-in; token, provider, verification and revocation
+    # checks above still apply. Never accept this setting from client claims.
+    demo_staff = os.getenv('PRODUCTLOOP_DEMO_STAFF_ACCESS', '0') == '1'
     return {'uid': uid, 'email': claims.get('email', ''), 'name': claims.get('name', ''),
-            'staff': uid in staff_uids, 'development': False}
+            'staff': demo_staff or uid in staff_uids, 'demo_staff_access': demo_staff,
+            'development': False}
 
 
 async def staff_access(user=Depends(identity)):

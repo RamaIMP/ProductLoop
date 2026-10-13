@@ -306,6 +306,8 @@ Cloud Run's writable container filesystem is ephemeral, and the server must bind
 
 #### Google sign-in and staff access
 
+**Demo-only staff access:** `PRODUCTLOOP_DEMO_STAFF_ACCESS=1` lets every authenticated, email-verified Google user access staff APIs and actions. This is intentionally broader than the UID allowlist and must not be used with confidential/production data. Missing, invalid, revoked, disabled and non-Google sessions remain rejected. The default is `0`. Enable only on the dedicated demo website API; restore `0` and redeploy (removing traffic from old revisions) to require `PRODUCTLOOP_STAFF_UIDS` again. The private staging service is not opted into this setting.
+
 This code is secure-by-default but does not provision Firebase or change Cloud Run IAM. Keep the existing staging service private until the new image and authorization checks have been reviewed and tested.
 
 1. In Firebase Console, select the **existing Google Cloud project** (add Firebase to that project if necessary; do not create a different project accidentally). In Authentication → Sign-in method, enable **Google**, choose a support email and save. Add each intended frontend hostname under Authentication → Settings → Authorized domains. Add `localhost` explicitly for local browser testing if it is absent. See [Google sign-in setup](https://firebase.google.com/docs/auth/web/google-signin).

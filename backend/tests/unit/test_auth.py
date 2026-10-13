@@ -10,6 +10,7 @@ from app.services.lifecycle import get_store
 def signed_in(monkeypatch):
     monkeypatch.setenv('PRODUCTLOOP_AUTH_MODE', 'firebase')
     monkeypatch.delenv('PRODUCTLOOP_STAFF_UIDS', raising=False)
+    monkeypatch.delenv('PRODUCTLOOP_DEMO_STAFF_ACCESS', raising=False)
     claims = {'uid': 'alice', 'sub': 'alice', 'email_verified': True,
               'email': 'alice@example.com', 'firebase': {'sign_in_provider': 'google.com'}}
     monkeypatch.setattr(auth, 'verify_token', lambda token: claims if token == 'valid' else (_ for _ in ()).throw(ValueError('invalid')))
@@ -48,6 +49,38 @@ def test_verified_profile_and_staff_allowlist(signed_in, monkeypatch):
 def test_consumer_cannot_access_staff_routes(signed_in, path):
     c, _ = signed_in
     assert c.get(path).status_code == 403
+
+
+def test_demo_staff_access_requires_verified_google_session(signed_in, monkeypatch):
+    c, claims = signed_in
+    monkeypatch.setenv('PRODUCTLOOP_DEMO_STAFF_ACCESS', '1')
+    assert c.get('/api/auth/me').json()['staff'] is True
+    assert c.get('/api/auth/me').json()['demo_staff_access'] is True
+    assert c.get('/api/persistence/status').status_code == 200
+    claims['uid'] = claims['sub'] = 'another-google-user'
+    assert c.get('/api/persistence/status').status_code == 200
+    assert TestClient(app).get('/api/persistence/status').status_code == 401
+    assert c.get('/api/persistence/status', headers={'Authorization': 'Bearer forged'}).status_code == 401
+    claims['email_verified'] = False
+    assert c.get('/api/persistence/status').status_code == 401
+    claims['email_verified'] = True
+    claims['firebase']['sign_in_provider'] = 'password'
+    assert c.get('/api/persistence/status').status_code == 401
+
+
+@pytest.mark.parametrize('value', ['0', 'false', 'true', ''])
+def test_demo_staff_flag_requires_explicit_one(signed_in, monkeypatch, value):
+    c, _ = signed_in
+    monkeypatch.setenv('PRODUCTLOOP_DEMO_STAFF_ACCESS', value)
+    assert c.get('/api/persistence/status').status_code == 403
+
+
+def test_demo_staff_can_be_disabled(signed_in, monkeypatch):
+    c, _ = signed_in
+    monkeypatch.setenv('PRODUCTLOOP_DEMO_STAFF_ACCESS', '1')
+    assert c.get('/api/persistence/status').status_code == 200
+    monkeypatch.setenv('PRODUCTLOOP_DEMO_STAFF_ACCESS', '0')
+    assert c.get('/api/persistence/status').status_code == 403
 
 
 def test_identity_spoofing_rejected(signed_in):
