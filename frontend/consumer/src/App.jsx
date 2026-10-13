@@ -15,6 +15,7 @@ import { newestReports } from './reportPresentation'
 import { authenticatedFetch } from './auth.jsx'
 
 const API = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+const SHOW_USER_GUIDE = import.meta.env.VITE_SHOW_USER_GUIDE === '1'
 const WELCOME = 'Welcome to ProductLoop X500 support! How can I help you today? Feel free to describe your issue or send a picture or video.'
 
 export default function App({ user }) {
@@ -238,7 +239,7 @@ export default function App({ user }) {
     'Create ticket': 'create_ticket', 'Add more details': 'add_details',
   }[choice] || 'message')
   const title = report ? `Report ${report.report_id}` : stage === 'safety' ? 'Safety check active' : stage === 'confirm' ? 'Check your report' : 'Report a problem'
-  return <div className="stage-wrap"><div className="phone"><div className="screen"><div className="notch" />
+  return <div className={`stage-wrap${SHOW_USER_GUIDE ? '' : ' guide-hidden'}`}><div className="phone"><div className="screen"><div className="notch" />
     {page === 'home' ? <Home user={user} goProfile={goProfile} busy={busy} goChat={goChat} goServices={goServices} goReports={goReports} openReport={openReport} reports={reports} loading={reportsLoading} error={reportsError} retry={loadReports} /> : page === 'reports' ? <ReportsPage goProfile={goProfile} reports={reports} loading={reportsLoading} error={reportsError} retry={loadReports} openReport={openReport} goHome={goHome} goReports={loadReports} goServices={goServices} /> : page === 'profile' ? <Profile api={api} userId={USER} goHome={goHome} goReports={goReports} goServices={goServices} goProfile={goProfile} /> : page === 'report-detail' ? <ReportDetails reportId={selectedReportId} userId={USER} api={api} back={() => setPage(reportReturnPage)} goHome={goHome} /> : page === 'services' ? <div className="page service-page"><Status light /><div className="appbar"><button className="back" aria-label="Back to previous page" onClick={() => setPage(serviceReturnPage)}>‹</button><div><b>Nearby service centres</b><small>Service centre finder</small></div><HomeButton onClick={requestHome} /></div><div className="service-page-content">{leaveHomePrompt && <LeaveHome stay={() => setLeaveHomePrompt(false)} discard={discardAndGoHome} />}<Services api={api} userId={USER} reportId={serviceReturnPage === 'chat' ? report?.report_id : undefined} done={goHome} /></div></div> : <div className="page chat-page"><Status light /><div className="appbar"><button className="back" onClick={requestHome}>‹</button><div><b>{title}</b><small>{report ? 'Report submitted' : stage === 'confirm' ? 'Draft saved · confirm to submit' : 'Tell us in your own words'}</small></div><HomeButton onClick={requestHome} /></div><div className="prog"><i style={{ width: stage === 'confirm' ? '80%' : report ? '100%' : stage === 'followup' ? '55%' : '30%' }} /></div>
       <div className="messages">{messages.map((message, index) => <Bubble key={index} message={message} storageStatus={uploads[message.evidenceId]?.storage_status} />)}
         {leaveHomePrompt && <LeaveHome stay={() => setLeaveHomePrompt(false)} discard={discardAndGoHome} />}
@@ -250,7 +251,7 @@ export default function App({ user }) {
         {stage === 'done' && report?.status === 'ticket_raised' && !report.callback && <><div className="exit-actions"><button disabled={busy} onClick={openCallback}>☎️ {report.callback ? 'Callback requested' : 'Request a callback'}</button><button onClick={goServices}>📍 Find service centre</button><a target="_blank" rel="noreferrer" href={`https://mail.google.com/mail/?view=cm&fs=1&to=support%40productloop.demo&su=${encodeURIComponent(`ProductLoop ${report?.ticket_id || report?.report_id || ''}`)}`}>✉️ Email support</a></div>{callbackOpen && <CallbackSlots slots={callbackSlots} choose={requestCallback} />}</>}
         {busy && <div role="status" className="message bot">{busyMessage}</div>}<div ref={end} /></div>{Object.values(uploads).filter(upload => ['failed', 'unknown'].includes(upload.storage_status) && !messages.some(message => message.evidenceId === upload.evidence_id)).map(upload => <p role="status" key={upload.evidence_id}>{upload.filename}: {upload.storage_status === 'uploaded' ? 'File saved' : upload.storage_status === 'pending' ? 'Saving file in background…' : upload.error || 'File was not saved. Please retry upload.'}</p>)}{error && <p className="error">{error}</p>}<Composer text={text} setText={setText} send={send} attach={attach} disabled={busy} />
     </div>}</div></div><p className="prototype-note">ProductLoop · X500 support</p>
-      <UserGuide />
+      {SHOW_USER_GUIDE && <UserGuide />}
     </div>
 }
 
