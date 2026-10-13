@@ -80,7 +80,9 @@ class ConversationRequest(IntakeRequest):
                    'resolved', 'not_resolved', 'create_ticket', 'add_details', 'edit_report', 'onset_selected'] = 'message'
 
 
-_REPORTS: dict[str, dict] = {}
+def _saved_report(report_id):
+    report = get_store().get('complaints', report_id) if report_id else None
+    return report if report and (report.get('submitted_at') or report.get('legacy_confirmed')) else None
 
 _GREETING_MESSAGE = (
     "Hi! I can help with that. Please describe what is happening, or attach a photo, "
@@ -193,7 +195,7 @@ def _workflow_reply(request: ConversationRequest, report: dict | None) -> dict |
         raise HTTPException(status_code=409, detail='Submit your report before using this action.')
     action = 'continue'
     if event == 'resolved':
-        save_outcome(report['report_id'], OutcomeRequest(outcome='helped'))
+        report.update(save_outcome(report['report_id'], OutcomeRequest(outcome='helped')))
         action, message = 'resolved', 'Glad that helped! Your report is marked resolved.'
     elif event == 'not_resolved':
         if report.get('status') == 'ticket_raised':
@@ -204,7 +206,7 @@ def _workflow_reply(request: ConversationRequest, report: dict | None) -> dict |
             action, message = 'ticket_confirm', 'Sorry that didn’t resolve it. Would you like me to create a support ticket?'
     elif event == 'create_ticket':
         if report.get('status') != 'ticket_raised':
-            save_outcome(report['report_id'], OutcomeRequest(outcome='not_fixed'))
+            report.update(save_outcome(report['report_id'], OutcomeRequest(outcome='not_fixed')))
         action = 'raise_ticket'
         message = f"Your support ticket {report['ticket_id']} has been created. Choose a support option below."
     elif event == 'callback_requested':
@@ -222,7 +224,7 @@ def _workflow_reply(request: ConversationRequest, report: dict | None) -> dict |
 
 def _conversation(request: ConversationRequest):
     """Greetings are instant; substantive turns use Gemini and extracted media data."""
-    report = _REPORTS.get(request.report_id) if request.report_id else None
+    report = _saved_report(request.report_id)
     if request.report_id and (not report or report['user_id'] != request.user_id):
         raise HTTPException(status_code=404, detail='Report not found')
     if request.event == 'onset_selected':
@@ -321,7 +323,7 @@ def _conversation(request: ConversationRequest):
         if report and action in ('resolved', 'raise_ticket'):
             # Reuse the same record; do not generate a new ticket on repeat requests.
             if action == 'resolved' or report.get('status') != 'ticket_raised':
-                save_outcome(report['report_id'], OutcomeRequest(outcome='helped' if action == 'resolved' else 'not_fixed'))
+                report.update(save_outcome(report['report_id'], OutcomeRequest(outcome='helped' if action == 'resolved' else 'not_fixed')))
         payload.update(extraction=extraction.model_dump(mode='json') if extraction else None,
                        derived=derived.model_dump(mode='json') if derived else None,
                        action=action, saved_report=report, knowledge=None)
@@ -405,7 +407,6 @@ def conversation(request: ConversationRequest):
                 request.message if request.event == 'message' else '',
                 'media' if request.event == 'media_added' else 'text')
             if updated.get('submitted_at'):
-                _REPORTS[incident_id] = updated
                 result['report'] = updated
             previous_symptoms = {s.value for s in request.extraction.symptoms} if request.extraction else set()
             retracted = previous_symptoms - set(extraction.get('symptoms', [])) - {'unclear_description'}
@@ -556,10 +557,8 @@ async def extract_media(
             'extracted_summary':', '.join(s.value for s in media_extraction.symptoms),
             'extraction_confidence':media_extraction.confidence, 'extraction_model':config.MODEL_EXTRACT,
             'extraction_prompt_version':'media-v1', 'extracted_at':now()}, 'evidence_analysed')
-        updated = get_store().classify(complaint_id,user_id,combined.model_dump(mode='json'),
+        get_store().classify(complaint_id,user_id,combined.model_dump(mode='json'),
             derived.model_dump(mode='json'),message,file.content_type.split('/')[0])
-        if updated.get('submitted_at'):
-            _REPORTS[complaint_id] = updated
     else:
         get_store().evidence_update(evidence_id, {'extraction_status':'failed'}, 'analysis_failed')
     if debug:
@@ -647,7 +646,6 @@ def _confirm_report(request: ConfirmRequest):
         raise HTTPException(409,'Start a new report; this draft was discarded.')
     report_id = draft['report_id']
     if draft.get('submitted_at'):
-        _REPORTS[report_id] = draft
         return {'report':draft, 'guidance':get_guidance(request.extraction,derived)}
     report = {
         **draft,
@@ -663,7 +661,6 @@ def _confirm_report(request: ConfirmRequest):
     for evidence in store.all('evidence'):
         if evidence['complaint_id'] == report_id and evidence.get('consent_share') != request.consent_share:
             store.evidence_update(evidence['evidence_id'], {'consent_share':request.consent_share}, 'evidence_consent_updated')
-    _REPORTS[report_id] = report
     return {"report": report, "guidance": get_guidance(request.extraction, derived)}
 
 
@@ -675,7 +672,7 @@ def my_reports(user_id: str):
 
 @router.post("/reports/{report_id}/outcome")
 def save_outcome(report_id: str, request: OutcomeRequest):
-    report = _REPORTS.get(report_id)
+    report = _saved_report(report_id)
     if report is None:
         raise HTTPException(status_code=404, detail="Report not found")
     target = 'resolved' if request.outcome == 'helped' else 'ticket_raised'
@@ -699,7 +696,7 @@ def save_outcome(report_id: str, request: OutcomeRequest):
 @router.post("/reports/{report_id}/callback")
 def request_callback(report_id: str, request: CallbackRequest):
     """Save a development callback request for an existing service ticket."""
-    report = _REPORTS.get(report_id)
+    report = _saved_report(report_id)
     if report is None:
         raise HTTPException(status_code=404, detail="Report not found")
     if request.user_id and report['user_id'] != request.user_id:

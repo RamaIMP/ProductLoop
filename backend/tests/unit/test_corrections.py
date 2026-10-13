@@ -91,7 +91,6 @@ def test_submitted_report_is_updated_without_changing_ticket_status(monkeypatch)
     store = get_store()
     report = store.save_report({**store.incident(cid, 'correction-test'),
         'submitted_at': '2026-10-12T10:00:00Z', 'status': 'ticket_raised', 'ticket_id': 'SR-existing'}, 'report_submitted')
-    consumer._REPORTS[cid] = report
     result = client.post('/api/conversation', json={'user_id': 'correction-test',
         'report_id': cid, 'message': message}).json()
     assert result['report']['derived']['safety_flag'] is False

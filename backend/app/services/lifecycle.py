@@ -218,8 +218,15 @@ _store = None
 def get_store():
     global _store
     if _store is None:
-        path = os.getenv('PRODUCTLOOP_STATE_DB') or str(Path(__file__).resolve().parents[3] / '.runtime' / 'lifecycle.sqlite3')
-        _store = LifecycleStore(path)
+        backend = os.getenv('PRODUCTLOOP_STATE_BACKEND', 'sqlite').strip().lower()
+        if backend == 'firestore':
+            from app.services.firestore_store import FirestoreLifecycleStore
+            _store = FirestoreLifecycleStore()
+        elif backend == 'sqlite':
+            path = os.getenv('PRODUCTLOOP_STATE_DB') or str(Path(__file__).resolve().parents[3] / '.runtime' / 'lifecycle.sqlite3')
+            _store = LifecycleStore(path)
+        else:
+            raise ValueError('PRODUCTLOOP_STATE_BACKEND must be sqlite or firestore')
     return _store
 
 def complaint_row(record):

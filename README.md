@@ -59,7 +59,7 @@ Previous media is represented in later conversation turns by extracted findings,
 | Embeddings | `gemini-embedding-001` |
 | Knowledge retrieval and analytics | BigQuery and BigQuery vector search |
 | Media archive | Google Cloud Storage |
-| Local operational state | SQLite with an ordered persistence outbox |
+| Operational state | SQLite locally; optional Firestore persistence with an ordered BigQuery outbox |
 | Proposed deployment | Cloud Run for the API; Firebase Hosting for the frontends |
 
 ## Repository structure
@@ -298,11 +298,64 @@ These are implementation tasks, not environment-variable switches:
 
 1. **User identity:** add Firebase Authentication to the consumer app. Send the signed-in user's ID token with requests and verify it in FastAPI. Derive ownership from the verified user ID, not the submitted `user_id`. See [Firebase ID-token verification](https://firebase.google.com/docs/auth/admin/verify-id-tokens).
 2. **Staff access:** protect dashboard and manufacturing endpoints with staff authorization. Replace the local-only IP guard with explicit authorization; do not simply remove it.
-3. **Durable state:** migrate incidents, evidence metadata, report lookup and the outbox from local SQLite/in-memory state to a managed operational store such as Firestore or Cloud SQL. BigQuery remains the analytics store. `SESSION_BACKEND=memory` does not implement this migration.
+3. **Durable state:** enable and validate the optional Firestore adapter described below. Incidents, evidence metadata, registered units, events and the BigQuery outbox are supported. Existing SQLite data is not automatically migrated. BigQuery remains the analytics store; `SESSION_BACKEND=memory` is unrelated to this setting.
 4. **Durable background work:** move uploads/outbox delivery and analysis checks into retryable workers or jobs. Use Cloud Scheduler to trigger an authenticated analysis job, with deduplication and meaningful-change checks. Do not depend on a web process staying alive between requests.
 5. **Configuration:** replace hard-coded project references and add the actual frontend origins to CORS. Keep credentials out of frontend build variables.
 
 Cloud Run's writable container filesystem is ephemeral, and the server must bind to `0.0.0.0` using the provided `PORT`. Restricting instance count does not make local SQLite durable. See the [Cloud Run runtime contract](https://docs.cloud.google.com/run/docs/container-contract).
+
+#### Optional Firestore operational persistence
+
+Local development remains unchanged by default: `PRODUCTLOOP_STATE_BACKEND=sqlite`.
+To test Firestore, first provision a Firestore Native-mode database in your intended Google Cloud project. Give the backend runtime identity the required Firestore access (typically `roles/datastore.user`); browser clients should not access these collections directly. Local testing uses Application Default Credentials, while Cloud Run uses its runtime service account. Never commit credential files.
+
+Set these in the local ignored `.env`, or Cloud Run runtime environment, only when ready:
+
+```dotenv
+PRODUCTLOOP_STATE_BACKEND=firestore
+GOOGLE_CLOUD_PROJECT=your-project-id
+PRODUCTLOOP_FIRESTORE_DATABASE=(default)
+PRODUCTLOOP_FIRESTORE_NAMESPACE=productloop-staging
+```
+
+Restart the backend after switching. The adapter uses
+`productloop_state/{namespace}/{collection}/{document}` with collections
+`registered_units`, `complaints`, `evidence`, `complaint_events`, `outbox`, and `metadata`.
+The namespace parent is a path container; records live in its subcollections.
+Media bytes remain in Cloud Storage. Each operation commits its structured records,
+events and outbox entries together. Conflicting writes return HTTP 409 rather than
+silently overwriting another change. Firestore errors do not silently fall back to SQLite.
+
+This is a separate storage selection, **not a data migration**: existing local reports
+and registrations remain in SQLite and will not appear in an empty Firestore namespace.
+Switching back to `sqlite` restores access to the original local database. Do not run
+local and staging writers against the same operational namespace/BigQuery destination.
+
+For this stage, keep **one backend process and one active instance**. Background
+uploads, BigQuery delivery and manufacturing checks still use in-process workers;
+Firestore persistence alone does not make them safe for autoscaling or overlapping
+deployment revisions. Stop the old writer before starting a replacement. Production
+deployment still needs durable, coordinated jobs and authentication. Recent pending
+media jobs are preserved on startup; jobs older than one hour are marked interrupted
+on a later startup and require a new upload.
+
+Run adapter regression tests without cloud writes:
+
+```bash
+cd backend
+.venv/bin/python -m pytest tests/unit -q
+```
+
+An SDK integration test is also available when a local Firestore emulator is running:
+
+```bash
+FIRESTORE_EMULATOR_HOST=127.0.0.1:8085 .venv/bin/python -m pytest tests/integration/test_firestore_emulator.py -q
+```
+
+It uses an isolated emulator-only namespace. Without that environment variable the
+test is skipped. A real staging smoke test is still required before deployment:
+create a report, attach evidence, restart the backend, check report/ticket/appointment
+retrieval, and verify pending BigQuery writes drain successfully.
 
 ### 4. Package and deploy the API to private staging
 

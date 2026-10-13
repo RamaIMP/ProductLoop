@@ -22,7 +22,6 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'test-results' / ('freeze-audit-' + datetime.now().strftime('%Y%m%d-%H%M%S'))
 OUT.mkdir(parents=True)
 lifecycle._store = lifecycle.LifecycleStore(':memory:')
-consumer._REPORTS.clear()
 config.MEDIA_BUCKET = ''
 
 
