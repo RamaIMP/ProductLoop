@@ -9,8 +9,8 @@ test('no location uses nearby Google Maps search, not fixed cities', () => {
   assert.equal(url.searchParams.get('query'), 'electric shaver service centre near me')
 })
 test('manual location and optional brand are correctly encoded', () => {
-  const query = new URL(serviceSearchUrl('Kochi & 682001', 'Philips')).searchParams.get('query')
-  assert.equal(query, 'Philips electric shaver service centre near Kochi & 682001')
+  const query = new URL(serviceSearchUrl('Kochi & 682001', 'ProductLoop')).searchParams.get('query')
+  assert.equal(query, 'ProductLoop electric shaver service centre near Kochi & 682001')
 })
 test('browser location anchors the service search', () => {
   const location = coordinatesForSearch(10.123456, 76.987654)
